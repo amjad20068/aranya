@@ -497,11 +497,11 @@ export default function ContactEnquiryForm() {
         <div className="pt-2">
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            className="w-full min-h-[48px] sm:min-h-[52px] py-3 sm:py-3.5 px-4 sm:px-6 flex items-center justify-center gap-2 sm:gap-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] cursor-pointer"
           >
-            <FaWhatsapp className="w-4 h-4 text-[#061F1A]" />
-            <span>Send Enquiry on WhatsApp</span>
-            <FiArrowRight className="w-4 h-4 text-[#061F1A]" />
+            <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5 text-[#061F1A] shrink-0" />
+            <span className="text-center leading-tight">Send Enquiry on WhatsApp</span>
+            <FiArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#061F1A] shrink-0" />
           </button>
         </div>
       </div>

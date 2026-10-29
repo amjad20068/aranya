@@ -662,11 +662,11 @@ export default function BookingForm({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="h-12 sm:h-14 w-full flex items-center justify-center gap-2.5 rounded-xl font-bold uppercase tracking-wider text-[#061F1A] bg-gradient-to-r from-[#E8BD78] via-[#E2B36B] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-lg shadow-[#D6AD68]/15 hover:shadow-[#D6AD68]/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed group cursor-pointer text-xs sm:text-sm md:text-base"
+            className="w-full min-h-[48px] sm:min-h-[52px] py-3 sm:py-3.5 px-4 sm:px-6 flex items-center justify-center gap-2 sm:gap-2.5 rounded-xl font-bold uppercase tracking-wider text-[#061F1A] bg-gradient-to-r from-[#E8BD78] via-[#E2B36B] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-md hover:shadow-lg shadow-[#D6AD68]/20 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed group cursor-pointer text-xs sm:text-sm"
           >
-            <FaWhatsapp className="w-5 h-5 text-[#061F1A] group-hover:scale-110 transition-transform" />
-            <span>Check Availability on WhatsApp</span>
-            <FiArrowRight className="w-4 h-4 text-[#061F1A] group-hover:translate-x-1 transition-transform" />
+            <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5 text-[#061F1A] shrink-0 group-hover:scale-110 transition-transform" />
+            <span className="text-center leading-tight">Check Availability on WhatsApp</span>
+            <FiArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#061F1A] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </form>
