@@ -66,10 +66,10 @@ export default function GoogleReviewsSection() {
           
           {/* Left Column: Heading and Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E6DED1] shadow-xs mb-3.5">
@@ -95,10 +95,10 @@ export default function GoogleReviewsSection() {
 
           {/* Right Column: Google Rating Score Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"
           >
             <div className="p-6 rounded-2xl bg-white border border-[#E6DED1] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">

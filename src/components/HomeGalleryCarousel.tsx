@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiChevronLeft, FiChevronRight, FiArrowRight, FiMaximize2 } from "react-icons/fi";
+import { motion } from "motion/react";
 import Lightbox from "./Lightbox";
 import { galleryData, GalleryItem } from "@/data/gallery";
 
@@ -34,7 +35,13 @@ export default function HomeGalleryCarousel() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       {/* Left Column: Eyebrow, Heading, Description & Controls matching Reference Image */}
-      <div className="lg:col-span-4 xl:col-span-3.5 flex flex-col justify-center space-y-5">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        className="lg:col-span-4 xl:col-span-3.5 flex flex-col justify-center space-y-5"
+      >
         <div>
           <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D6AD68] block mb-2">
             GALLERY
@@ -74,10 +81,16 @@ export default function HomeGalleryCarousel() {
             <FiArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Column: Horizontal Scrollable Photography Strip */}
-      <div className="lg:col-span-8 xl:col-span-8.5 min-w-0 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.9, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+        className="lg:col-span-8 xl:col-span-8.5 min-w-0 overflow-hidden"
+      >
         <div
           ref={scrollContainerRef}
           data-lenis-prevent
@@ -114,7 +127,7 @@ export default function HomeGalleryCarousel() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Lightbox for Home Gallery */}
       <Lightbox

@@ -39,13 +39,17 @@ export default function Header() {
 
   // Prevent scrolling when mobile drawer is open
   useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      lenis?.stop();
     } else {
       document.body.style.overflow = "unset";
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = "unset";
+      lenis?.start();
     };
   }, [mobileMenuOpen]);
 

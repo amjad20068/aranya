@@ -36,10 +36,10 @@ export default function HomePage() {
             
             {/* Left Column: Eyebrow, Heading, Description & Button */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-3 xl:col-span-3.5 flex flex-col justify-between space-y-6"
             >
               <div>
@@ -71,13 +71,13 @@ export default function HomePage() {
                 {featuredRooms.map((room, idx) => (
                   <motion.div
                     key={room.id}
-                    initial={{ opacity: 0, y: 35 }}
+                    initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{
-                      duration: 0.7,
-                      delay: idx * 0.14,
-                      ease: [0.22, 1, 0.36, 1],
+                      duration: 0.75,
+                      delay: idx * 0.12,
+                      ease: [0.16, 1, 0.3, 1],
                     }}
                   >
                     <RoomCard room={room} />
@@ -100,9 +100,9 @@ export default function HomePage() {
             
             {/* Left Column: Heading, Description, Our Story Button */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-5"
             >
@@ -129,10 +129,10 @@ export default function HomePage() {
 
             {/* Right Column: Genuine Resort Villa Landscape */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 relative w-full"
             >
               <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full min-h-[240px] sm:min-h-[320px] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group bg-[#F7F3EC]">
@@ -160,9 +160,9 @@ export default function HomePage() {
             
             {/* Left Column: Heading, Description, Highlight Strip, CTA */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-6"
             >
@@ -228,10 +228,10 @@ export default function HomePage() {
 
             {/* Right Column: Sea of Clouds Panoramic Valley View */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 relative w-full"
             >
               <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full min-h-[240px] sm:min-h-[320px] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group bg-[#F7F3EC]">
@@ -275,10 +275,10 @@ export default function HomePage() {
             
             {/* Left Column: Heading, Contact details, Socials */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-6"
             >
               <div>
@@ -398,10 +398,10 @@ export default function HomePage() {
 
             {/* Right Column: Contact Enquiry Form matching Reference Image */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
               <ContactEnquiryForm />

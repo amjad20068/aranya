@@ -101,13 +101,13 @@ export default function InstagramSection() {
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 25, scale: 0.96 }}
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{
-                duration: 0.6,
-                delay: idx * 0.08,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.65,
+                delay: idx * 0.06,
+                ease: [0.16, 1, 0.3, 1],
               }}
               className="group relative aspect-square rounded-2xl overflow-hidden bg-[#061F1A] border border-white/10 hover:border-[#D6AD68]/60 transition-all duration-500 shadow-sm block"
             >
