@@ -81,7 +81,7 @@ function TypeOrSelectInput({
   const unitText = !isNaN(numVal) && numVal === 1 ? (unitSingle || unitPlural) : (unitPlural || unitSingle);
 
   return (
-    <div className="relative flex items-center w-full">
+    <div className="relative flex items-center w-full min-w-0">
       <input
         type="number"
         id={id}
@@ -91,15 +91,15 @@ function TypeOrSelectInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`h-11 sm:h-12 w-full ${
+        className={`h-11 sm:h-12 w-full min-w-0 max-w-full ${
           isDark
             ? "bg-[#031410]/80 border-white/15 text-white focus:border-[#D6AD68]"
             : "bg-white border-[#E6DED1] text-[#092C24] focus:border-[#D6AD68]"
-        } border rounded-xl pl-3.5 pr-14 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+        } border rounded-xl pl-3 pr-12 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
       />
 
       {/* Suffix label & dropdown chevron on the right */}
-      <div className="absolute right-0 inset-y-0 flex items-center pr-3 pointer-events-none gap-1">
+      <div className="absolute right-0 inset-y-0 flex items-center pr-2.5 pointer-events-none gap-1">
         {unitText && (
           <span className={`text-[11px] font-normal truncate max-w-[42px] ${isDark ? "text-white/60" : "text-[#77766E]"}`}>
             {unitText}
@@ -297,14 +297,14 @@ export default function BookingForm({
       <form
         onSubmit={handleSubmit}
         noValidate
-        className={`w-full transition-all duration-300 ${
+        className={`w-full transition-all duration-300 overflow-hidden ${
           variant === "hero"
             ? "bg-[#061F1A]/85 backdrop-blur-md p-3.5 sm:p-4 md:p-5 rounded-2xl shadow-2xl border border-[#D6AD68]/30"
             : variant === "card"
             ? hideHeader
-              ? "bg-[#031713]/85 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border border-[#D6AD68]/25 shadow-xl"
-              : "bg-[#061F1A] text-white p-6 sm:p-8 rounded-2xl border border-[#D6AD68]/30 shadow-xl"
-            : "bg-[#092C24] text-white p-6 sm:p-10 rounded-2xl border border-[#D6AD68]/35 shadow-2xl"
+              ? "bg-[#031713]/85 backdrop-blur-sm p-3.5 sm:p-6 md:p-8 rounded-2xl border border-[#D6AD68]/25 shadow-xl"
+              : "bg-[#061F1A] text-white p-4 sm:p-8 rounded-2xl border border-[#D6AD68]/30 shadow-xl"
+            : "bg-[#092C24] text-white p-5 sm:p-10 rounded-2xl border border-[#D6AD68]/35 shadow-2xl"
         }`}
       >
         {!hideHeader && variant !== "hero" && (
@@ -322,9 +322,9 @@ export default function BookingForm({
         )}
 
         {/* Row 1: Check In, Check Out, Adults, Rooms (2 cols on mobile, 4 cols on md+) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-3 sm:mb-4 w-full min-w-0">
           {/* Check-in Date */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="checkIn"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -339,9 +339,9 @@ export default function BookingForm({
               min={minDate}
               value={formData.checkIn}
               onChange={handleChange}
-              className={`h-11 sm:h-12 w-full bg-[#031410]/80 border ${
+              className={`h-11 sm:h-12 w-full min-w-0 max-w-full bg-[#031410]/80 border ${
                 errors.checkIn ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
-              } rounded-xl px-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [color-scheme:dark]`}
+              } rounded-xl px-2.5 sm:px-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [color-scheme:dark] [appearance:none] [-webkit-appearance:none]`}
               required
             />
             {errors.checkIn && (
@@ -352,7 +352,7 @@ export default function BookingForm({
           </div>
 
           {/* Check-out Date */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="checkOut"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -367,9 +367,9 @@ export default function BookingForm({
               min={formData.checkIn || minDate}
               value={formData.checkOut}
               onChange={handleChange}
-              className={`h-11 sm:h-12 w-full bg-[#031410]/80 border ${
+              className={`h-11 sm:h-12 w-full min-w-0 max-w-full bg-[#031410]/80 border ${
                 errors.checkOut ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
-              } rounded-xl px-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [color-scheme:dark]`}
+              } rounded-xl px-2.5 sm:px-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [color-scheme:dark] [appearance:none] [-webkit-appearance:none]`}
               required
             />
             {errors.checkOut && (
@@ -380,7 +380,7 @@ export default function BookingForm({
           </div>
 
           {/* Adults */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="adults"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -405,7 +405,7 @@ export default function BookingForm({
           </div>
 
           {/* No of Rooms */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="rooms"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -431,9 +431,9 @@ export default function BookingForm({
         </div>
 
         {/* Row 2: Kids 6-12, Kids 0-5, Room Type (spans 2 cols on mobile and desktop) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-3 sm:mb-4 w-full min-w-0">
           {/* Kids 6-12 */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="kids6to12"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -458,7 +458,7 @@ export default function BookingForm({
           </div>
 
           {/* Kids 0-5 */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="kids0to5"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -483,7 +483,7 @@ export default function BookingForm({
           </div>
 
           {/* Preferred Room Type - spans 2 cols */}
-          <div className="flex flex-col col-span-2">
+          <div className="flex flex-col col-span-2 min-w-0 w-full">
             <label
               htmlFor="preferredRoom"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -496,7 +496,7 @@ export default function BookingForm({
               name="preferredRoom"
               value={formData.preferredRoom}
               onChange={handleChange}
-              className="h-11 sm:h-12 w-full bg-[#031410]/80 border border-white/15 focus:border-[#D6AD68] rounded-xl px-3.5 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all cursor-pointer [color-scheme:dark]"
+              className="h-11 sm:h-12 w-full min-w-0 max-w-full bg-[#031410]/80 border border-white/15 focus:border-[#D6AD68] rounded-xl px-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all cursor-pointer [color-scheme:dark]"
             >
               <option value="" className="bg-[#061F1A] text-white">
                 Any Available Room
@@ -511,9 +511,9 @@ export default function BookingForm({
         </div>
 
         {/* Row 3: Guest Name and Mobile Number (1 col each on mobile, 2 cols each on desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4 w-full min-w-0">
           {/* Guest Name */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="fullName"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -541,7 +541,7 @@ export default function BookingForm({
           </div>
 
           {/* Mobile Number */}
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="mobile"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
@@ -556,7 +556,7 @@ export default function BookingForm({
               placeholder="e.g. +91 98765 43210"
               value={formData.mobile}
               onChange={handleChange}
-              className={`h-11 sm:h-12 w-full bg-[#031410]/80 border ${
+              className={`h-11 sm:h-12 w-full min-w-0 max-w-full bg-[#031410]/80 border ${
                 errors.mobile ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
               } rounded-xl px-3.5 text-xs sm:text-sm text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
               required
@@ -571,7 +571,7 @@ export default function BookingForm({
 
         {/* Row 4: Special Request */}
         {variant !== "hero" && (
-          <div className="mb-4">
+          <div className="mb-4 min-w-0 w-full">
             <label
               htmlFor="specialRequest"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"

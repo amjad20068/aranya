@@ -51,7 +51,7 @@ function TypeOrSelectInput({
   const unitText = !isNaN(numVal) && numVal === 1 ? (unitSingle || unitPlural) : (unitPlural || unitSingle);
 
   return (
-    <div className="relative flex items-center w-full">
+    <div className="relative flex items-center w-full min-w-0">
       <input
         type="number"
         id={id}
@@ -61,7 +61,7 @@ function TypeOrSelectInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-white border border-[#E6DED1] focus:border-[#D6AD68] rounded-lg pl-2.5 pr-14 py-1.5 text-xs text-[#092C24] font-medium focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className="w-full min-w-0 max-w-full bg-white border border-[#E6DED1] focus:border-[#D6AD68] rounded-lg pl-2.5 pr-12 py-1.5 text-xs text-[#092C24] font-medium focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
       />
 
       {/* Suffix label & dropdown chevron on the right */}
@@ -465,8 +465,8 @@ Thank you.`;
                             </div>
 
                             {/* Dates Grid */}
-                            <div className="grid grid-cols-2 gap-2.5 mb-3">
-                              <div>
+                            <div className="grid grid-cols-2 gap-2.5 mb-3 w-full min-w-0">
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiCalendar className="w-3 h-3 text-[#D6AD68]" />
                                   <span>Check-in</span>
@@ -477,9 +477,9 @@ Thank you.`;
                                   min={minDate}
                                   value={formData.checkIn}
                                   onChange={handleFormChange}
-                                  className={`w-full bg-white border ${
+                                  className={`w-full min-w-0 max-w-full bg-white border ${
                                     errors.checkIn ? "border-red-400" : "border-[#E6DED1] focus:border-[#D6AD68]"
-                                  } rounded-lg px-2.5 py-1.5 text-xs text-[#092C24] focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
+                                  } rounded-lg px-2.5 py-1.5 text-xs text-[#092C24] focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:none] [-webkit-appearance:none]`}
                                   required
                                 />
                                 {errors.checkIn && (
@@ -489,7 +489,7 @@ Thank you.`;
                                 )}
                               </div>
 
-                              <div>
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiCalendar className="w-3 h-3 text-[#D6AD68]" />
                                   <span>Check-out</span>
@@ -500,9 +500,9 @@ Thank you.`;
                                   min={formData.checkIn || minDate}
                                   value={formData.checkOut}
                                   onChange={handleFormChange}
-                                  className={`w-full bg-white border ${
+                                  className={`w-full min-w-0 max-w-full bg-white border ${
                                     errors.checkOut ? "border-red-400" : "border-[#E6DED1] focus:border-[#D6AD68]"
-                                  } rounded-lg px-2.5 py-1.5 text-xs text-[#092C24] focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
+                                  } rounded-lg px-2.5 py-1.5 text-xs text-[#092C24] focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:none] [-webkit-appearance:none]`}
                                   required
                                 />
                                 {errors.checkOut && (
@@ -514,8 +514,8 @@ Thank you.`;
                             </div>
 
                             {/* Row 2: Number of Adults[12y above] & No of Rooms */}
-                            <div className="grid grid-cols-2 gap-2.5 mb-2.5">
-                              <div>
+                            <div className="grid grid-cols-2 gap-2.5 mb-2.5 w-full min-w-0">
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiUsers className="w-3 h-3 text-[#D6AD68]" />
                                   <span className="truncate">Adults [12y+]</span>
@@ -534,7 +534,7 @@ Thank you.`;
                                 />
                               </div>
 
-                              <div>
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiHome className="w-3 h-3 text-[#D6AD68]" />
                                   <span>No of Rooms</span>
@@ -555,8 +555,8 @@ Thank you.`;
                             </div>
 
                             {/* Row 3: Kids 6-12 & Kids 0-5 */}
-                            <div className="grid grid-cols-2 gap-2.5 mb-3">
-                              <div>
+                            <div className="grid grid-cols-2 gap-2.5 mb-3 w-full min-w-0">
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiUsers className="w-3 h-3 text-[#D6AD68]" />
                                   <span>Kids 6-12</span>
@@ -575,7 +575,7 @@ Thank you.`;
                                 />
                               </div>
 
-                              <div>
+                              <div className="min-w-0 w-full">
                                 <label className="text-[10px] uppercase tracking-wider font-semibold text-[#092C24] mb-1 flex items-center gap-1">
                                   <FiUsers className="w-3 h-3 text-[#D6AD68]" />
                                   <span>Kids 0-5</span>

@@ -73,7 +73,7 @@ export default function RoomsClientView() {
       </section>
 
       {/* Filter Tabs matching the reference collage */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 sm:pb-12">
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
           {roomFilterTabs.map((tab) => {
             const isActive = activeTab === tab;
@@ -101,7 +101,7 @@ export default function RoomsClientView() {
         </div>
 
         {/* Direct Booking Section */}
-        <section className="mt-20 mb-12 bg-gradient-to-b from-[#061F1A] to-[#0A2620] text-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl border border-[#D6AD68]/25">
+        <section className="mt-20 mb-12 bg-gradient-to-b from-[#061F1A] to-[#0A2620] text-white rounded-3xl p-3.5 sm:p-8 md:p-12 shadow-2xl border border-[#D6AD68]/25 overflow-hidden">
           <div className="max-w-2xl mx-auto text-center mb-6 sm:mb-8">
             <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68] block mb-2">
               Direct WhatsApp Enquiry
