@@ -101,23 +101,23 @@ export default function RoomsClientView() {
         </div>
 
         {/* Direct Booking Section */}
-        <div className="mt-20 bg-[#061F1A] text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-[#D6AD68]/20">
-          <div className="max-w-3xl mx-auto text-center mb-8">
-            <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68]">
+        <section className="mt-20 mb-12 bg-gradient-to-b from-[#061F1A] to-[#0A2620] text-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl border border-[#D6AD68]/25">
+          <div className="max-w-2xl mx-auto text-center mb-6 sm:mb-8">
+            <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68] block mb-2">
               Direct WhatsApp Enquiry
             </span>
-            <h2 className="font-serif-luxury text-3xl sm:text-4xl text-white mt-1 font-normal">
-              Need Help Choosing a Room?
+            <h2 className="font-serif-luxury text-2xl sm:text-4xl text-white font-normal">
+              Check Room Availability
             </h2>
             <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2 font-light">
-              Our front desk team is ready on WhatsApp to assist with room selections, group stays, and special arrangements.
+              Connect directly with our resort front desk to check real-time availability, get instant quotations, and plan custom stays.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <BookingForm variant="card" />
+            <BookingForm variant="card" hideHeader={true} />
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

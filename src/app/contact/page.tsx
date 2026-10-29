@@ -7,7 +7,6 @@ import {
   FiMapPin,
   FiClock,
 } from "react-icons/fi";
-import BookingForm from "@/components/BookingForm";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 import { resortConfig } from "@/config/resort";
 
@@ -161,27 +160,6 @@ export default function ContactPage() {
               <ContactEnquiryForm />
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Form for Date-Specific Room Enquiries */}
-      <section className="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#061F1A] text-white rounded-3xl p-8 sm:p-12 border border-[#D6AD68]/20">
-          <div className="max-w-2xl mx-auto text-center mb-8">
-            <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68]">
-              Need Specific Dates & Rooms?
-            </span>
-            <h3 className="font-serif-luxury text-3xl font-normal text-white mt-1">
-              Check Stay Availability
-            </h3>
-            <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2 font-light">
-              Select your arrival dates and preferred room type to receive direct confirmation from our reservation desk.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <BookingForm variant="card" />
           </div>
         </div>
       </section>

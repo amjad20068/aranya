@@ -127,15 +127,15 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* Right Column: Genuine Resort Villa Landscape with Horizontal Curtain Reveal */}
+            {/* Right Column: Genuine Resort Villa Landscape */}
             <motion.div
-              initial={{ opacity: 0, clipPath: "inset(0 100% 0 0 round 1rem)" }}
-              whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0 round 1rem)" }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6 relative"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-6 relative w-full"
             >
-              <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group">
+              <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full min-h-[240px] sm:min-h-[320px] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group bg-[#F7F3EC]">
                 <Image
                   src="/images/pages/about-resort.webp"
                   alt="Aaranya Misty Valley Resort nestled amidst lush greenery"
@@ -228,13 +228,13 @@ export default function HomePage() {
 
             {/* Right Column: Sea of Clouds Panoramic Valley View */}
             <motion.div
-              initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 1rem)" }}
-              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 1rem)" }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6 relative"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-6 relative w-full"
             >
-              <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group">
+              <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full min-h-[240px] sm:min-h-[320px] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group bg-[#F7F3EC]">
                 <Image
                   src="/images/pages/aaranya-sea-of-clouds-2k.webp"
                   alt="Aaranya Sea of Clouds Valley View"
