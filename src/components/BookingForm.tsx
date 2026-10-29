@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
   FiCalendar,
@@ -49,53 +49,60 @@ export default function BookingForm({
   className = "",
   onSuccess,
 }: BookingFormProps) {
-  const todayStr = "2026-10-28";
   const [formData, setFormData] = useState<FormState>({
     fullName: "",
     mobile: "",
-    checkIn: "2026-10-29",
-    checkOut: "2026-10-31",
+    checkIn: "",
+    checkOut: "",
     adults: "2",
     children: "0",
     preferredRoom: initialRoom || "",
     specialRequest: "",
   });
 
+  const [minDate, setMinDate] = useState<string>("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Set initial dates inside useEffect to satisfy Next.js 16 prerender checks
+  useEffect(() => {
+    const now = new Date();
+    const todayStr = now.toISOString().split("T")[0];
+    const nextDay = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
+
+    setMinDate(todayStr);
+    setFormData((prev) => ({
+      ...prev,
+      checkIn: prev.checkIn || todayStr,
+      checkOut: prev.checkOut || nextDay,
+    }));
+  }, []);
 
   const validate = (): boolean => {
     const errs: FormErrors = {};
 
     if (!formData.fullName.trim()) {
-      errs.fullName = "Please enter your full name";
-    } else if (formData.fullName.trim().length < 2) {
-      errs.fullName = "Name must be at least 2 characters";
+      errs.fullName = "Please enter your name";
     }
 
     const cleanMobile = formData.mobile.replace(/[^0-9]/g, "");
     if (!formData.mobile.trim()) {
       errs.mobile = "Please enter your mobile number";
     } else if (cleanMobile.length < 8 || cleanMobile.length > 15) {
-      errs.mobile = "Please enter a valid 8-15 digit phone number";
+      errs.mobile = "Please enter a valid mobile number";
     }
 
     if (!formData.checkIn) {
-      errs.checkIn = "Please select check-in date";
-    } else if (formData.checkIn < todayStr) {
-      errs.checkIn = "Check-in cannot be in the past";
+      errs.checkIn = "Select check-in";
     }
 
     if (!formData.checkOut) {
-      errs.checkOut = "Please select check-out date";
+      errs.checkOut = "Select check-out";
     } else if (formData.checkIn && formData.checkOut <= formData.checkIn) {
-      errs.checkOut = "Check-out must be after check-in date";
-    }
-
-    const adultsNum = parseInt(formData.adults, 10);
-    if (isNaN(adultsNum) || adultsNum < 1) {
-      errs.adults = "At least 1 adult required";
+      errs.checkOut = "Check-out must be after check-in";
     }
 
     setErrors(errs);
@@ -108,7 +115,6 @@ export default function BookingForm({
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error for field on change
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -123,7 +129,6 @@ export default function BookingForm({
 
     setIsSubmitting(true);
 
-    // Build the formatted enquiry message
     const roomName =
       roomsData.find((r) => r.slug === formData.preferredRoom || r.name === formData.preferredRoom)?.name ||
       formData.preferredRoom ||
@@ -151,7 +156,6 @@ Thank you.`;
 
     const url = buildWhatsAppUrl(message);
 
-    // Direct browser handoff to WhatsApp
     try {
       window.open(url, "_blank", "noopener,noreferrer");
     } catch {
@@ -170,35 +174,35 @@ Thank you.`;
         noValidate
         className={`w-full transition-all duration-300 ${
           variant === "hero"
-            ? "bg-[#10251C]/80 backdrop-blur-md p-3.5 sm:p-4 md:p-5 rounded-xl shadow-2xl border border-[#C9A568]/35"
+            ? "bg-[#061F1A]/85 backdrop-blur-md p-3.5 sm:p-4 md:p-5 rounded-2xl shadow-2xl border border-[#D6AD68]/30"
             : variant === "card"
-            ? "bg-[#10251C] text-white p-6 sm:p-8 rounded-2xl border border-[#C9A568]/30 shadow-xl"
-            : "bg-[#142E23] text-white p-6 sm:p-10 rounded-2xl border border-[#C9A568]/40 shadow-2xl"
+            ? "bg-[#061F1A] text-white p-6 sm:p-8 rounded-2xl border border-[#D6AD68]/30 shadow-xl"
+            : "bg-[#092C24] text-white p-6 sm:p-10 rounded-2xl border border-[#D6AD68]/35 shadow-2xl"
         }`}
       >
         {variant !== "hero" && (
           <div className="mb-6 pb-4 border-b border-white/10">
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-[#C9A568]">
+            <span className="text-[11px] font-semibold uppercase tracking-widest text-[#D6AD68]">
               Reserve Your Forest Stay
             </span>
-            <h3 className="font-serif-luxury text-2xl sm:text-3xl font-medium text-white mt-1">
+            <h3 className="font-serif-luxury text-2xl sm:text-3xl font-normal text-white mt-1">
               WhatsApp Booking Enquiry
             </h3>
-            <p className="text-xs sm:text-sm text-white/70 mt-1">
+            <p className="text-xs sm:text-sm text-white/70 mt-1 font-light">
               Direct enquiry with our resort desk. We will confirm room availability and details instantly.
             </p>
           </div>
         )}
 
-        {/* Top Grid: Dates and Guests */}
-        <div className={`grid grid-cols-2 sm:grid-cols-4 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2" : "gap-3 sm:gap-4 mb-3 sm:mb-4"}`}>
+        {/* Top Grid: Dates and Guests (4 Columns on tablet/desktop, 2 on mobile) */}
+        <div className={`grid grid-cols-2 sm:grid-cols-4 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2.5" : "gap-3 sm:gap-4 mb-3 sm:mb-4"}`}>
           {/* Check-in Date */}
           <div className="flex flex-col">
             <label
               htmlFor="checkIn"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Check-in Date</span>
             </label>
             <div className="relative">
@@ -206,12 +210,12 @@ Thank you.`;
                 id="checkIn"
                 name="checkIn"
                 type="date"
-                min={todayStr}
+                min={minDate}
                 value={formData.checkIn}
                 onChange={handleChange}
-                className={`w-full bg-[#0A1812]/75 border ${
-                  errors.checkIn ? "border-red-400 focus:ring-red-400" : "border-white/20 focus:border-[#C9A568]"
-                } ${variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+                className={`w-full bg-[#061F1A]/80 border ${
+                  errors.checkIn ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+                } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
                 required
               />
             </div>
@@ -228,7 +232,7 @@ Thank you.`;
               htmlFor="checkOut"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Check-out Date</span>
             </label>
             <div className="relative">
@@ -236,12 +240,12 @@ Thank you.`;
                 id="checkOut"
                 name="checkOut"
                 type="date"
-                min={formData.checkIn || todayStr}
+                min={formData.checkIn || minDate}
                 value={formData.checkOut}
                 onChange={handleChange}
-                className={`w-full bg-[#0A1812]/75 border ${
-                  errors.checkOut ? "border-red-400 focus:ring-red-400" : "border-white/20 focus:border-[#C9A568]"
-                } ${variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+                className={`w-full bg-[#061F1A]/80 border ${
+                  errors.checkOut ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+                } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
                 required
               />
             </div>
@@ -258,7 +262,7 @@ Thank you.`;
               htmlFor="adults"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Adults</span>
             </label>
             <select
@@ -266,12 +270,12 @@ Thank you.`;
               name="adults"
               value={formData.adults}
               onChange={handleChange}
-              className={`w-full bg-[#0A1812]/75 border border-white/20 focus:border-[#C9A568] ${
-                variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
-              } text-white focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+              className={`w-full bg-[#061F1A]/80 border border-white/15 focus:border-[#D6AD68] ${
+                variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
+              } text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
             >
               {[1, 2, 3, 4, 5, 6, 8, 10].map((num) => (
-                <option key={num} value={num} className="bg-[#10251C] text-white">
+                <option key={num} value={num} className="bg-[#061F1A] text-white">
                   {num} {num === 1 ? "Adult" : "Adults"}
                 </option>
               ))}
@@ -284,7 +288,7 @@ Thank you.`;
               htmlFor="children"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Children</span>
             </label>
             <select
@@ -292,12 +296,12 @@ Thank you.`;
               name="children"
               value={formData.children}
               onChange={handleChange}
-              className={`w-full bg-[#0A1812]/75 border border-white/20 focus:border-[#C9A568] ${
-                variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
-              } text-white focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+              className={`w-full bg-[#061F1A]/80 border border-white/15 focus:border-[#D6AD68] ${
+                variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
+              } text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
             >
               {[0, 1, 2, 3, 4].map((num) => (
-                <option key={num} value={num} className="bg-[#10251C] text-white">
+                <option key={num} value={num} className="bg-[#061F1A] text-white">
                   {num} {num === 1 ? "Child" : "Children"}
                 </option>
               ))}
@@ -313,7 +317,7 @@ Thank you.`;
               htmlFor="fullName"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiUser className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiUser className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Your Name</span>
             </label>
             <input
@@ -323,9 +327,9 @@ Thank you.`;
               placeholder="Enter your name"
               value={formData.fullName}
               onChange={handleChange}
-              className={`w-full bg-[#0A1812]/75 border ${
-                errors.fullName ? "border-red-400 focus:ring-red-400" : "border-white/20 focus:border-[#C9A568]"
-              } ${variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+              className={`w-full bg-[#061F1A]/80 border ${
+                errors.fullName ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
               required
             />
             {errors.fullName && (
@@ -341,19 +345,19 @@ Thank you.`;
               htmlFor="mobile"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiPhone className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiPhone className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Mobile Number</span>
             </label>
             <input
               id="mobile"
               name="mobile"
               type="tel"
-              placeholder="Enter your number (e.g. +91...)"
+              placeholder="Enter your number"
               value={formData.mobile}
               onChange={handleChange}
-              className={`w-full bg-[#0A1812]/75 border ${
-                errors.mobile ? "border-red-400 focus:ring-red-400" : "border-white/20 focus:border-[#C9A568]"
-              } ${variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+              className={`w-full bg-[#061F1A]/80 border ${
+                errors.mobile ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
               required
             />
             {errors.mobile && (
@@ -369,7 +373,7 @@ Thank you.`;
               htmlFor="preferredRoom"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiHome className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#C9A568]`} />
+              <FiHome className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
               <span>Preferred Room (Optional)</span>
             </label>
             <select
@@ -377,15 +381,15 @@ Thank you.`;
               name="preferredRoom"
               value={formData.preferredRoom}
               onChange={handleChange}
-              className={`w-full bg-[#0A1812]/75 border border-white/20 focus:border-[#C9A568] ${
-                variant === "hero" ? "rounded-md px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
-              } text-white focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all`}
+              className={`w-full bg-[#061F1A]/80 border border-white/15 focus:border-[#D6AD68] ${
+                variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
+              } text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
             >
-              <option value="" className="bg-[#10251C] text-white">
-                Select Room / Any Room
+              <option value="" className="bg-[#061F1A] text-white">
+                Select Room
               </option>
               {roomsData.map((room) => (
-                <option key={room.id} value={room.slug} className="bg-[#10251C] text-white">
+                <option key={room.id} value={room.slug} className="bg-[#061F1A] text-white">
                   {room.name}
                 </option>
               ))}
@@ -400,7 +404,7 @@ Thank you.`;
               htmlFor="specialRequest"
               className="text-[11px] uppercase tracking-wider font-medium text-[#FAF8F5]/80 mb-1.5 flex items-center gap-1.5"
             >
-              <FiMessageSquare className="w-3.5 h-3.5 text-[#C9A568]" />
+              <FiMessageSquare className="w-3.5 h-3.5 text-[#D6AD68]" />
               <span>Special Requests or Questions (Optional)</span>
             </label>
             <textarea
@@ -410,12 +414,12 @@ Thank you.`;
               placeholder="e.g. Early check-in, dietary preferences, extra bed..."
               value={formData.specialRequest}
               onChange={handleChange}
-              className="w-full bg-[#0A1812]/70 border border-white/15 focus:border-[#C9A568] rounded-lg px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#C9A568] transition-all resize-none"
+              className="w-full bg-[#061F1A]/70 border border-white/15 focus:border-[#D6AD68] rounded-lg px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all resize-none"
             />
           </div>
         )}
 
-        {/* Submit Button (WhatsApp Click-to-Chat) */}
+        {/* Submit Button (WhatsApp Click-to-Chat matching Reference Image) */}
         <div className="pt-1">
           <button
             type="submit"
@@ -424,26 +428,22 @@ Thank you.`;
               variant === "hero"
                 ? "py-3 px-4 rounded-xl text-xs sm:text-sm tracking-wider"
                 : "py-3.5 px-6 rounded-xl text-sm md:text-base tracking-wider"
-            } font-bold uppercase text-[#071F1A] bg-[#E8BD78] hover:bg-[#DCA65E] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed group cursor-pointer`}
+            } font-bold uppercase text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed group cursor-pointer`}
           >
-            <FaWhatsapp className={`${variant === "hero" ? "w-4 h-4" : "w-5 h-5"} text-[#071F1A] group-hover:scale-110 transition-transform`} />
+            <FaWhatsapp className={`${variant === "hero" ? "w-4 h-4" : "w-5 h-5"} text-[#061F1A] group-hover:scale-110 transition-transform`} />
             <span>Book on WhatsApp</span>
-            <FiArrowRight className={`${variant === "hero" ? "w-4 h-4" : "w-4 h-4"} text-[#071F1A] group-hover:translate-x-1 transition-transform`} />
+            <FiArrowRight className={`${variant === "hero" ? "w-4 h-4" : "w-4 h-4"} text-[#061F1A] group-hover:translate-x-1 transition-transform`} />
           </button>
         </div>
-
-        <p className={`${variant === "hero" ? "text-[9px] mt-2" : "text-[10px] mt-3"} text-white/50 text-center tracking-wide`}>
-          Direct WhatsApp connection to Aaranya Front Desk. No advance card required online.
-        </p>
       </form>
 
       {/* Confirmation feedback banner */}
       {showSuccessModal && (
-        <div className="mt-4 p-4 rounded-xl bg-[#26382E] border border-[#25D366]/40 text-white flex items-start gap-3 shadow-lg">
+        <div className="mt-4 p-4 rounded-xl bg-[#203B31] border border-[#25D366]/40 text-white flex items-start gap-3 shadow-lg">
           <FiCheckCircle className="w-5 h-5 text-[#25D366] shrink-0 mt-0.5" />
           <div className="text-xs">
             <span className="font-semibold text-white">Opening WhatsApp...</span>
-            <p className="text-white/80 mt-0.5">
+            <p className="text-white/80 mt-0.5 font-light">
               Your booking details have been prepared for {resortConfig.name}. If WhatsApp did not open automatically,{" "}
               <a
                 href={buildWhatsAppUrl(
@@ -451,7 +451,7 @@ Thank you.`;
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline text-[#C9A568] font-medium"
+                className="underline text-[#E8BD78] font-medium"
               >
                 click here to open chat
               </a>.

@@ -8,9 +8,8 @@ import {
   FiClock,
 } from "react-icons/fi";
 import BookingForm from "@/components/BookingForm";
-import { resortConfig } from "@/config/resort";
-
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
+import { resortConfig } from "@/config/resort";
 
 export const metadata: Metadata = {
   title: "Contact Us | Get in Touch | Aaranya Misty Valley",
@@ -23,8 +22,8 @@ export default function ContactPage() {
   const hasFacebook = Boolean(resortConfig.social.facebook && resortConfig.social.facebook.trim() !== "");
 
   return (
-    <div className="pt-24 md:pt-32 pb-24 bg-[#F5F1E8]">
-      {/* Main Contact Section Matching Image 3 Reference (Bottom Right Panel) */}
+    <div className="pt-24 md:pt-32 pb-24 bg-[#F7F3EC]">
+      {/* Main Contact Section Matching Reference Image (Bottom Right Panel) */}
       <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -32,13 +31,13 @@ export default function ContactPage() {
             {/* Left Column: Eyebrow, Heading, Subtitle & Direct Contact Details */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A68346] block mb-2">
+                <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#A68346] block mb-2">
                   CONTACT US
                 </span>
-                <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#10251C] font-normal tracking-tight leading-[1.12]">
+                <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#092C24] font-normal tracking-tight leading-[1.12]">
                   Get in Touch
                 </h1>
-                <p className="mt-4 text-sm sm:text-base md:text-lg text-[#343B35]/85 leading-relaxed font-light">
+                <p className="mt-4 text-sm sm:text-base md:text-lg text-[#77766E] leading-relaxed font-light">
                   We&rsquo;d love to hear from you. For booking enquiries or any questions, feel free to reach out.
                 </p>
               </div>
@@ -46,17 +45,17 @@ export default function ContactPage() {
               {/* Direct Details List matching Reference */}
               <div className="space-y-4 pt-2">
                 {/* Call Us */}
-                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#10251C]">
-                  <div className="w-10 h-10 rounded-full bg-[#10251C]/10 text-[#10251C] flex items-center justify-center shrink-0">
-                    <FiPhone className="w-4 h-4 text-[#A68346]" />
+                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#092C24]">
+                  <div className="w-10 h-10 rounded-full bg-[#092C24]/5 text-[#D6AD68] flex items-center justify-center shrink-0">
+                    <FiPhone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-[#343B35]/70 block font-medium">
+                    <span className="text-[11px] uppercase tracking-wider text-[#77766E] block font-medium">
                       Call Us
                     </span>
                     <a
                       href={`tel:${resortConfig.phone}`}
-                      className="font-medium text-[#10251C] hover:text-[#A68346] transition-colors"
+                      className="font-medium text-[#092C24] hover:text-[#D6AD68] transition-colors"
                     >
                       {resortConfig.phone}
                     </a>
@@ -64,19 +63,19 @@ export default function ContactPage() {
                 </div>
 
                 {/* WhatsApp */}
-                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#10251C]">
+                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#092C24]">
                   <div className="w-10 h-10 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center shrink-0">
                     <FaWhatsapp className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-[#343B35]/70 block font-medium">
+                    <span className="text-[11px] uppercase tracking-wider text-[#77766E] block font-medium">
                       WhatsApp
                     </span>
                     <a
                       href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to get in touch.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#10251C] hover:text-[#25D366] transition-colors"
+                      className="font-medium text-[#092C24] hover:text-[#25D366] transition-colors"
                     >
                       {resortConfig.displayWhatsapp}
                     </a>
@@ -84,17 +83,17 @@ export default function ContactPage() {
                 </div>
 
                 {/* Email Us */}
-                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#10251C]">
-                  <div className="w-10 h-10 rounded-full bg-[#10251C]/10 text-[#10251C] flex items-center justify-center shrink-0">
-                    <FiMail className="w-4 h-4 text-[#A68346]" />
+                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#092C24]">
+                  <div className="w-10 h-10 rounded-full bg-[#092C24]/5 text-[#D6AD68] flex items-center justify-center shrink-0">
+                    <FiMail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-[#343B35]/70 block font-medium">
+                    <span className="text-[11px] uppercase tracking-wider text-[#77766E] block font-medium">
                       Email Us
                     </span>
                     <a
                       href={`mailto:${resortConfig.email}`}
-                      className="font-medium text-[#10251C] hover:text-[#A68346] transition-colors"
+                      className="font-medium text-[#092C24] hover:text-[#D6AD68] transition-colors"
                     >
                       {resortConfig.email}
                     </a>
@@ -102,15 +101,15 @@ export default function ContactPage() {
                 </div>
 
                 {/* Location */}
-                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#10251C]">
-                  <div className="w-10 h-10 rounded-full bg-[#10251C]/10 text-[#10251C] flex items-center justify-center shrink-0">
-                    <FiMapPin className="w-4 h-4 text-[#A68346]" />
+                <div className="flex items-center gap-3.5 text-sm sm:text-base text-[#092C24]">
+                  <div className="w-10 h-10 rounded-full bg-[#092C24]/5 text-[#D6AD68] flex items-center justify-center shrink-0">
+                    <FiMapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-[#343B35]/70 block font-medium">
+                    <span className="text-[11px] uppercase tracking-wider text-[#77766E] block font-medium">
                       Location
                     </span>
-                    <span className="font-medium text-[#10251C]">
+                    <span className="font-medium text-[#092C24]">
                       {resortConfig.location.fullAddress}
                     </span>
                   </div>
@@ -119,13 +118,13 @@ export default function ContactPage() {
 
               {/* Social Icons matching Reference */}
               {(hasInstagram || hasFacebook) && (
-                <div className="pt-4 flex items-center gap-3">
+                <div className="pt-3 flex items-center gap-3">
                   {hasInstagram && (
                     <a
                       href={resortConfig.social.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white border border-black/10 hover:border-[#C9A568] hover:bg-[#C9A568] hover:text-[#10251C] text-[#10251C] flex items-center justify-center transition-all shadow-sm"
+                      className="w-10 h-10 rounded-full bg-white border border-[#E6DED1] hover:border-[#D6AD68] hover:bg-[#D6AD68] hover:text-[#061F1A] text-[#092C24] flex items-center justify-center transition-all shadow-sm"
                       aria-label="Instagram"
                     >
                       <FaInstagram className="w-4 h-4" />
@@ -136,7 +135,7 @@ export default function ContactPage() {
                       href={resortConfig.social.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white border border-black/10 hover:border-[#C9A568] hover:bg-[#C9A568] hover:text-[#10251C] text-[#10251C] flex items-center justify-center transition-all shadow-sm"
+                      className="w-10 h-10 rounded-full bg-white border border-[#E6DED1] hover:border-[#D6AD68] hover:bg-[#D6AD68] hover:text-[#061F1A] text-[#092C24] flex items-center justify-center transition-all shadow-sm"
                       aria-label="Facebook"
                     >
                       <FaFacebook className="w-4 h-4" />
@@ -146,9 +145,9 @@ export default function ContactPage() {
               )}
 
               {/* Timings Note */}
-              <div className="pt-4 border-t border-black/10 flex items-center gap-6 text-xs text-[#343B35]/80">
+              <div className="pt-4 border-t border-[#E6DED1] flex items-center gap-6 text-xs text-[#77766E] font-light">
                 <div className="flex items-center gap-1.5">
-                  <FiClock className="w-4 h-4 text-[#A68346]" />
+                  <FiClock className="w-4 h-4 text-[#D6AD68]" />
                   <span>Check-in: {resortConfig.timings.checkIn}</span>
                 </div>
                 <div>
@@ -167,16 +166,16 @@ export default function ContactPage() {
       </section>
 
       {/* Booking Form for Date-Specific Room Enquiries */}
-      <section className="mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#10251C] text-white rounded-3xl p-8 sm:p-12 border border-[#C9A568]/30">
+      <section className="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#061F1A] text-white rounded-3xl p-8 sm:p-12 border border-[#D6AD68]/20">
           <div className="max-w-2xl mx-auto text-center mb-8">
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#E0C087]">
+            <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68]">
               Need Specific Dates & Rooms?
             </span>
             <h3 className="font-serif-luxury text-3xl font-normal text-white mt-1">
               Check Stay Availability
             </h3>
-            <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2">
+            <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2 font-light">
               Select your arrival dates and preferred room type to receive direct confirmation from our reservation desk.
             </p>
           </div>

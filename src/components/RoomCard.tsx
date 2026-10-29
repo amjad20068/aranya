@@ -42,8 +42,8 @@ Thank you.`;
 
   return (
     <>
-      <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 hover:border-[#C9A568]/40 flex flex-col justify-between">
-        {/* Card Image Container */}
+      <div className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] hover:border-[#D6AD68]/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+        {/* Card Image Container - Clean photograph without badges matching Reference Image */}
         <div
           onClick={handleOpenDetails}
           className="relative aspect-[16/10] w-full overflow-hidden cursor-pointer bg-neutral-100"
@@ -55,11 +55,6 @@ Thank you.`;
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
           />
-
-          {/* View Badge */}
-          <div className="absolute top-3 left-3 bg-[#10251C]/75 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-medium text-[#FAF8F5] border border-white/10">
-            {room.view}
-          </div>
         </div>
 
         {/* Content Body */}
@@ -67,31 +62,31 @@ Thank you.`;
           <div>
             <h3
               onClick={handleOpenDetails}
-              className="font-serif-luxury text-xl sm:text-2xl font-semibold text-[#10251C] hover:text-[#C9A568] transition-colors cursor-pointer"
+              className="font-serif-luxury text-xl sm:text-2xl font-normal text-[#092C24] hover:text-[#D6AD68] transition-colors cursor-pointer tracking-tight"
             >
               {room.name}
             </h3>
 
-            <p className="text-xs sm:text-sm text-[#343B35]/80 mt-2 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#77766E] mt-2 leading-relaxed font-light">
               {room.shortDescription}
             </p>
           </div>
 
           {/* Bottom Action Row (Matching Reference Image: View Details link on left, green WhatsApp button on right) */}
-          <div className="mt-5 pt-4 border-t border-black/5 flex items-center justify-between">
+          <div className="mt-5 pt-4 border-t border-[#E6DED1]/60 flex items-center justify-between">
             <button
               onClick={handleOpenDetails}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider text-[#10251C] hover:text-[#A68346] transition-colors group/link focus:outline-none focus:ring-1 focus:ring-[#C9A568] rounded px-1"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider text-[#092C24] hover:text-[#D6AD68] transition-colors group/link focus:outline-none focus:ring-1 focus:ring-[#D6AD68] rounded px-1 cursor-pointer"
               aria-label={`View details for ${room.name}`}
             >
-              <span className="underline underline-offset-4 decoration-[#10251C]/50 hover:decoration-[#A68346]">View Details</span>
+              <span className="underline underline-offset-4 decoration-[#092C24]/40 hover:decoration-[#D6AD68]">View Details</span>
               <FiArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
             </button>
 
             {/* Official Green WhatsApp Squircle Action Button matching Reference */}
             <button
               onClick={handleWhatsAppClick}
-              className="w-9 h-9 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#16A34A]/50"
+              className="w-9 h-9 rounded-xl bg-[#25D366] hover:bg-[#20BA5C] text-white flex items-center justify-center shadow-sm hover:shadow-md transition-all transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#25D366]/50 cursor-pointer"
               aria-label={`Book ${room.name} on WhatsApp`}
               title="Book on WhatsApp"
             >

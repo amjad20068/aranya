@@ -73,7 +73,7 @@ export default function Lightbox({
           </span>
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#C9A568]"
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
             aria-label="Close Lightbox"
           >
             <FiX className="w-5 h-5" />
@@ -86,7 +86,7 @@ export default function Lightbox({
             e.stopPropagation();
             handlePrev();
           }}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#C9A568] hover:text-[#10251C] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#C9A568]"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
           aria-label="Previous image"
         >
           <FiChevronLeft className="w-6 h-6" />
@@ -98,7 +98,7 @@ export default function Lightbox({
             e.stopPropagation();
             handleNext();
           }}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#C9A568] hover:text-[#10251C] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#C9A568]"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
           aria-label="Next image"
         >
           <FiChevronRight className="w-6 h-6" />
@@ -115,7 +115,7 @@ export default function Lightbox({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.25 }}
-            className="relative w-full aspect-[16/10] max-h-[75vh] rounded-2xl overflow-hidden shadow-2xl border border-[#C9A568]/30 bg-black/50"
+            className="relative w-full aspect-[16/10] max-h-[75vh] rounded-2xl overflow-hidden shadow-2xl border border-[#D6AD68]/20 bg-black/50"
           >
             <Image
               src={currentImage.src}
@@ -129,13 +129,13 @@ export default function Lightbox({
 
           {/* Caption & Category */}
           <div className="mt-4 text-center max-w-2xl">
-            <span className="text-[10px] uppercase tracking-widest font-semibold text-[#E0C087] bg-[#10251C] px-3 py-1 rounded-full border border-[#C9A568]/30 inline-block mb-1.5">
+            <span className="text-[10px] uppercase tracking-widest font-semibold text-[#D6AD68] bg-[#061F1A] px-3 py-1 rounded-full border border-[#D6AD68]/30 inline-block mb-1.5">
               {currentImage.category}
             </span>
             <h3 className="font-serif-luxury text-lg sm:text-xl font-normal text-white">
               {currentImage.title}
             </h3>
-            <p className="text-xs text-white/70 mt-1 max-w-lg mx-auto">
+            <p className="text-xs text-white/70 mt-1 max-w-lg mx-auto font-light">
               {currentImage.alt}
             </p>
           </div>

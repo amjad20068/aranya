@@ -24,77 +24,76 @@ export const metadata: Metadata = {
 };
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  FiCoffee: <LuCoffee className="w-5 h-5 text-[#A68346]" />,
-  FiSun: <LuSun className="w-5 h-5 text-[#A68346]" />,
-  FiCompass: <LuCompass className="w-5 h-5 text-[#A68346]" />,
-  FiWind: <LuWind className="w-5 h-5 text-[#A68346]" />,
-  FiHeart: <LuHeart className="w-5 h-5 text-[#A68346]" />,
+  FiCoffee: <LuCoffee className="w-5 h-5 text-[#D6AD68]" />,
+  FiSun: <LuSun className="w-5 h-5 text-[#D6AD68]" />,
+  FiCompass: <LuCompass className="w-5 h-5 text-[#D6AD68]" />,
+  FiWind: <LuWind className="w-5 h-5 text-[#D6AD68]" />,
+  FiHeart: <LuHeart className="w-5 h-5 text-[#D6AD68]" />,
 };
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 md:pt-32 pb-24 bg-[#F5F1E8]">
+    <div className="pt-24 md:pt-32 pb-24 bg-[#F7F3EC]">
       {/* 1. Services Main View matching Reference Image (Bottom Middle Panel) */}
-      <section className="py-12 md:py-20">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Left Column: Heading, Description & Feature Strip */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A68346] block mb-2">
+                <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#A68346] block mb-2">
                   OUR SERVICES
                 </span>
-                <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#10251C] font-normal tracking-tight leading-[1.12]">
-                  Thoughtful<br />
-                  <span className="italic font-light text-[#A68346]">Experiences</span>
+                <h1 className="font-serif-luxury text-4xl sm:text-5xl md:text-6xl text-[#092C24] font-normal tracking-tight leading-[1.12]">
+                  Thoughtful Experiences
                 </h1>
               </div>
 
-              <p className="text-sm sm:text-base md:text-lg text-[#343B35]/85 leading-relaxed font-light">
-                Enjoy a range of thoughtful retreats crafted to make your stay comfortable, relaxing, and truly memorable.
+              <p className="text-sm sm:text-base md:text-lg text-[#77766E] leading-relaxed font-light">
+                Enjoy a range of thoughtful services centered to make your stay comfortable, relaxing, and truly memorable.
               </p>
 
               {/* Feature Strip matching Reference Panel */}
-              <div className="pt-4 border-t border-black/10">
-                <div className="flex flex-wrap items-center justify-between gap-4 py-3 px-4 rounded-2xl bg-white/70 border border-black/5 shadow-sm divide-x divide-black/10">
-                  <div className="flex flex-col items-center flex-1 px-2 text-center">
-                    <LuTrees className="w-5 h-5 text-[#A68346] mb-1.5" />
-                    <span className="text-[11px] font-semibold text-[#10251C]">Peaceful Location</span>
+              <div className="pt-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 px-4 rounded-xl bg-white/80 border border-[#E6DED1]">
+                  <div className="flex flex-col items-center text-center">
+                    <LuTrees className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Peaceful Location</span>
                   </div>
 
-                  <div className="flex flex-col items-center flex-1 px-2 text-center">
-                    <LuMountain className="w-5 h-5 text-[#A68346] mb-1.5" />
-                    <span className="text-[11px] font-semibold text-[#10251C]">Nature Views</span>
+                  <div className="flex flex-col items-center text-center">
+                    <LuMountain className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Nature Views</span>
                   </div>
 
-                  <div className="flex flex-col items-center flex-1 px-2 text-center">
-                    <LuBedDouble className="w-5 h-5 text-[#A68346] mb-1.5" />
-                    <span className="text-[11px] font-semibold text-[#10251C]">Comfortable Rooms</span>
+                  <div className="flex flex-col items-center text-center">
+                    <LuBedDouble className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Comfortable Rooms</span>
                   </div>
 
-                  <div className="flex flex-col items-center flex-1 px-2 text-center">
-                    <LuCoffee className="w-5 h-5 text-[#A68346] mb-1.5" />
-                    <span className="text-[11px] font-semibold text-[#10251C]">Relaxing Stay</span>
+                  <div className="flex flex-col items-center text-center">
+                    <LuCoffee className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Relaxing Stay</span>
                   </div>
                 </div>
               </div>
 
               {/* Direct Enquiry Button */}
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-3.5">
                 <a
                   href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about your services and stay experiences.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#071F1A] bg-[#E8BD78] hover:bg-[#DCA65E] shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
                 >
-                  <FaWhatsapp className="w-4 h-4 text-[#071F1A]" />
+                  <FaWhatsapp className="w-4 h-4 text-[#061F1A]" />
                   <span>Enquire on WhatsApp</span>
                 </a>
 
                 <a
                   href="#experiences"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs font-semibold uppercase tracking-wider text-[#10251C] border border-black/15 hover:bg-black/5 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs font-semibold text-[#092C24] border border-[#092C24]/20 hover:bg-[#092C24]/5 transition-all"
                 >
                   <span>Explore All Services</span>
                 </a>
@@ -103,7 +102,7 @@ export default function ServicesPage() {
 
             {/* Right Column: Large Nature-Facing Balcony Terrace Photograph */}
             <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-[#C9A568]/30">
+              <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-[#E6DED1]">
                 <Image
                   src="/images/gallery/aaranya-valley-mist-balcony.webp"
                   alt="Aaranya Nature-Facing Balcony with Valley View"
@@ -120,23 +119,23 @@ export default function ServicesPage() {
       </section>
 
       {/* 2. Curated Retreat Experiences from servicesData */}
-      <section id="experiences" className="py-16 bg-white/70 border-t border-black/5">
+      <section id="experiences" className="py-16 bg-[#FAF8F5] border-t border-[#E6DED1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#A68346] block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#A68346] block mb-2">
               CURATED COMFORTS
             </span>
-            <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl text-[#10251C] font-normal tracking-tight">
+            <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl text-[#092C24] font-normal tracking-tight">
               Signature Experiences & Amenities
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-[#343B35]/80 leading-relaxed font-light">
+            <p className="mt-3 text-sm sm:text-base text-[#77766E] leading-relaxed font-light">
               Every detail at Aaranya is tuned to the natural surroundings—from fresh mountain morning dining to tranquil sunset viewing terraces.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {servicesData.map((service) => {
-              const iconNode = serviceIcons[service.iconName] || <LuCoffee className="w-5 h-5 text-[#A68346]" />;
+              const iconNode = serviceIcons[service.iconName] || <LuCoffee className="w-5 h-5 text-[#D6AD68]" />;
               const whatsappUrl = buildWhatsAppUrl(
                 `Hello Aaranya Resort,\n\nI would like to enquire about: ${service.title} (${service.category}).\n\nPlease share details and availability.\n\nThank you!`
               );
@@ -144,7 +143,7 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.id}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 hover:border-[#C9A568]/40 flex flex-col justify-between"
+                  className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] hover:border-[#D6AD68]/40 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Image */}
@@ -156,7 +155,7 @@ export default function ServicesPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute top-3 left-3 bg-[#10251C]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-medium text-[#FAF8F5] border border-white/10">
+                      <div className="absolute top-3 left-3 bg-[#061F1A]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-medium text-[#FAF8F5] border border-white/10">
                         {service.category}
                       </div>
                     </div>
@@ -164,23 +163,23 @@ export default function ServicesPage() {
                     {/* Content */}
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-black/5 flex items-center justify-center shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-[#E6DED1] flex items-center justify-center shrink-0">
                           {iconNode}
                         </div>
-                        <h3 className="font-serif-luxury text-xl sm:text-2xl font-medium text-[#10251C]">
+                        <h3 className="font-serif-luxury text-xl sm:text-2xl font-normal text-[#092C24]">
                           {service.title}
                         </h3>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-[#343B35]/80 leading-relaxed mb-4">
+                      <p className="text-xs sm:text-sm text-[#77766E] leading-relaxed mb-4 font-light">
                         {service.detailedDescription}
                       </p>
 
                       {/* Highlights */}
-                      <div className="space-y-2 pt-3 border-t border-black/5">
+                      <div className="space-y-2 pt-3 border-t border-[#E6DED1]/60">
                         {service.highlights.map((highlight, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-xs text-[#343B35]/85">
-                            <LuCheck className="w-3.5 h-3.5 text-[#16A34A] shrink-0 mt-0.5" />
+                          <div key={idx} className="flex items-start gap-2 text-xs text-[#20231F] font-light">
+                            <LuCheck className="w-3.5 h-3.5 text-[#25D366] shrink-0 mt-0.5" />
                             <span>{highlight}</span>
                           </div>
                         ))}
@@ -194,9 +193,9 @@ export default function ServicesPage() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider text-[#10251C] bg-[#FAF8F5] hover:bg-[#C9A568] hover:text-[#10251C] border border-black/10 hover:border-[#C9A568] transition-all shadow-sm"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-[#092C24] bg-[#FAF8F5] hover:bg-gradient-to-r hover:from-[#E8BD78] hover:to-[#D6AD68] hover:text-[#061F1A] border border-[#E6DED1] transition-all shadow-sm"
                     >
-                      <FaWhatsapp className="w-4 h-4 text-[#16A34A] group-hover:text-[#10251C]" />
+                      <FaWhatsapp className="w-4 h-4 text-[#25D366] group-hover:text-[#061F1A]" />
                       <span>Enquire via WhatsApp</span>
                     </a>
                   </div>
@@ -206,15 +205,15 @@ export default function ServicesPage() {
           </div>
 
           {/* Bottom WhatsApp banner */}
-          <div className="mt-16 p-8 sm:p-10 rounded-3xl bg-[#10251C] text-white text-center border border-[#C9A568]/30">
+          <div className="mt-16 p-8 sm:p-10 rounded-3xl bg-[#061F1A] text-white text-center border border-[#D6AD68]/20">
             <div className="max-w-2xl mx-auto">
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#E0C087]">
+              <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68]">
                 Connect with Front Desk
               </span>
               <h3 className="font-serif-luxury text-2xl sm:text-3xl font-normal text-white mt-2">
                 Plan Your Stay Experience
               </h3>
-              <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#FAF8F5]/80 mt-2 leading-relaxed font-light">
                 Our front desk team is always ready on WhatsApp to share local guides, meal arrangements, and room choices.
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
@@ -222,14 +221,14 @@ export default function ServicesPage() {
                   href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about your services and book a stay.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider text-[#10251C] bg-[#C9A568] hover:bg-[#E0C087] transition-all shadow-md"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-sm"
                 >
-                  <FaWhatsapp className="w-4 h-4" />
+                  <FaWhatsapp className="w-4 h-4 text-[#061F1A]" />
                   <span>Chat on WhatsApp</span>
                 </a>
                 <Link
                   href="/rooms"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider text-white border border-white/20 hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors"
                 >
                   <span>Explore Rooms</span>
                 </Link>
