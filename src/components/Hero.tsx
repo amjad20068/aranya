@@ -81,9 +81,11 @@ export default function Hero() {
           className="object-cover object-center"
         />
 
-        {/* Directional gradient to darken the left side for crisp text readability while keeping the building on the right luminous */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061F1A]/95 via-[#061F1A]/70 via-50% to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#061F1A] via-transparent via-20% to-[#061F1A]/50" />
+        {/* Directional gradient: strictly from left to center only - right side stays completely natural, bright & clear */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[56%] bg-gradient-to-r from-[#061F1A]/95 via-[#061F1A]/75 via-70% to-transparent pointer-events-none" />
+
+        {/* Subtle bottom edge blend only for the feature highlight strip */}
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#061F1A]/90 via-[#061F1A]/30 to-transparent pointer-events-none" />
       </div>
 
       {/* Hero Core Content - Left Aligned to match Reference Image */}
