@@ -17,44 +17,46 @@ interface InstagramPost {
 const instagramPosts: InstagramPost[] = [
   {
     id: "ig-1",
-    image: "/images/gallery/aaranya-resort-day.webp",
+    image: "/images/gallery/aaranya-canopy-forest-villa-2k.webp",
     caption: "Waking up enveloped by lush rainforest canopies and fresh morning air.",
     location: "Aaranya Villa",
   },
   {
     id: "ig-2",
-    image: "/images/gallery/aaranya-valley-mist-balcony.webp",
-    caption: "Front row seat to floating mountain mist and tranquil forest silence.",
-    location: "Private Balcony",
+    image: "/images/gallery/aaranya-poolside-mountain-panorama-2k.webp",
+    caption: "Crystal clear hillside swimming pool overlooking majestic mountain horizons.",
+    location: "Pool Terrace",
   },
   {
     id: "ig-3",
-    image: "/images/gallery/aaranya-hilltop-sunset.webp",
-    caption: "Golden hour painting the Western Ghats ridges in warm amber light.",
-    location: "Observation Ridge",
+    image: "/images/gallery/aaranya-jacuzzi-nature-view-2k.webp",
+    caption: "Private forest-view jacuzzi hydrotherapy bath immersed in pure tranquility.",
+    location: "Panoramic Jacuzzi Deck",
   },
   {
     id: "ig-4",
-    image: "/images/gallery/aaranya-bedroom-suite.webp",
-    caption: "Handcrafted timber warmth and floor-to-ceiling glass nature framing.",
-    location: "Luxury Suite",
+    image: "/images/gallery/aaranya-canopy-bedroom-suite-2k.webp",
+    caption: "Handcrafted timber warmth and four-poster canopy bed with vaulted ceiling.",
+    location: "Canopy Suite",
   },
   {
     id: "ig-5",
-    image: "/images/gallery/aaranya-tea-estate-slope.webp",
-    caption: "Peaceful morning strolls along adjoining tea garden trails.",
+    image: "/images/gallery/aaranya-manicured-garden-pathway-2k.webp",
+    caption: "Peaceful morning strolls along cobblestone walkways and hillside gardens.",
     location: "Estate Trails",
   },
   {
     id: "ig-6",
-    image: "/images/gallery/aaranya-dining-terrace.webp",
-    caption: "Fresh plantation tea and breakfast served against panoramic vistas.",
-    location: "Dining Deck",
+    image: "/images/gallery/aaranya-glass-dining-deck-2k.webp",
+    caption: "Fresh plantation tea and regional breakfast served against panoramic vistas.",
+    location: "Glass Dining Deck",
   },
 ];
 
 export default function InstagramSection() {
-  const instagramUrl = resortConfig.social.instagram || "https://www.instagram.com/";
+  const instagramUrl =
+    resortConfig.social.instagram ||
+    "https://www.instagram.com/aaranya.resort?exln=OHI1eG9xZzFmaDE0";
 
   return (
     <section className="py-16 md:py-24 bg-[#092C24] text-white relative overflow-hidden border-t border-white/5">
@@ -66,14 +68,14 @@ export default function InstagramSection() {
             <div className="flex items-center gap-2 mb-2">
               <FaInstagram className="w-4 h-4 text-[#D6AD68]" />
               <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68]">
-                INSTAGRAM @AARANYA_MISTYVALLEY
+                INSTAGRAM @AARANYA.RESORT
               </span>
             </div>
             <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl font-normal text-white tracking-tight leading-[1.12]">
               Moments Shared from the Mist
             </h2>
             <p className="text-xs sm:text-sm text-[#FAF8F5]/75 mt-2.5 max-w-xl font-light leading-relaxed">
-              Tag <span className="text-[#E8BD78] font-medium">@aaranyaresort</span> or use <span className="text-[#E8BD78] font-medium">#AaranyaMoments</span> on your journey through the valley.
+              Tag <span className="text-[#E8BD78] font-medium">@aaranya.resort</span> or use <span className="text-[#E8BD78] font-medium">#AaranyaMoments</span> on your journey through the valley.
             </p>
           </div>
 

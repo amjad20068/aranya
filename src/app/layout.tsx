@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "AARANYA — Misty Valley Resort",
     images: [
       {
-        url: "/images/hero/aaranya-resort-hero.webp",
+        url: "/images/hero/aaranya-resort-villa-4k.webp",
         width: 1200,
         height: 630,
         alt: "AARANYA Misty Valley Resort architectural building in lush nature",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     title: "AARANYA — Misty Valley Resort",
     description:
       "A serene luxury forest retreat surrounded by lush greenery, misty hills, and warm hospitality.",
-    images: ["/images/hero/aaranya-resort-hero.webp"],
+    images: ["/images/hero/aaranya-resort-villa-4k.webp"],
   },
   icons: {
     icon: "/icon.png",
@@ -86,14 +87,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${cormorant.variable} ${dmSans.variable}`}
+    >
       <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#343B35] font-sans-luxury antialiased">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <Analytics />
-        <SpeedInsights />
+        <SmoothScroll>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+          <Analytics />
+          <SpeedInsights />
+        </SmoothScroll>
       </body>
     </html>
   );

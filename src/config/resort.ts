@@ -46,23 +46,22 @@ export const resortConfig: ResortConfig = {
   heroHeadline: "Nature's Peace.\nYour Perfect Stay.",
   heroDescription:
     "A serene retreat in the heart of nature, where lush greenery, misty hills and warm hospitality come together for an unforgettable experience.",
-  // Official WhatsApp number matching Reference Image (+91 96785 41280)
-  whatsappNumber: "919678541280",
-  displayWhatsapp: "+91 96785 41280",
-  phone: "+91 96785 41280",
-  email: "info@aaranyaresort.com",
+  // Official Contact & WhatsApp numbers
+  whatsappNumber: "917306906488",
+  displayWhatsapp: "+91 73069 06488",
+  phone: "+91 73069 06488",
+  email: "aaranyaresort10@gmail.com",
   location: {
-    estate: "Misty Valley",
-    region: "Nature Reserve",
-    state: "Kerala / Western Ghats",
+    estate: "Attamala",
+    region: "Meppadi, Wayanad",
+    state: "Kerala",
     country: "India",
-    fullAddress: "Misty Valley, High Ranges, Kerala",
-    mapQueryUrl: "https://maps.google.com/?q=Aaranya+Misty+Valley+Resort",
+    fullAddress: "Attamala, Meppadi, Wayanad, Kerala - 673577",
+    mapQueryUrl: "https://maps.google.com/?q=Aaranya+Misty+Valley+Resort+Attamala+Meppadi+Wayanad+Kerala+673577",
   },
   social: {
-    // Leave empty ("") if no verified profile is available to safely hide or disable links
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/aaranya.resort?exln=OHI1eG9xZzFmaDE0",
+    facebook: "https://www.facebook.com/share/1JMYCD42fx/?mibextid=wwXIfr",
   },
   timings: {
     checkIn: "02:00 PM",

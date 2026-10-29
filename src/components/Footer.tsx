@@ -131,6 +131,15 @@ export default function Footer() {
                   <span>Contact & Enquiries</span>
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/#reviews"
+                  className="text-[#FAF8F5]/75 hover:text-[#E8BD78] transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D6AD68]/40 group-hover:bg-[#D6AD68] transition-colors" />
+                  <span>Guest Reviews</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

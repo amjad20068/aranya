@@ -68,13 +68,13 @@ export default function AboutPage() {
           
           {/* Left Column: Property Architecture Image */}
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-[#E6DED1]">
+            <div className="relative aspect-[4/5] sm:aspect-[4/4.8] rounded-2xl overflow-hidden shadow-sm border border-[#E6DED1]">
               <Image
-                src="/images/gallery/aaranya-architecture-facade.webp"
-                alt="Contemporary architecture at Aaranya"
+                src="/images/pages/aaranya-villas-walkway-2k.webp"
+                alt="Aaranya luxury villas amidst lush nature and paved garden walkway"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-[center_40%]"
               />
             </div>
             
@@ -182,17 +182,17 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black">
+              <div className="relative aspect-[16/10] sm:aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black">
                 <Image
-                  src="/images/gallery/aaranya-valley-mist-balcony.webp"
-                  alt="Authentic misty forest canopy at Aaranya"
+                  src="/images/pages/aaranya-sea-of-clouds-2k.webp"
+                  alt="Dramatic rolling sea of clouds and mountain forest at Aaranya Misty Valley Resort"
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover"
+                  className="object-cover object-[center_55%]"
                 />
               </div>
               <p className="text-[11px] text-[#FAF8F5]/60 text-center mt-2.5 font-light">
-                Panoramic morning view captured from the private viewing decks of Aaranya Misty Valley Resort.
+                Panoramic morning view of the rolling sea of clouds captured at Aaranya Misty Valley Resort.
               </p>
             </div>
 

@@ -42,7 +42,7 @@ Thank you.`;
 
   return (
     <>
-      <div className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] hover:border-[#D6AD68]/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+      <div className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] smooth-lift flex flex-col justify-between">
         {/* Card Image Container - Clean photograph without badges matching Reference Image */}
         <div
           onClick={handleOpenDetails}
@@ -53,7 +53,7 @@ Thank you.`;
             alt={`${room.name} at Aaranya Misty Valley Resort`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            className="object-cover smooth-img-zoom"
           />
         </div>
 

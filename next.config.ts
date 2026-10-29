@@ -4,7 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    qualities: [75, 80, 82, 85],
+    formats: ["image/avif", "image/webp"],
+  },
   turbopack: {
+    root: ".",
     rules: {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],

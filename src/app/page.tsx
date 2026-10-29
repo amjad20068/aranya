@@ -11,6 +11,7 @@ import Hero from "@/components/Hero";
 import RoomCard from "@/components/RoomCard";
 import HomeGalleryCarousel from "@/components/HomeGalleryCarousel";
 import InstagramSection from "@/components/InstagramSection";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 import { roomsData } from "@/data/rooms";
 import { resortConfig } from "@/config/resort";
@@ -225,7 +226,7 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* Right Column: Balcony View with Vertical Curtain Reveal */}
+            {/* Right Column: Sea of Clouds Panoramic Valley View */}
             <motion.div
               initial={{ opacity: 0, clipPath: "inset(100% 0 0 0 round 1rem)" }}
               whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0 round 1rem)" }}
@@ -235,11 +236,11 @@ export default function HomePage() {
             >
               <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-2xl overflow-hidden border border-[#E6DED1] shadow-sm group">
                 <Image
-                  src="/images/gallery/aaranya-valley-mist-balcony.webp"
-                  alt="Aaranya Nature-Facing Balcony with Valley View"
+                  src="/images/pages/aaranya-sea-of-clouds-2k.webp"
+                  alt="Aaranya Sea of Clouds Valley View"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover object-[center_60%] group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
             </motion.div>
@@ -258,10 +259,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Instagram Stories & Valley Highlights Section (NEW!) */}
+      {/* 6. Instagram Stories & Valley Highlights Section */}
       <InstagramSection />
 
-      {/* 7. Contact Section matching Reference Image Panel (Bottom Right) */}
+      {/* 7. Google Reviews & Guest Testimonials Section */}
+      <GoogleReviewsSection />
+
+      {/* 8. Contact Section matching Reference Image Panel (Bottom Right) */}
       <section
         id="contact"
         className="py-16 md:py-24 bg-[#FAF8F5] relative overflow-hidden"

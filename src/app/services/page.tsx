@@ -13,6 +13,8 @@ import {
   LuHeart,
   LuSun,
   LuCheck,
+  LuDroplets,
+  LuHouse,
 } from "react-icons/lu";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 import { servicesData } from "@/data/services";
@@ -29,6 +31,8 @@ const serviceIcons: Record<string, React.ReactNode> = {
   FiCompass: <LuCompass className="w-5 h-5 text-[#D6AD68]" />,
   FiWind: <LuWind className="w-5 h-5 text-[#D6AD68]" />,
   FiHeart: <LuHeart className="w-5 h-5 text-[#D6AD68]" />,
+  FiDroplet: <LuDroplets className="w-5 h-5 text-[#D6AD68]" />,
+  FiHome: <LuHouse className="w-5 h-5 text-[#D6AD68]" />,
 };
 
 export default function ServicesPage() {
@@ -100,16 +104,16 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Right Column: Large Nature-Facing Balcony Terrace Photograph */}
+            {/* Right Column: Sea of Clouds Panoramic Valley View */}
             <div className="lg:col-span-6 relative">
               <div className="relative aspect-[16/11] sm:aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-[#E6DED1]">
                 <Image
-                  src="/images/gallery/aaranya-valley-mist-balcony.webp"
-                  alt="Aaranya Nature-Facing Balcony with Valley View"
+                  src="/images/pages/aaranya-sea-of-clouds-2k.webp"
+                  alt="Aaranya Sea of Clouds and Misty Mountain Valley View"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-[center_60%]"
                 />
               </div>
             </div>
@@ -143,7 +147,7 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.id}
-                  className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] hover:border-[#D6AD68]/40 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                  className="group bg-white rounded-2xl overflow-hidden border border-[#E6DED1] smooth-lift flex flex-col justify-between"
                 >
                   <div>
                     {/* Image */}
@@ -153,7 +157,7 @@ export default function ServicesPage() {
                         alt={service.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="object-cover smooth-img-zoom"
                       />
                       <div className="absolute top-3 left-3 bg-[#061F1A]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-medium text-[#FAF8F5] border border-white/10">
                         {service.category}

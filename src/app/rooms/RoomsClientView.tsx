@@ -12,8 +12,6 @@ const roomFilterTabs = [
   "Deluxe Room",
   "Premium Room",
   "Family Room",
-  "Luxury Valley Suite",
-  "Forest View Cottage",
 ] as const;
 
 export default function RoomsClientView() {
@@ -46,7 +44,7 @@ export default function RoomsClientView() {
         {/* Large room background photo */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/pages/rooms-hero.webp"
+            src="/images/rooms/aaranya-canopy-bedroom-suite-2k.webp"
             alt="Aaranya Luxury Bedroom Suite with Forest View"
             fill
             priority

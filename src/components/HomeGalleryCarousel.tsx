@@ -5,52 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiChevronLeft, FiChevronRight, FiArrowRight, FiMaximize2 } from "react-icons/fi";
 import Lightbox from "./Lightbox";
-import { GalleryItem } from "@/data/gallery";
+import { galleryData, GalleryItem } from "@/data/gallery";
 
-const homeGalleryItems: GalleryItem[] = [
-  {
-    id: "g-resort-ext",
-    title: "Aaranya Resort Hillside Facade",
-    category: "Property",
-    src: "/images/gallery/aaranya-resort-day.webp",
-    alt: "Aaranya Misty Valley Resort nestled amidst hillside greenery",
-  },
-  {
-    id: "g-premium-suite",
-    title: "Premium Suite Warm Timber Interiors",
-    category: "Interiors",
-    src: "/images/rooms/premium-room.webp",
-    alt: "Luxury room with warm wooden slatted headboard and ambient backlighting",
-  },
-  {
-    id: "g-balcony-view",
-    title: "Private Balcony & Misty Mountain View",
-    category: "Nature",
-    src: "/images/gallery/aaranya-valley-mist-balcony.webp",
-    alt: "Resort private viewing balcony overlooking dense green forest and misty mountain peaks",
-  },
-  {
-    id: "g-sunset-valley",
-    title: "Golden Hour Sunset Over Misty Valleys",
-    category: "Experiences",
-    src: "/images/gallery/aaranya-hilltop-sunset.webp",
-    alt: "Breathtaking sunset glow over layered misty mountain ridges",
-  },
-  {
-    id: "g-family-room",
-    title: "Cathedral A-Frame Timber Family Suite",
-    category: "Rooms",
-    src: "/images/rooms/family-room.jpg",
-    alt: "Spacious Family Room with high vaulted timber ceiling and panoramic glass facade",
-  },
-  {
-    id: "g-deluxe-room",
-    title: "Deluxe Bedroom Nature Windows",
-    category: "Rooms",
-    src: "/images/rooms/deluxe-room.jpg",
-    alt: "Deluxe Room facing pristine tea plantation forest views",
-  },
-];
+const homeGalleryItems: GalleryItem[] = galleryData;
 
 export default function HomeGalleryCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -123,7 +80,8 @@ export default function HomeGalleryCarousel() {
       <div className="lg:col-span-8 xl:col-span-8.5 min-w-0 overflow-hidden">
         <div
           ref={scrollContainerRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none"
+          data-lenis-prevent
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none touch-pan-x"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {homeGalleryItems.map((item, idx) => (

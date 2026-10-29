@@ -968,10 +968,10 @@
 
       <div class="header-actions">
         <div class="social-links">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+          <a href="https://www.instagram.com/aaranya.resort?exln=OHI1eG9xZzFmaDE0" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
             <i class="fa-brands fa-instagram"></i>
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+          <a href="https://www.facebook.com/share/1JMYCD42fx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
             <i class="fa-brands fa-facebook-f"></i>
           </a>
         </div>
@@ -992,7 +992,7 @@
        ======================================================== -->
   <section class="hero" id="home">
     <div class="hero-bg-container">
-      <img src="public/images/hero/aaranya-resort-hero.webp" alt="AARANYA Misty Valley Resort Building" class="hero-bg-img">
+      <img src="public/images/hero/aaranya-resort-villa-4k.webp" alt="AARANYA Misty Valley Resort Building" class="hero-bg-img">
       <div class="hero-overlay-directional"></div>
       <div class="hero-overlay-vertical"></div>
     </div>
@@ -1036,27 +1036,51 @@
 
               <div class="form-group">
                 <label class="form-label" for="b-adults">
-                  <i class="fa-solid fa-user-group"></i> Adults
+                  <i class="fa-solid fa-user-group"></i> Adults [12y+]
                 </label>
-                <select id="b-adults" class="form-control">
-                  <option value="1">1 Adult</option>
-                  <option value="2" selected>2 Adults</option>
-                  <option value="3">3 Adults</option>
-                  <option value="4">4 Adults</option>
-                  <option value="5+">5+ Adults</option>
-                </select>
+                <div style="position: relative; display: flex; align-items: center;">
+                  <input type="number" id="b-adults" class="form-control" list="adults-list" value="2" min="1" max="50">
+                  <datalist id="adults-list">
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4 Adults</option>
+                    <option value="5">5 Adults</option>
+                    <option value="6">6 Adults</option>
+                    <option value="8">8 Adults</option>
+                    <option value="10">10 Adults</option>
+                  </datalist>
+                </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="b-children">
-                  <i class="fa-solid fa-child"></i> Children
+                <label class="form-label" for="b-rooms">
+                  <i class="fa-solid fa-hotel"></i> No of Rooms
                 </label>
-                <select id="b-children" class="form-control">
-                  <option value="0" selected>0 Children</option>
-                  <option value="1">1 Child</option>
-                  <option value="2">2 Children</option>
-                  <option value="3+">3+ Children</option>
-                </select>
+                <div style="position: relative; display: flex; align-items: center;">
+                  <input type="number" id="b-rooms" class="form-control" list="rooms-list" value="1" min="1" max="20">
+                  <datalist id="rooms-list">
+                    <option value="1">1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3 Rooms</option>
+                    <option value="4">4 Rooms</option>
+                    <option value="5">5 Rooms</option>
+                  </datalist>
+                </div>
+              </div>
+            </div>
+
+            <!-- Child Age Breakdown (Kids 6-12 & Kids 0-5) -->
+            <div id="childAgeBox" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(214,173,104,0.4); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Number of kids 6-12</label>
+                  <input type="number" id="b-child-6-12" class="form-control" value="0" min="0" max="20" style="padding: 4px 8px; font-size: 12px;">
+                </div>
+                <div>
+                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Kids 0-5</label>
+                  <input type="number" id="b-child-0-5" class="form-control" value="0" min="0" max="20" style="padding: 4px 8px; font-size: 12px;">
+                </div>
               </div>
             </div>
 
@@ -1153,7 +1177,7 @@
           <!-- Room 1: Deluxe Room -->
           <div class="room-card">
             <div class="room-img-wrapper">
-              <img src="public/images/rooms/deluxe-room.jpg" alt="Deluxe Room" class="room-img">
+              <img src="public/images/rooms/aaranya-canopy-bedroom-suite.webp" alt="Deluxe Room" class="room-img">
               <div class="room-badge">Tea Estate View</div>
             </div>
             <div class="room-content">
@@ -1177,7 +1201,7 @@
           <!-- Room 2: Premium Room -->
           <div class="room-card">
             <div class="room-img-wrapper">
-              <img src="public/images/rooms/premium-room.jpg" alt="Premium Room" class="room-img">
+              <img src="public/images/rooms/aaranya-luxury-suite-interior.webp" alt="Premium Room" class="room-img">
               <div class="room-badge">Valley & Mist View</div>
             </div>
             <div class="room-content">
@@ -1201,7 +1225,7 @@
           <!-- Room 3: Family Room -->
           <div class="room-card">
             <div class="room-img-wrapper">
-              <img src="public/images/rooms/family-room.jpg" alt="Family Room" class="room-img">
+              <img src="public/images/rooms/aaranya-canopy-suite-timber-floor.webp" alt="Family Room" class="room-img">
               <div class="room-badge">High Vaulted Timber</div>
             </div>
             <div class="room-content">
@@ -1249,43 +1273,267 @@
         </div>
 
       <div class="gallery-carousel-strip" id="galleryCarousel">
-        <div class="gallery-item-card" onclick="openLightbox('public/images/hero/aaranya-resort-hero.webp', 'Aaranya Resort Nestled in Hillside Canopy')">
-          <img src="public/images/hero/aaranya-resort-hero.webp" alt="Aaranya Exterior" class="gallery-item-img">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-canopy-forest-villa.webp', 'Architectural Villa in Deep Forest Canopy')">
+          <img src="public/images/gallery/aaranya-canopy-forest-villa.webp" alt="Villa in Forest Canopy" class="gallery-item-img">
           <div class="gallery-item-overlay">
             <span class="gallery-item-cat">Property</span>
-            <h4 class="gallery-item-title">Resort Hillside Architecture</h4>
+            <h4 class="gallery-item-title">Architectural Villa in Deep Forest Canopy</h4>
           </div>
         </div>
 
-        <div class="gallery-item-card" onclick="openLightbox('public/images/rooms/premium-room.jpg', 'Premium Room with Ambient Headboard Lighting')">
-          <img src="public/images/rooms/premium-room.jpg" alt="Premium Room" class="gallery-item-img">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-cottage-stone-walkway.webp', 'Timber Cottages & Stone Garden Walkway')">
+          <img src="public/images/gallery/aaranya-cottage-stone-walkway.webp" alt="Timber Cottages & Walkway" class="gallery-item-img">
           <div class="gallery-item-overlay">
-            <span class="gallery-item-cat">Interiors</span>
-            <h4 class="gallery-item-title">Artisanal Suite Interiors</h4>
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Timber Cottages & Stone Walkway</h4>
           </div>
         </div>
 
-        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-valley-mist-balcony.webp', 'Balcony View of Drifting Fog')">
-          <img src="public/images/gallery/aaranya-valley-mist-balcony.webp" alt="Balcony Mist" class="gallery-item-img">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-private-mountain-balcony.webp', 'Private Mountain Balcony Vista')">
+          <img src="public/images/gallery/aaranya-private-mountain-balcony.webp" alt="Private Mountain Balcony" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Private Mountain Balcony Vista</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-mountain-river-valley.webp', 'Winding River Through Emerald Forest Valley')">
+          <img src="public/images/gallery/aaranya-mountain-river-valley.webp" alt="Winding River Valley" class="gallery-item-img">
           <div class="gallery-item-overlay">
             <span class="gallery-item-cat">Nature</span>
-            <h4 class="gallery-item-title">Morning Mist Balcony View</h4>
+            <h4 class="gallery-item-title">Winding River Through Forest Valley</h4>
           </div>
         </div>
 
-        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-hilltop-sunset.webp', 'Golden Hour Sunset Over Mountain Crests')">
-          <img src="public/images/gallery/aaranya-hilltop-sunset.webp" alt="Hilltop Sunset" class="gallery-item-img">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-sea-of-clouds-valley.webp', 'Panoramic Sea of Clouds & Valley Mist')">
+          <img src="public/images/gallery/aaranya-sea-of-clouds-valley.webp" alt="Sea of Clouds" class="gallery-item-img">
           <div class="gallery-item-overlay">
-            <span class="gallery-item-cat">Experiences</span>
-            <h4 class="gallery-item-title">Golden Hour Sunset Vistas</h4>
+            <span class="gallery-item-cat">Nature</span>
+            <h4 class="gallery-item-title">Panoramic Sea of Clouds</h4>
           </div>
         </div>
 
-        <div class="gallery-item-card" onclick="openLightbox('public/images/rooms/family-room.jpg', 'Cathedral Timber Family Suite')">
-          <img src="public/images/rooms/family-room.jpg" alt="Family Room" class="gallery-item-img">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-infinity-pool-vista.webp', 'Hillside Swimming Pool & Forest Vista')">
+          <img src="public/images/gallery/aaranya-infinity-pool-vista.webp" alt="Hillside Pool" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Amenities</span>
+            <h4 class="gallery-item-title">Hillside Swimming Pool</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-glasshouse-lounge.webp', 'Panoramic Glasshouse Viewing Lounge')">
+          <img src="public/images/gallery/aaranya-glasshouse-lounge.webp" alt="Glasshouse Lounge" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Panoramic Glasshouse Lounge</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-cathedral-atrium-lounge.webp', 'Cathedral Timber Atrium Lounge')">
+          <img src="public/images/gallery/aaranya-cathedral-atrium-lounge.webp" alt="Cathedral Atrium" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Cathedral Timber Atrium</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-stone-cottage-facade.webp', 'Ivy-Clad Stone Villa & Forest Setting')">
+          <img src="public/images/gallery/aaranya-stone-cottage-facade.webp" alt="Stone Villa Facade" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Ivy-Clad Stone Villa</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-suite-foyer-interiors.webp', 'Artisanal Foyer & Wooden Suite Doors')">
+          <img src="public/images/gallery/aaranya-suite-foyer-interiors.webp" alt="Suite Foyer" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Artisanal Suite Foyer</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-stone-villa-driveway.webp', 'Cobblestone Driveway & Stone Villa')">
+          <img src="public/images/gallery/aaranya-stone-villa-driveway.webp" alt="Cobblestone Driveway" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Cobblestone Pathway & Villa</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-infinity-pool-mountains.webp', 'Pool Terrace Overlooking Mountain Ridges')">
+          <img src="public/images/gallery/aaranya-infinity-pool-mountains.webp" alt="Mountain Pool" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Amenities</span>
+            <h4 class="gallery-item-title">Pool Overlooking Mountain Ridges</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-glass-dining-deck.webp', 'Panoramic Glass Dining Restaurant')">
+          <img src="public/images/gallery/aaranya-glass-dining-deck.webp" alt="Glass Dining Deck" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Amenities</span>
+            <h4 class="gallery-item-title">Panoramic Glass Dining</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-garden-pergola-sitout.webp', 'Vine-Covered Pergola Garden Sit-Out')">
+          <img src="public/images/gallery/aaranya-garden-pergola-sitout.webp" alt="Garden Pergola" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Amenities</span>
+            <h4 class="gallery-item-title">Pergola Garden Sit-Out</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-timber-cathedral-mezzanine.webp', 'Timber Cathedral Ceiling & Upper Lobby')">
+          <img src="public/images/gallery/aaranya-timber-cathedral-mezzanine.webp" alt="Cathedral Mezzanine" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Timber Cathedral Upper Lobby</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-canopy-bedroom-suite.webp', 'Cathedral Ceiling Four-Poster Canopy Suite')">
+          <img src="public/images/gallery/aaranya-canopy-bedroom-suite.webp" alt="Canopy Suite" class="gallery-item-img">
           <div class="gallery-item-overlay">
             <span class="gallery-item-cat">Rooms</span>
-            <h4 class="gallery-item-title">Cathedral Timber Family Suite</h4>
+            <h4 class="gallery-item-title">Four-Poster Canopy Suite</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-canopy-bed-detail.webp', 'Artisanal Four-Poster Bed & Fine Linens')">
+          <img src="public/images/gallery/aaranya-canopy-bed-detail.webp" alt="Bed Detail" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Artisanal Canopy Bed</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-luxury-suite-interior.webp', 'Spacious Suite with Timber Ceilings')">
+          <img src="public/images/gallery/aaranya-luxury-suite-interior.webp" alt="Luxury Suite" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Timber Ceiling Suite</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-villa-courtyard-view.webp', 'Hillside Villas & Courtyard Walkway')">
+          <img src="public/images/gallery/aaranya-villa-courtyard-view.webp" alt="Villa Courtyard" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Hillside Villas & Courtyard</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-rattan-parlor-lounge.webp', 'Sunlit Rattan Parlor & Sitting Room')">
+          <img src="public/images/gallery/aaranya-rattan-parlor-lounge.webp" alt="Rattan Parlor" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Sunlit Rattan Parlor</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-poolside-mountain-panorama.webp', 'Sunlit Pool Deck & Mountain Panorama')">
+          <img src="public/images/gallery/aaranya-poolside-mountain-panorama.webp" alt="Poolside Mountain Panorama" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Amenities</span>
+            <h4 class="gallery-item-title">Sunlit Pool Deck & Panorama</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-villa-viewing-terrace.webp', 'Villa Sun Terrace & Glass Architecture')">
+          <img src="public/images/gallery/aaranya-villa-viewing-terrace.webp" alt="Villa Sun Terrace" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Villa Viewing Sun Terrace</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-courtyard-water-pond.webp', 'Tranquil Courtyard Reflection Pond')">
+          <img src="public/images/gallery/aaranya-courtyard-water-pond.webp" alt="Courtyard Water Pond" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Tranquil Courtyard Pond</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-manicured-garden-pathway.webp', 'Cobblestone Garden Pathway & Hillside Flora')">
+          <img src="public/images/gallery/aaranya-manicured-garden-pathway.webp" alt="Garden Pathway" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Nature</span>
+            <h4 class="gallery-item-title">Cobblestone Garden Pathway</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-aerial-pool-canopy-view.webp', 'Canopy View of Pool Deck & Forest Valley')">
+          <img src="public/images/gallery/aaranya-aerial-pool-canopy-view.webp" alt="Aerial Pool Canopy View" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Canopy Pool & Forest Vista</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-bougainvillea-garden-lawn.webp', 'Lawn Terrace & Magenta Bougainvillea')">
+          <img src="public/images/gallery/aaranya-bougainvillea-garden-lawn.webp" alt="Bougainvillea Lawn Terrace" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Nature</span>
+            <h4 class="gallery-item-title">Lawn Terrace & Bougainvillea</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-luxury-marble-bathroom.webp', 'En-Suite Italian Marble Bathroom')">
+          <img src="public/images/gallery/aaranya-luxury-marble-bathroom.webp" alt="Luxury Marble Bathroom" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Luxury Marble Bathroom</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-villa-courtyard-pond.webp', 'Courtyard Gravel Garden & Water Basin')">
+          <img src="public/images/gallery/aaranya-villa-courtyard-pond.webp" alt="Courtyard Water Basin" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Courtyard Reflection Basin</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-glass-atrium-mountain-view.webp', 'Panoramic Valley View from Glass Atrium')">
+          <img src="public/images/gallery/aaranya-glass-atrium-mountain-view.webp" alt="Glass Atrium View" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Glass Atrium Valley View</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-canopy-bed-suite-view.webp', 'Artisanal Four-Poster Canopy Bed Suite')">
+          <img src="public/images/gallery/aaranya-canopy-bed-suite-view.webp" alt="Canopy Bed Suite" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Artisanal Canopy Suite</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-jacuzzi-nature-view.webp', 'Panoramic Forest View Jacuzzi Suite')">
+          <img src="public/images/gallery/aaranya-jacuzzi-nature-view.webp" alt="Forest View Jacuzzi" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Forest View Jacuzzi Suite</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-marble-suite-vanity.webp', 'Designer Marble Vanity & En-Suite Bath')">
+          <img src="public/images/gallery/aaranya-marble-suite-vanity.webp" alt="Designer Marble Vanity" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Designer Marble Vanity</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-canopy-suite-timber-floor.webp', 'Four-Poster Canopy Suite & Hardwood Flooring')">
+          <img src="public/images/gallery/aaranya-canopy-suite-timber-floor.webp" alt="Canopy Suite Hardwood Floor" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Canopy Suite & Hardwood Floor</h4>
           </div>
         </div>
       </div>
@@ -1328,18 +1576,18 @@
 
         <div class="footer-contact">
           <h4 class="footer-heading">Get in Touch</h4>
-          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
-          <p><i class="fa-brands fa-whatsapp"></i> +91 98765 43210</p>
-          <p><i class="fa-regular fa-envelope"></i> info@aaranyaresort.com</p>
-          <p><i class="fa-solid fa-location-dot"></i> Misty Valley, High Ranges</p>
+          <p><i class="fa-solid fa-phone"></i> +91 73069 06488</p>
+          <p><i class="fa-brands fa-whatsapp"></i> +91 73069 06488</p>
+          <p><i class="fa-regular fa-envelope"></i> aaranyaresort10@gmail.com</p>
+          <p><i class="fa-solid fa-location-dot"></i> Attamala, Meppadi, Wayanad, Kerala - 673577</p>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>&copy; 2026 AARANYA — Misty Valley Resort. All Rights Reserved.</div>
         <div class="social-links">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/aaranya.resort?exln=OHI1eG9xZzFmaDE0" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1JMYCD42fx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
       </div>
     </div>
@@ -1384,14 +1632,16 @@
     }
 
     // WhatsApp Booking Enquiry Submission
-    const RESORT_WA_NUMBER = "919876543210";
+    const RESORT_WA_NUMBER = "917306906488";
 
     function handleBookingSubmit(event) {
       event.preventDefault();
       const checkin = document.getElementById('b-checkin').value;
       const checkout = document.getElementById('b-checkout').value;
-      const adults = document.getElementById('b-adults').value;
-      const children = document.getElementById('b-children').value;
+      const adults = document.getElementById('b-adults').value || '1';
+      const rooms = document.getElementById('b-rooms').value || '1';
+      const kids6to12 = document.getElementById('b-child-6-12').value || '0';
+      const kids0to5 = document.getElementById('b-child-0-5').value || '0';
       const name = document.getElementById('b-name').value.trim();
       const phone = document.getElementById('b-phone').value.trim();
       const room = document.getElementById('b-room').value;
@@ -1401,25 +1651,30 @@
         return;
       }
 
-      const msg = [
-        "Hello AARANYA — Misty Valley Resort,",
-        "",
-        "I would like to enquire about a stay.",
-        "",
-        `Guest Name: ${name}`,
-        `Mobile: ${phone}`,
-        `Check-in: ${checkin}`,
-        `Check-out: ${checkout}`,
-        `Adults: ${adults}`,
-        `Children: ${children}`,
-        `Preferred Room: ${room}`,
-        "",
-        "Please confirm availability and booking details.",
-        "",
-        "Thank you."
-      ].join("\n");
+      function formatDate(val) {
+        if (!val) return "";
+        const parts = val.split('-');
+        if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        return val;
+      }
 
-      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      const lines = [
+        "*Enquiry*",
+        `Name : ${name}`,
+        `Number: ${phone}`,
+        `Check In Date: ${formatDate(checkin)}`,
+        `Check Out Date: ${formatDate(checkout)}`,
+        `Number of Adults[12y above]: ${adults}`,
+        `Number of kids 6-12: ${kids6to12}`,
+        `Kids 0-5: ${kids0to5}`,
+        `No of Rooms: ${rooms}`
+      ];
+
+      if (room) {
+        lines.push(`Preferred Room: ${room}`);
+      }
+
+      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
       window.open(waUrl, '_blank');
     }
 

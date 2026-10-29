@@ -28,11 +28,13 @@ export const roomsData: Room[] = [
       "Spacious and elegant rooms with nature views and modern amenities.",
     detailedDescription:
       "Awaken to misty mountain breezes and lush rainforest vistas. The Deluxe Room features expansive panoramic glass windows, a plush king bed, private attached bathroom, and bespoke timber finishes designed to keep you seamlessly connected to the natural world.",
-    image: "/images/rooms/deluxe-room.jpg",
+    image: "/images/rooms/aaranya-canopy-bedroom-suite-2k.webp",
     galleryImages: [
-      "/images/rooms/deluxe-room.jpg",
-      "/images/gallery/aaranya-bedroom-suite.webp",
-      "/images/gallery/aaranya-terrace-view.webp",
+      "/images/rooms/aaranya-canopy-bedroom-suite-2k.webp",
+      "/images/rooms/aaranya-canopy-bed-suite-view-2k.webp",
+      "/images/rooms/aaranya-luxury-marble-bathroom-2k.webp",
+      "/images/rooms/aaranya-canopy-bed-detail-2k.webp",
+      "/images/gallery/aaranya-private-mountain-balcony-2k.webp",
     ],
     capacity: {
       adults: 2,
@@ -44,8 +46,8 @@ export const roomsData: Room[] = [
     amenities: [
       "Panoramic Nature Glass Windows",
       "Private Viewing Balcony",
-      "En-suite Bathroom with Hot Shower",
-      "High-speed Wi-Fi",
+      "Artisanal Wooden Furnishings",
+      "Wardrobe & Luggage Area",
       "Electric Kettle & Tea/Coffee Station",
       "Daily Housekeeping",
     ],
@@ -65,11 +67,13 @@ export const roomsData: Room[] = [
       "A perfect blend of comfort and serene surroundings.",
     detailedDescription:
       "Crafted for discerning travelers seeking quiet refinement, the Premium Room features warm wooden headboard accents, ambient soft lighting, and direct sliding glass doors opening to a private sit-out overlooking the mist-shrouded valley canopy.",
-    image: "/images/rooms/premium-room.jpg",
+    image: "/images/rooms/aaranya-luxury-suite-interior-2k.webp",
     galleryImages: [
-      "/images/rooms/premium-room.jpg",
-      "/images/gallery/aaranya-cozy-interiors.webp",
-      "/images/gallery/aaranya-valley-mist-balcony.webp",
+      "/images/rooms/aaranya-luxury-suite-interior-2k.webp",
+      "/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp",
+      "/images/rooms/aaranya-luxury-marble-bathroom-2k.webp",
+      "/images/rooms/aaranya-marble-suite-vanity-2k.webp",
+      "/images/gallery/aaranya-private-mountain-balcony-2k.webp",
     ],
     capacity: {
       adults: 2,
@@ -80,6 +84,7 @@ export const roomsData: Room[] = [
     view: "Valley & Mist Canopy View",
     amenities: [
       "Private Sit-out with Outdoor Chairs",
+      "Designer Italian Marble Bathroom",
       "Ambient Bedside Backlighting",
       "Spacious Wardrobe & Luggage Area",
       "Premium Bathroom Toiletries",
@@ -102,11 +107,13 @@ export const roomsData: Room[] = [
       "Ideal for families, with extra space and a relaxing atmosphere.",
     detailedDescription:
       "Designed specifically for families and small groups, this generous sanctuary features high vaulted timber ceilings, expansive floor-to-ceiling glass, multiple comfortable sleeping configurations, and a relaxed lounge corner.",
-    image: "/images/rooms/family-room.jpg",
+    image: "/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp",
     galleryImages: [
-      "/images/rooms/family-room.jpg",
-      "/images/gallery/aaranya-wooden-cottage-room.webp",
-      "/images/gallery/aaranya-resort-panoramic.webp",
+      "/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp",
+      "/images/gallery/aaranya-timber-cathedral-mezzanine-2k.webp",
+      "/images/gallery/aaranya-cathedral-atrium-lounge-2k.webp",
+      "/images/rooms/aaranya-marble-suite-vanity-2k.webp",
+      "/images/gallery/aaranya-villa-courtyard-view-2k.webp",
     ],
     capacity: {
       adults: 4,
@@ -119,87 +126,15 @@ export const roomsData: Room[] = [
       "High Timber A-Frame Ceiling",
       "Separate Family Seating Area",
       "Dual Wardrobes & Storage",
-      "Spacious Family Bathroom",
+      "Spacious Family Marble Bathroom",
       "In-room Dining Table Setup",
       "Safety Features for Children",
     ],
     features: [
       "Expansive floor plan for children",
-      "Floor-to-ceiling triangular glass framing",
+      "Floor-to-ceiling glass framing",
       "Quiet family-friendly wing",
       "Convenient access to dining deck",
-    ],
-  },
-  {
-    id: "valley-suite",
-    slug: "luxury-valley-suite",
-    name: "Luxury Valley Suite",
-    subtitle: "Peak Elevation & Endless Horizons",
-    shortDescription:
-      "Exclusive suite with wrap-around viewing terrace and living lounge.",
-    detailedDescription:
-      "Perched atop the resort's signature glass tower, the Luxury Valley Suite offers an uninterrupted 180-degree vista of floating clouds and emerald tea slopes. Features an intimate lounge area and private outdoor deck.",
-    image: "/images/gallery/aaranya-valley-retreat-lounge.webp",
-    galleryImages: [
-      "/images/gallery/aaranya-valley-retreat-lounge.webp",
-      "/images/gallery/aaranya-terrace-view.webp",
-      "/images/gallery/aaranya-hilltop-sunset.webp",
-    ],
-    capacity: {
-      adults: 2,
-      children: 1,
-      bed: "Grand King Bed",
-    },
-    size: "520 sq.ft",
-    view: "Panoramic 180° Valley & Sunset View",
-    amenities: [
-      "Wrap-around Panoramic Balcony",
-      "Dedicated Living & Coffee Lounge",
-      "Luxury Stone Finish Bathroom",
-      "Express WhatsApp Concierge",
-      "In-suite Breakfast on Request",
-      "Binoculars for Birdwatching",
-    ],
-    features: [
-      "Highest elevation in the property",
-      "Unobstructed sunrise & sunset views",
-      "Signature bespoke wood craftsmanship",
-    ],
-  },
-  {
-    id: "forest-cottage",
-    slug: "forest-view-cottage",
-    name: "Forest View Cottage",
-    subtitle: "Immersed in Indigenous Wilderness",
-    shortDescription:
-      "Secluded cottage surrounded by ancient trees and gentle mountain breeze.",
-    detailedDescription:
-      "Nestled gracefully amidst towering forest canopy, the Forest View Cottage is crafted with earthy stone and seasoned wood. Perfect for nature lovers who cherish tranquil seclusion and listening to the rustle of leaves.",
-    image: "/images/gallery/aaranya-forest-hillside.webp",
-    galleryImages: [
-      "/images/gallery/aaranya-forest-hillside.webp",
-      "/images/gallery/aaranya-nature-walkway.webp",
-      "/images/gallery/aaranya-morning-mist.webp",
-    ],
-    capacity: {
-      adults: 2,
-      children: 1,
-      bed: "Custom Timber King Bed",
-    },
-    size: "450 sq.ft",
-    view: "Deep Forest & Plantation View",
-    amenities: [
-      "Independent Cottage Setting",
-      "Stone-paved Private Sit-out",
-      "Handmade Wooden Rocking Chairs",
-      "En-suite Nature Bath",
-      "Direct Trail Access",
-      "Eco-friendly Room Amenities",
-    ],
-    features: [
-      "Maximum privacy and seclusion",
-      "Cool rainforest microclimate",
-      "Surrounded by cardamom & coffee plantation foliage",
     ],
   },
 ];

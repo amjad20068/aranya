@@ -184,7 +184,8 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-[#061F1A] border-l border-[#D6AD68]/20 shadow-2xl p-6 flex flex-col justify-between"
+              data-lenis-prevent
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-[#061F1A] border-l border-[#D6AD68]/20 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto overscroll-contain"
               onClick={(e) => e.stopPropagation()}
             >
               <div>

@@ -37,14 +37,20 @@ export default function GalleryGrid({
     setLightboxOpen(true);
   };
 
+  // Dynamic categories based on images present in galleryData
+  const availableCategories = [
+    "All",
+    ...Array.from(new Set(galleryData.map((item) => item.category))),
+  ] as GalleryCategory[];
+
   const isDark = theme === "dark";
 
   return (
     <div>
-      {/* Category Filter Pills matching Reference Image */}
-      {showFilters && (
+      {/* Category Filter Pills */}
+      {showFilters && availableCategories.length > 2 && (
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 md:mb-10">
-          {galleryCategories.map((cat) => {
+          {availableCategories.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
               <button
@@ -68,7 +74,7 @@ export default function GalleryGrid({
       {/* Grid of Images: Editorial layout matching Reference Image */}
       <motion.div
         layout
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 md:gap-5"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
       >
         <AnimatePresence>
           {displayImages.map((item) => (

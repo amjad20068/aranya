@@ -12,6 +12,7 @@ import {
   FiCheckCircle,
   FiAlertCircle,
   FiMessageSquare,
+  FiChevronDown,
 } from "react-icons/fi";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 import { roomsData } from "@/data/rooms";
@@ -29,7 +30,9 @@ interface FormState {
   checkIn: string;
   checkOut: string;
   adults: string;
-  children: string;
+  kids6to12: string;
+  kids0to5: string;
+  rooms: string;
   preferredRoom: string;
   specialRequest: string;
 }
@@ -40,7 +43,101 @@ interface FormErrors {
   checkIn?: string;
   checkOut?: string;
   adults?: string;
-  children?: string;
+  rooms?: string;
+}
+
+interface TypeOrSelectInputProps {
+  id: string;
+  name: string;
+  value: string;
+  onChange: (val: string) => void;
+  options: number[];
+  unitSingle?: string;
+  unitPlural?: string;
+  min?: number;
+  max?: number;
+  placeholder?: string;
+  variant?: "hero" | "card" | "page";
+  theme?: "dark" | "light";
+}
+
+function TypeOrSelectInput({
+  id,
+  name,
+  value,
+  onChange,
+  options,
+  unitSingle = "",
+  unitPlural = "",
+  min = 0,
+  max = 50,
+  placeholder = "0",
+  variant = "hero",
+  theme = "dark",
+}: TypeOrSelectInputProps) {
+  const isDark = theme === "dark";
+  const numVal = parseInt(value, 10);
+  const unitText = !isNaN(numVal) && numVal === 1 ? (unitSingle || unitPlural) : (unitPlural || unitSingle);
+
+  return (
+    <div className="relative flex items-center w-full">
+      <input
+        type="number"
+        id={id}
+        name={name}
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`w-full ${
+          isDark
+            ? "bg-[#061F1A]/80 border-white/15 text-white focus:border-[#D6AD68]"
+            : "bg-white border-[#E6DED1] text-[#092C24] focus:border-[#D6AD68]"
+        } border rounded-lg ${
+          variant === "hero" ? "pl-2.5 pr-14 py-1.5 text-xs" : "pl-3 pr-16 py-2.5 text-sm"
+        } font-medium focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+      />
+
+      {/* Suffix label & dropdown chevron on the right */}
+      <div className="absolute right-0 inset-y-0 flex items-center pr-2 pointer-events-none gap-1">
+        {unitText && (
+          <span className={`text-[11px] font-normal truncate ${isDark ? "text-white/60" : "text-[#77766E]"}`}>
+            {unitText}
+          </span>
+        )}
+        <FiChevronDown
+          className={`w-3.5 h-3.5 shrink-0 ${
+            isDark ? "text-[#D6AD68]" : "text-[#77766E]"
+          }`}
+        />
+      </div>
+
+      {/* Clickable select overlay over the chevron & unit area */}
+      <select
+        aria-label={`Select ${unitPlural || name}`}
+        value={options.includes(Number(value)) ? value : ""}
+        onChange={(e) => {
+          if (e.target.value !== "") onChange(e.target.value);
+        }}
+        className="absolute right-0 inset-y-0 w-20 opacity-0 cursor-pointer"
+        title="Click to select from list or type number directly on the left"
+      >
+        <option value="" disabled>
+          Select {unitPlural || name}
+        </option>
+        {options.map((num) => (
+          <option
+            key={num}
+            value={num}
+            className={isDark ? "bg-[#061F1A] text-white" : "bg-white text-[#092C24]"}
+          >
+            {num} {unitSingle ? (num === 1 ? unitSingle : unitPlural) : ""}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 }
 
 export default function BookingForm({
@@ -55,7 +152,9 @@ export default function BookingForm({
     checkIn: "",
     checkOut: "",
     adults: "2",
-    children: "0",
+    kids6to12: "0",
+    kids0to5: "0",
+    rooms: "1",
     preferredRoom: initialRoom || "",
     specialRequest: "",
   });
@@ -120,6 +219,32 @@ export default function BookingForm({
     }
   };
 
+  const handleAdultsChange = (val: string) => {
+    setFormData((prev) => ({ ...prev, adults: val }));
+    if (errors.adults) setErrors((prev) => ({ ...prev, adults: undefined }));
+  };
+
+  const handleRoomsChange = (val: string) => {
+    setFormData((prev) => ({ ...prev, rooms: val }));
+  };
+
+  const handleKids6to12Change = (val: string) => {
+    setFormData((prev) => ({ ...prev, kids6to12: val }));
+  };
+
+  const handleKids0to5Change = (val: string) => {
+    setFormData((prev) => ({ ...prev, kids0to5: val }));
+  };
+
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return "";
+    const parts = dateStr.split("-");
+    if (parts.length === 3) {
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+    return dateStr;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -134,26 +259,26 @@ export default function BookingForm({
       formData.preferredRoom ||
       "Any Available Room";
 
-    const specialReqLine = formData.specialRequest.trim()
-      ? `Special Request: ${formData.specialRequest.trim()}\n`
-      : "";
+    const lines: string[] = [
+      "*Enquiry*",
+      `Name : ${formData.fullName.trim()}`,
+      `Number: ${formData.mobile.trim()}`,
+      `Check In Date: ${formatDate(formData.checkIn)}`,
+      `Check Out Date: ${formatDate(formData.checkOut)}`,
+      `Number of Adults[12y above]: ${formData.adults}`,
+      `Number of kids 6-12: ${formData.kids6to12}`,
+      `Kids 0-5: ${formData.kids0to5}`,
+      `No of Rooms: ${formData.rooms}`,
+    ];
 
-    const message = `Hello ${resortConfig.name},
+    if (roomName && roomName !== "Any Available Room") {
+      lines.push(`Preferred Room: ${roomName}`);
+    }
+    if (formData.specialRequest.trim()) {
+      lines.push(`Special Request: ${formData.specialRequest.trim()}`);
+    }
 
-I would like to enquire about a stay.
-
-Guest Name: ${formData.fullName.trim()}
-Mobile: ${formData.mobile.trim()}
-Check-in: ${formData.checkIn}
-Check-out: ${formData.checkOut}
-Adults: ${formData.adults}
-Children: ${formData.children}
-Preferred Room: ${roomName}
-${specialReqLine}
-Please confirm availability and booking details.
-
-Thank you.`;
-
+    const message = lines.join("\n");
     const url = buildWhatsAppUrl(message);
 
     try {
@@ -194,7 +319,7 @@ Thank you.`;
           </div>
         )}
 
-        {/* Top Grid: Dates and Guests (4 Columns on tablet/desktop, 2 on mobile) */}
+        {/* Top Grid: Check In, Check Out, Adults [12y above], No of Rooms */}
         <div className={`grid grid-cols-2 sm:grid-cols-4 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2.5" : "gap-3 sm:gap-4 mb-3 sm:mb-4"}`}>
           {/* Check-in Date */}
           <div className="flex flex-col">
@@ -203,7 +328,7 @@ Thank you.`;
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
               <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Check-in Date</span>
+              <span>Check In Date</span>
             </label>
             <div className="relative">
               <input
@@ -233,7 +358,7 @@ Thank you.`;
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
               <FiCalendar className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Check-out Date</span>
+              <span>Check Out Date</span>
             </label>
             <div className="relative">
               <input
@@ -256,115 +381,107 @@ Thank you.`;
             )}
           </div>
 
-          {/* Adults Count */}
+          {/* Number of Adults[12y above] */}
           <div className="flex flex-col">
             <label
               htmlFor="adults"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
               <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Adults</span>
+              <span className="truncate">Adults [12y+]</span>
             </label>
-            <select
+            <TypeOrSelectInput
               id="adults"
               name="adults"
               value={formData.adults}
-              onChange={handleChange}
-              className={`w-full bg-[#061F1A]/80 border border-white/15 focus:border-[#D6AD68] ${
-                variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
-              } text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
-            >
-              {[1, 2, 3, 4, 5, 6, 8, 10].map((num) => (
-                <option key={num} value={num} className="bg-[#061F1A] text-white">
-                  {num} {num === 1 ? "Adult" : "Adults"}
-                </option>
-              ))}
-            </select>
+              onChange={handleAdultsChange}
+              options={[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]}
+              unitSingle="Adult"
+              unitPlural="Adults"
+              min={1}
+              max={50}
+              placeholder="1"
+              variant={variant}
+              theme="dark"
+            />
           </div>
 
-          {/* Children Count */}
+          {/* No of Rooms */}
           <div className="flex flex-col">
             <label
-              htmlFor="children"
+              htmlFor="rooms"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Children</span>
+              <FiHome className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
+              <span>No of Rooms</span>
             </label>
-            <select
-              id="children"
-              name="children"
-              value={formData.children}
-              onChange={handleChange}
-              className={`w-full bg-[#061F1A]/80 border border-white/15 focus:border-[#D6AD68] ${
-                variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"
-              } text-white focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
-            >
-              {[0, 1, 2, 3, 4].map((num) => (
-                <option key={num} value={num} className="bg-[#061F1A] text-white">
-                  {num} {num === 1 ? "Child" : "Children"}
-                </option>
-              ))}
-            </select>
+            <TypeOrSelectInput
+              id="rooms"
+              name="rooms"
+              value={formData.rooms}
+              onChange={handleRoomsChange}
+              options={[1, 2, 3, 4, 5, 6, 8, 10]}
+              unitSingle="Room"
+              unitPlural="Rooms"
+              min={1}
+              max={20}
+              placeholder="1"
+              variant={variant}
+              theme="dark"
+            />
           </div>
         </div>
 
-        {/* Second Row: Guest Name, Mobile, Preferred Room */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2.5" : "gap-3 sm:gap-4 mb-4"}`}>
-          {/* Guest Name */}
+        {/* Second Row: Kids 6-12, Kids 0-5, Preferred Room */}
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2.5" : "gap-3 sm:gap-4 mb-3 sm:mb-4"}`}>
+          {/* Number of kids 6-12 */}
           <div className="flex flex-col">
             <label
-              htmlFor="fullName"
+              htmlFor="kids6to12"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiUser className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Your Name</span>
+              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
+              <span>Kids 6-12</span>
             </label>
-            <input
-              id="fullName"
-              name="fullName"
-              type="text"
-              placeholder="Enter your name"
-              value={formData.fullName}
-              onChange={handleChange}
-              className={`w-full bg-[#061F1A]/80 border ${
-                errors.fullName ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
-              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
-              required
+            <TypeOrSelectInput
+              id="kids6to12"
+              name="kids6to12"
+              value={formData.kids6to12}
+              onChange={handleKids6to12Change}
+              options={[0, 1, 2, 3, 4, 5, 6, 8]}
+              unitSingle="Kid"
+              unitPlural="Kids"
+              min={0}
+              max={20}
+              placeholder="0"
+              variant={variant}
+              theme="dark"
             />
-            {errors.fullName && (
-              <span className="text-red-300 text-[10px] mt-0.5 flex items-center gap-1">
-                <FiAlertCircle className="w-2.5 h-2.5" /> {errors.fullName}
-              </span>
-            )}
           </div>
 
-          {/* Mobile Number */}
+          {/* Kids 0-5 */}
           <div className="flex flex-col">
             <label
-              htmlFor="mobile"
+              htmlFor="kids0to5"
               className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
             >
-              <FiPhone className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
-              <span>Mobile Number</span>
+              <FiUsers className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
+              <span>Kids 0-5</span>
             </label>
-            <input
-              id="mobile"
-              name="mobile"
-              type="tel"
-              placeholder="Enter your number"
-              value={formData.mobile}
-              onChange={handleChange}
-              className={`w-full bg-[#061F1A]/80 border ${
-                errors.mobile ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
-              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
-              required
+            <TypeOrSelectInput
+              id="kids0to5"
+              name="kids0to5"
+              value={formData.kids0to5}
+              onChange={handleKids0to5Change}
+              options={[0, 1, 2, 3, 4, 5, 6, 8]}
+              unitSingle="Kid"
+              unitPlural="Kids"
+              min={0}
+              max={20}
+              placeholder="0"
+              variant={variant}
+              theme="dark"
             />
-            {errors.mobile && (
-              <span className="text-red-300 text-[10px] mt-0.5 flex items-center gap-1">
-                <FiAlertCircle className="w-2.5 h-2.5" /> {errors.mobile}
-              </span>
-            )}
           </div>
 
           {/* Preferred Room */}
@@ -397,7 +514,66 @@ Thank you.`;
           </div>
         </div>
 
-        {/* Optional Special Request (visible when in full variant or on focus) */}
+        {/* Third Row: Guest Name, Mobile */}
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${variant === "hero" ? "gap-2 sm:gap-2.5 mb-2.5" : "gap-3 sm:gap-4 mb-4"}`}>
+          {/* Guest Name */}
+          <div className="flex flex-col">
+            <label
+              htmlFor="fullName"
+              className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
+            >
+              <FiUser className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
+              <span>Name :</span>
+            </label>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              placeholder="Enter your name"
+              value={formData.fullName}
+              onChange={handleChange}
+              className={`w-full bg-[#061F1A]/80 border ${
+                errors.fullName ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
+              required
+            />
+            {errors.fullName && (
+              <span className="text-red-300 text-[10px] mt-0.5 flex items-center gap-1">
+                <FiAlertCircle className="w-2.5 h-2.5" /> {errors.fullName}
+              </span>
+            )}
+          </div>
+
+          {/* Mobile Number */}
+          <div className="flex flex-col">
+            <label
+              htmlFor="mobile"
+              className={`${variant === "hero" ? "text-[10px] mb-1" : "text-[11px] mb-1.5"} uppercase tracking-wider font-medium text-[#FAF8F5]/85 flex items-center gap-1`}
+            >
+              <FiPhone className={`${variant === "hero" ? "w-3 h-3" : "w-3.5 h-3.5"} text-[#D6AD68]`} />
+              <span>Number :</span>
+            </label>
+            <input
+              id="mobile"
+              name="mobile"
+              type="tel"
+              placeholder="Enter your number"
+              value={formData.mobile}
+              onChange={handleChange}
+              className={`w-full bg-[#061F1A]/80 border ${
+                errors.mobile ? "border-red-400 focus:ring-red-400" : "border-white/15 focus:border-[#D6AD68]"
+              } ${variant === "hero" ? "rounded-lg px-2.5 py-1.5 text-xs" : "rounded-lg px-3 py-2.5 text-sm"} text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#D6AD68] transition-all`}
+              required
+            />
+            {errors.mobile && (
+              <span className="text-red-300 text-[10px] mt-0.5 flex items-center gap-1">
+                <FiAlertCircle className="w-2.5 h-2.5" /> {errors.mobile}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Optional Special Request */}
         {variant !== "hero" && (
           <div className="mb-4">
             <label
@@ -419,7 +595,7 @@ Thank you.`;
           </div>
         )}
 
-        {/* Submit Button (WhatsApp Click-to-Chat matching Reference Image) */}
+        {/* Submit Button */}
         <div className="pt-1">
           <button
             type="submit"
@@ -444,10 +620,10 @@ Thank you.`;
           <div className="text-xs">
             <span className="font-semibold text-white">Opening WhatsApp...</span>
             <p className="text-white/80 mt-0.5 font-light">
-              Your booking details have been prepared for {resortConfig.name}. If WhatsApp did not open automatically,{" "}
+              Your booking enquiry has been prepared for {resortConfig.name}. If WhatsApp did not open automatically,{" "}
               <a
                 href={buildWhatsAppUrl(
-                  `Hello ${resortConfig.name}, I would like to enquire about a stay. Name: ${formData.fullName}`
+                  `*Enquiry*\nName : ${formData.fullName}\nNumber: ${formData.mobile}`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -22,6 +22,7 @@ export default function Lightbox({
   onNavigate,
 }: LightboxProps) {
   const currentImage = images[currentIndex];
+  const [touchStartX, setTouchStartX] = React.useState<number | null>(null);
 
   const handleNext = useCallback(() => {
     if (images.length === 0) return;
@@ -32,6 +33,21 @@ export default function Lightbox({
     if (images.length === 0) return;
     onNavigate((currentIndex - 1 + images.length) % images.length);
   }, [currentIndex, images.length, onNavigate]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (diff > 45) {
+      handlePrev();
+    } else if (diff < -45) {
+      handleNext();
+    }
+    setTouchStartX(null);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -55,7 +71,12 @@ export default function Lightbox({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center select-none">
+      <div
+        data-lenis-prevent
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="fixed inset-0 z-50 flex items-center justify-center select-none"
+      >
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -67,13 +88,13 @@ export default function Lightbox({
         />
 
         {/* Modal Controls */}
-        <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
-          <span className="text-xs tracking-widest text-white/60 bg-black/40 px-3 py-1.5 rounded-full border border-white/10">
+        <div className="absolute top-4 right-4 z-50 flex items-center gap-2.5 sm:gap-3">
+          <span className="text-[11px] sm:text-xs tracking-widest text-white/70 bg-black/50 px-3 py-1.5 rounded-full border border-white/10">
             {currentIndex + 1} / {images.length}
           </span>
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
             aria-label="Close Lightbox"
           >
             <FiX className="w-5 h-5" />
@@ -86,10 +107,10 @@ export default function Lightbox({
             e.stopPropagation();
             handlePrev();
           }}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
           aria-label="Previous image"
         >
-          <FiChevronLeft className="w-6 h-6" />
+          <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* Right Arrow */}
@@ -98,15 +119,15 @@ export default function Lightbox({
             e.stopPropagation();
             handleNext();
           }}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-black/50 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-[#D6AD68] hover:text-[#061F1A] text-white flex items-center justify-center transition-all border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
           aria-label="Next image"
         >
-          <FiChevronRight className="w-6 h-6" />
+          <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* Image Content Container */}
         <div
-          className="relative z-40 max-w-5xl max-h-[85vh] w-full px-4 sm:px-8 flex flex-col items-center justify-center"
+          className="relative z-40 max-w-5xl max-h-[85vh] w-full px-3 sm:px-8 flex flex-col items-center justify-center"
           onClick={(e) => e.stopPropagation()}
         >
           <motion.div
