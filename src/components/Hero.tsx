@@ -119,19 +119,19 @@ export default function Hero() {
           {/* Action Buttons: Explore Now & View More */}
           <div
             ref={ctaRef}
-            className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
+            className="mt-10 sm:mt-8 flex items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[360px] sm:max-w-none"
           >
             <Link
               href="#about"
-              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-lg shadow-[#061F1A]/40 hover:shadow-xl hover:shadow-[#D6AD68]/20 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+              className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-[#061F1A] bg-gradient-to-r from-[#E8BD78] via-[#E2B36B] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-lg shadow-[#D6AD68]/20 hover:shadow-xl hover:shadow-[#D6AD68]/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
             >
               <span>Explore Now</span>
-              <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0" />
             </Link>
 
             <Link
               href="/rooms"
-              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-medium tracking-wide text-[#FAF8F5] bg-white/10 hover:bg-white/15 border border-white/20 hover:border-[#D6AD68]/60 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium tracking-wide text-[#FAF8F5] bg-[#061F1A]/60 sm:bg-white/10 hover:bg-[#061F1A]/80 sm:hover:bg-white/15 border border-white/25 hover:border-[#D6AD68]/60 backdrop-blur-md shadow-md shadow-black/20 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
             >
               <span>View More</span>
             </Link>
