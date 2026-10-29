@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AARANYA — Misty Valley Resort | Luxury Forest Sanctuary</title>
+  <meta name="description" content="A serene retreat in the heart of nature, where lush greenery, misty hills and warm hospitality come together for an unforgettable experience.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="public/images/logo/aaranya-emblem-clean.png">
+
+  <!-- Google Fonts: Cormorant Garamond & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --color-forest: #10251C;
+      --color-moss: #26382E;
+      --color-gold: #C9A568;
+      --color-gold-light: #E0C087;
+      --color-gold-dark: #A68346;
+      --color-ivory: #F5F1E8;
+      --color-cream: #FAF8F5;
+      --color-body: #343B35;
+      --color-white: #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-body);
+      background-color: var(--color-cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========================================================
+       1. HEADER & NAVBAR (Transparent over Hero)
+       ======================================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: all 0.3s ease;
+      background: linear-gradient(180deg, rgba(10, 24, 18, 0.85) 0%, rgba(16, 37, 28, 0.45) 60%, transparent 100%);
+    }
+
+    .header.scrolled {
+      background: rgba(16, 37, 28, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(201, 165, 104, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo-link {
+      display: flex;
+      align-items: center;
+      height: 48px;
+    }
+
+    .brand-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: rgba(250, 248, 245, 0.85);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: color 0.2s ease;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--color-gold-light);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--color-gold);
+      border-radius: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: rgba(250, 248, 245, 0.8);
+      font-size: 15px;
+    }
+
+    .social-link {
+      transition: color 0.2s ease;
+    }
+
+    .social-link:hover {
+      color: var(--color-gold-light);
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #E0C087 0%, #C9A568 50%, #B8924F 100%);
+      color: var(--color-forest);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 22px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(201, 165, 104, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #EAD09F 0%, #D4B276 50%, #C9A568 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 165, 104, 0.45);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* ========================================================
+       2. CINEMATIC HOMEPAGE HERO (Building on Right, Form on Left)
+       ======================================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 130px;
+      padding-bottom: 24px;
+      overflow: hidden;
+      background-color: var(--color-forest);
+    }
+
+    .hero-bg-container {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+    }
+
+    /* Lighting Gradients */
+    .hero-overlay-directional {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(16, 37, 28, 0.94) 0%, rgba(16, 37, 28, 0.70) 48%, rgba(16, 37, 28, 0.1) 75%, transparent 100%);
+    }
+
+    .hero-overlay-vertical {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(16, 37, 28, 1) 0%, transparent 35%, rgba(0, 0, 0, 0.4) 100%);
+    }
+
+    .hero-main {
+      position: relative;
+      z-index: 10;
+      margin: auto 0;
+    }
+
+    .hero-left-column {
+      max-width: 620px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .hero-eyebrow-line {
+      width: 32px;
+      height: 1px;
+      background-color: var(--color-gold);
+    }
+
+    .hero-eyebrow-text {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold-light);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      font-weight: 400;
+      color: var(--color-white);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-title span {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-gold-light);
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: rgba(250, 248, 245, 0.9);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 22px;
+      max-width: 520px;
+    }
+
+    /* Glassmorphic Booking Form */
+    .hero-booking-panel {
+      background: rgba(16, 37, 28, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 165, 104, 0.35);
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      max-width: 540px;
+    }
+
+    .form-row-1 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(250, 248, 245, 0.85);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .form-label i {
+      color: var(--color-gold);
+      font-size: 10px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(10, 24, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 6px;
+      padding: 7px 9px;
+      font-size: 12px;
+      color: var(--color-white);
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .form-control:focus {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 2px rgba(201, 165, 104, 0.25);
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-control option {
+      background: var(--color-forest);
+      color: var(--color-white);
+    }
+
+    .btn-whatsapp-full {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #E0C087 0%, #C9A568 50%, #B8924F 100%);
+      color: var(--color-forest);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(201, 165, 104, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .btn-whatsapp-full:hover {
+      background: linear-gradient(135deg, #EAD09F 0%, #D4B276 50%, #C9A568 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(201, 165, 104, 0.5);
+    }
+
+    .btn-whatsapp-full i {
+      font-size: 14px;
+    }
+
+    /* Hero Bottom Bar */
+    .hero-bottom-bar {
+      position: relative;
+      z-index: 10;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(250, 248, 245, 0.85);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .highlights-list {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-item i {
+      color: var(--color-gold);
+      font-size: 14px;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-gold-light);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .scroll-indicator i {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(6px); }
+      60% { transform: translateY(3px); }
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-gold);
+    }
+
+    /* ========================================================
+       3. FEATURED ROOMS SECTION (Warm Ivory #F5F1E8)
+       ======================================================== */
+    .rooms-section {
+      padding: 100px 0;
+      background-color: var(--color-ivory);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold-dark);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--color-forest);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: rgba(52, 59, 53, 0.85);
+      margin-top: 10px;
+      max-width: 580px;
+    }
+
+    .rooms-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .rooms-left-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .room-card {
+      background: var(--color-white);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      border-color: rgba(201, 165, 104, 0.5);
+    }
+
+    .room-img-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    .room-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .room-card:hover .room-img {
+      transform: scale(1.06);
+    }
+
+    .room-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(16, 37, 28, 0.8);
+      backdrop-filter: blur(8px);
+      color: var(--color-white);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .room-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .room-name {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--color-forest);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .room-name:hover {
+      color: var(--color-gold-dark);
+    }
+
+    .room-desc {
+      font-size: 13px;
+      color: rgba(52, 59, 53, 0.8);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .room-card-footer {
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .room-view-details {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-forest);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .room-view-details:hover {
+      color: var(--color-gold-dark);
+    }
+
+    .btn-wa-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #25D366;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-wa-circle:hover {
+      background-color: #20ba5c;
+      transform: scale(1.12);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ========================================================
+       4. GALLERY SECTION (Dark Forest Green #10251C)
+       ======================================================== */
+    .gallery-section {
+      padding: 100px 0;
+      background-color: #0D1E17;
+      color: var(--color-white);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .gallery-left-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .gallery-title {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--color-white);
+      letter-spacing: -0.01em;
+    }
+
+    .gallery-desc {
+      font-size: 15px;
+      color: rgba(250, 248, 245, 0.8);
+      margin-top: 10px;
+      max-width: 580px;
+    }
+
+    .gallery-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-circle-nav {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-circle-nav:hover {
+      border-color: var(--color-gold);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-gold-light);
+    }
+
+    .gallery-carousel-strip {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .gallery-carousel-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-item-card {
+      flex: 0 0 340px;
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item-card:hover {
+      border-color: rgba(201, 165, 104, 0.6);
+      transform: translateY(-4px);
+    }
+
+    .gallery-item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item-card:hover .gallery-item-img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(16, 37, 28, 0.92) 0%, rgba(16, 37, 28, 0.2) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .gallery-item-card:hover .gallery-item-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item-cat {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .gallery-item-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-white);
+    }
+
+    /* ========================================================
+       5. FOOTER (Forest Green)
+       ======================================================== */
+    .footer {
+      background-color: var(--color-forest);
+      color: var(--color-cream);
+      padding: 80px 0 30px;
+      border-top: 1px solid rgba(201, 165, 104, 0.2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(250, 248, 245, 0.75);
+      margin-top: 16px;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--color-gold-light);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(250, 248, 245, 0.75);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold-light);
+    }
+
+    .footer-contact p {
+      font-size: 14px;
+      color: rgba(250, 248, 245, 0.75);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-contact i {
+      color: var(--color-gold);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: rgba(250, 248, 245, 0.6);
+    }
+
+    /* ========================================================
+       MODAL & LIGHTBOX
+       ======================================================== */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.94);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 1000px;
+      max-height: 85vh;
+      text-align: center;
+    }
+
+    .lightbox-img {
+      max-height: 75vh;
+      width: auto;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      margin: 0 auto;
+    }
+
+    .lightbox-caption {
+      color: var(--color-cream);
+      font-family: var(--font-serif);
+      font-size: 20px;
+      margin-top: 14px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: var(--color-white);
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .nav-menu, .header-actions { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-title { font-size: 48px; }
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row-1 { grid-template-columns: repeat(2, 1fr); }
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 38px; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row-1 { grid-template-columns: 1fr; }
+      .highlights-list { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .hero-bottom-bar { flex-direction: column; gap: 14px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo-link" aria-label="AARANYA — Misty Valley Resort Home">
+        <img src="public/images/logo/aaranya-navbar-logo.webp" alt="AARANYA Official Logo" class="brand-logo-img">
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link active">Home</a></li>
+        <li><a href="src/app/rooms" class="nav-link">Rooms</a></li>
+        <li><a href="src/app/gallery" class="nav-link">Gallery</a></li>
+        <li><a href="src/app/about" class="nav-link">About</a></li>
+        <li><a href="src/app/services" class="nav-link">Our Services</a></li>
+        <li><a href="src/app/contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
+        <a href="#booking" class="btn-gold">
+          <i class="fa-regular fa-calendar"></i>
+          <span>Book Your Stay</span>
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       HOMEPAGE HERO (Building on Right, Form on Left)
+       ======================================================== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-container">
+      <img src="public/images/hero/aaranya-resort-hero.webp" alt="AARANYA Misty Valley Resort Building" class="hero-bg-img">
+      <div class="hero-overlay-directional"></div>
+      <div class="hero-overlay-vertical"></div>
+    </div>
+
+    <div></div> <!-- Spacer -->
+
+    <div class="container hero-main">
+      <div class="hero-left-column">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          <span class="hero-eyebrow-text">AARANYA — MISTY VALLEY RESORT</span>
+        </div>
+
+        <h1 class="hero-title">
+          Nature’s Peace.<br>
+          <span>Your Perfect Stay.</span>
+        </h1>
+
+        <p class="hero-desc">
+          A serene retreat in the heart of nature, where lush greenery, misty hills and warm hospitality come together for an unforgettable experience.
+        </p>
+
+        <!-- Glassmorphism Booking Widget -->
+        <div class="hero-booking-panel" id="booking">
+          <form id="heroBookingForm" onsubmit="handleBookingSubmit(event)">
+            <!-- Row 1: Check-in, Check-out, Adults, Children -->
+            <div class="form-row-1">
+              <div class="form-group">
+                <label class="form-label" for="b-checkin">
+                  <i class="fa-regular fa-calendar"></i> Check-in Date
+                </label>
+                <input type="date" id="b-checkin" class="form-control" required value="2026-10-29">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="b-checkout">
+                  <i class="fa-regular fa-calendar"></i> Check-out Date
+                </label>
+                <input type="date" id="b-checkout" class="form-control" required value="2026-10-31">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="b-adults">
+                  <i class="fa-solid fa-user-group"></i> Adults
+                </label>
+                <select id="b-adults" class="form-control">
+                  <option value="1">1 Adult</option>
+                  <option value="2" selected>2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
+                  <option value="5+">5+ Adults</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="b-children">
+                  <i class="fa-solid fa-child"></i> Children
+                </label>
+                <select id="b-children" class="form-control">
+                  <option value="0" selected>0 Children</option>
+                  <option value="1">1 Child</option>
+                  <option value="2">2 Children</option>
+                  <option value="3+">3+ Children</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 2: Name, Mobile, Preferred Room -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="b-name">
+                  <i class="fa-regular fa-user"></i> Your Name
+                </label>
+                <input type="text" id="b-name" class="form-control" placeholder="Enter your name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="b-phone">
+                  <i class="fa-solid fa-phone"></i> Mobile Number
+                </label>
+                <input type="tel" id="b-phone" class="form-control" placeholder="Enter your number" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="b-room">
+                  <i class="fa-solid fa-bed"></i> Preferred Room (Optional)
+                </label>
+                <select id="b-room" class="form-control">
+                  <option value="Any Available Room">Select Room</option>
+                  <option value="Deluxe Room">Deluxe Room</option>
+                  <option value="Premium Room">Premium Room</option>
+                  <option value="Family Room">Family Room</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Submit Button -->
+            <button type="submit" class="btn-whatsapp-full">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Book on WhatsApp &rarr;</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Bottom Bar -->
+    <div class="container hero-bottom-bar">
+      <div class="highlights-list">
+        <div class="highlight-item">
+          <i class="fa-solid fa-tree"></i>
+          <span>Peaceful Location</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-mountain"></i>
+          <span>Nature Views</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-bed"></i>
+          <span>Comfortable Rooms</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-mug-hot"></i>
+          <span>Relaxing Stay</span>
+        </div>
+      </div>
+
+      <a href="#rooms" class="scroll-indicator">
+        <i class="fa-solid fa-arrow-down"></i>
+        <span>Scroll Down</span>
+      </a>
+
+      <div class="hero-tag">A Hidden Gem in Nature</div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FEATURED ROOMS SECTION (Warm Ivory #F5F1E8)
+       ======================================================== */
+  -->
+  <section class="rooms-section" id="rooms">
+    <div class="container">
+      <div class="rooms-layout">
+        <div class="rooms-left-col">
+          <span class="section-eyebrow">OUR ROOMS</span>
+          <h2 class="section-title">Stay Close to Nature</h2>
+          <p class="section-subtitle">
+            Beautifully designed rooms with modern comforts, blending with the natural surroundings. Experience a stay that brings you closer to nature.
+          </p>
+          <div style="margin-top: 32px;">
+            <a href="src/app/rooms" class="btn-gold">
+              <span>View All Rooms</span> &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="rooms-grid">
+          <!-- Room 1: Deluxe Room -->
+          <div class="room-card">
+            <div class="room-img-wrapper">
+              <img src="public/images/rooms/deluxe-room.jpg" alt="Deluxe Room" class="room-img">
+              <div class="room-badge">Tea Estate View</div>
+            </div>
+            <div class="room-content">
+              <div>
+                <h3 class="room-name" onclick="openRoomInquiry('Deluxe Room')">Deluxe Room</h3>
+                <p class="room-desc">
+                  Spacious and elegant rooms with nature views and modern amenities.
+                </p>
+              </div>
+              <div class="room-card-footer">
+                <span class="room-view-details" onclick="openRoomInquiry('Deluxe Room')">
+                  View Details &rarr;
+                </span>
+                <button class="btn-wa-circle" onclick="openRoomInquiry('Deluxe Room')" aria-label="Book Deluxe Room on WhatsApp">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 2: Premium Room -->
+          <div class="room-card">
+            <div class="room-img-wrapper">
+              <img src="public/images/rooms/premium-room.jpg" alt="Premium Room" class="room-img">
+              <div class="room-badge">Valley & Mist View</div>
+            </div>
+            <div class="room-content">
+              <div>
+                <h3 class="room-name" onclick="openRoomInquiry('Premium Room')">Premium Room</h3>
+                <p class="room-desc">
+                  A perfect blend of comfort and serene surroundings.
+                </p>
+              </div>
+              <div class="room-card-footer">
+                <span class="room-view-details" onclick="openRoomInquiry('Premium Room')">
+                  View Details &rarr;
+                </span>
+                <button class="btn-wa-circle" onclick="openRoomInquiry('Premium Room')" aria-label="Book Premium Room on WhatsApp">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 3: Family Room -->
+          <div class="room-card">
+            <div class="room-img-wrapper">
+              <img src="public/images/rooms/family-room.jpg" alt="Family Room" class="room-img">
+              <div class="room-badge">High Vaulted Timber</div>
+            </div>
+            <div class="room-content">
+              <div>
+                <h3 class="room-name" onclick="openRoomInquiry('Family Room')">Family Room</h3>
+                <p class="room-desc">
+                  Ideal for families, with extra space and a relaxing atmosphere.
+                </p>
+              </div>
+              <div class="room-card-footer">
+                <span class="room-view-details" onclick="openRoomInquiry('Family Room')">
+                  View Details &rarr;
+                </span>
+                <button class="btn-wa-circle" onclick="openRoomInquiry('Family Room')" aria-label="Book Family Room on WhatsApp">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       GALLERY SECTION (Dark Forest Green)
+       ======================================================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-layout">
+        <div class="gallery-left-col">
+          <span class="section-eyebrow" style="color: var(--color-gold);">GALLERY</span>
+          <h2 class="gallery-title">Moments at Aaranya</h2>
+          <p class="gallery-desc">
+            Explore the beauty of our property, rooms, and the stunning natural surroundings through our gallery.
+          </p>
+          <div class="gallery-nav-controls" style="margin-top: 24px;">
+            <button class="btn-circle-nav" onclick="scrollGallery(-340)" aria-label="Previous Slide">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="btn-circle-nav" onclick="scrollGallery(340)" aria-label="Next Slide">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+      <div class="gallery-carousel-strip" id="galleryCarousel">
+        <div class="gallery-item-card" onclick="openLightbox('public/images/hero/aaranya-resort-hero.webp', 'Aaranya Resort Nestled in Hillside Canopy')">
+          <img src="public/images/hero/aaranya-resort-hero.webp" alt="Aaranya Exterior" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Property</span>
+            <h4 class="gallery-item-title">Resort Hillside Architecture</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/rooms/premium-room.jpg', 'Premium Room with Ambient Headboard Lighting')">
+          <img src="public/images/rooms/premium-room.jpg" alt="Premium Room" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Interiors</span>
+            <h4 class="gallery-item-title">Artisanal Suite Interiors</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-valley-mist-balcony.webp', 'Balcony View of Drifting Fog')">
+          <img src="public/images/gallery/aaranya-valley-mist-balcony.webp" alt="Balcony Mist" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Nature</span>
+            <h4 class="gallery-item-title">Morning Mist Balcony View</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/gallery/aaranya-hilltop-sunset.webp', 'Golden Hour Sunset Over Mountain Crests')">
+          <img src="public/images/gallery/aaranya-hilltop-sunset.webp" alt="Hilltop Sunset" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Experiences</span>
+            <h4 class="gallery-item-title">Golden Hour Sunset Vistas</h4>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" onclick="openLightbox('public/images/rooms/family-room.jpg', 'Cathedral Timber Family Suite')">
+          <img src="public/images/rooms/family-room.jpg" alt="Family Room" class="gallery-item-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-cat">Rooms</span>
+            <h4 class="gallery-item-title">Cathedral Timber Family Suite</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="public/images/logo/aaranya-navbar-logo.webp" alt="AARANYA Logo" style="height: 48px; width: auto;">
+          <p>
+            A serene forest retreat surrounded by lush greenery, misty hills and tranquil landscapes. Experience the perfect blend of nature, comfort, and warm hospitality.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="src/app/rooms">Rooms & Suites</a></li>
+            <li><a href="src/app/gallery">Gallery</a></li>
+            <li><a href="src/app/about">About Us</a></li>
+            <li><a href="src/app/services">Our Services</a></li>
+            <li><a href="src/app/contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Our Rooms</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="openRoomInquiry('Deluxe Room')">Deluxe Room</a></li>
+            <li><a href="javascript:void(0)" onclick="openRoomInquiry('Premium Room')">Premium Room</a></li>
+            <li><a href="javascript:void(0)" onclick="openRoomInquiry('Family Room')">Family Room</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="footer-heading">Get in Touch</h4>
+          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fa-brands fa-whatsapp"></i> +91 98765 43210</p>
+          <p><i class="fa-regular fa-envelope"></i> info@aaranyaresort.com</p>
+          <p><i class="fa-solid fa-location-dot"></i> Misty Valley, High Ranges</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AARANYA — Misty Valley Resort. All Rights Reserved.</div>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img src="" alt="Enlarged View" class="lightbox-img" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Gallery Horizontal Scroll
+    function scrollGallery(distance) {
+      const container = document.getElementById('galleryCarousel');
+      container.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').innerText = caption;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    // WhatsApp Booking Enquiry Submission
+    const RESORT_WA_NUMBER = "919876543210";
+
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+      const checkin = document.getElementById('b-checkin').value;
+      const checkout = document.getElementById('b-checkout').value;
+      const adults = document.getElementById('b-adults').value;
+      const children = document.getElementById('b-children').value;
+      const name = document.getElementById('b-name').value.trim();
+      const phone = document.getElementById('b-phone').value.trim();
+      const room = document.getElementById('b-room').value;
+
+      if (!name || !phone) {
+        alert("Please enter your name and phone number");
+        return;
+      }
+
+      const msg = [
+        "Hello AARANYA — Misty Valley Resort,",
+        "",
+        "I would like to enquire about a stay.",
+        "",
+        `Guest Name: ${name}`,
+        `Mobile: ${phone}`,
+        `Check-in: ${checkin}`,
+        `Check-out: ${checkout}`,
+        `Adults: ${adults}`,
+        `Children: ${children}`,
+        `Preferred Room: ${room}`,
+        "",
+        "Please confirm availability and booking details.",
+        "",
+        "Thank you."
+      ].join("\n");
+
+      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function openRoomInquiry(roomName) {
+      const msg = [
+        "Hello AARANYA — Misty Valley Resort,",
+        "",
+        `I would like to enquire about booking the ${roomName}.`,
+        `Preferred Room: ${roomName}`,
+        "",
+        "Please confirm availability and booking details.",
+        "",
+        "Thank you."
+      ].join("\n");
+
+      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function toggleMobileMenu() {
+      alert("Please navigate via the menu links or scroll through the sections.");
+    }
+  </script>
+</body>
+</html>

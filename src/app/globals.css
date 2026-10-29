@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --forest: #10251C;
+    --forest-deep: #0A1812;
+    --forest-surface: #142E23;
+    --moss: #26382E;
+    --moss-light: #354D40;
+    --gold: #C9A568;
+    --gold-light: #E0C087;
+    --gold-dark: #A68346;
+    --ivory: #F5F1E8;
+    --ivory-light: #FAF8F5;
+    --ivory-dark: #EAE3D5;
+    --charcoal: #343B35;
+    --charcoal-light: #525C54;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: var(--charcoal);
+    background-color: var(--ivory-light);
+    font-family: var(--font-dm-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #C9A568;
+    color: #10251C;
+  }
+}
+
+/* Custom Typography Utilities */
+.font-serif-luxury {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+.font-sans-luxury {
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+}
+
+/* Luxury Glassmorphism & Surface Tokens */
+.glass-forest {
+  background: rgba(16, 37, 28, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 165, 104, 0.22);
+}
+
+.glass-forest-subtle {
+  background: rgba(16, 37, 28, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-gold-hover:hover {
+  border-color: rgba(201, 165, 104, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(201, 165, 104, 0.25);
+}
+
+.glass-ivory {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 165, 104, 0.2);
+}
+
+/* Gold Gradient Accents */
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #DFBE84 0%, #C9A568 50%, #B8924F 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F3DCA6 0%, #C9A568 50%, #A88344 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-color: rgba(201, 165, 104, 0.3);
+}
+
+/* Decorative Gold Leaf Divider */
+.gold-leaf-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gold-leaf-divider::before,
+.gold-leaf-divider::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(to right, transparent, #C9A568);
+}
+
+.gold-leaf-divider::after {
+  background: linear-gradient(to left, transparent, #C9A568);
+}
+
+/* Subtle botanical background watermark */
+.bg-botanical-subtle {
+  background-image: radial-gradient(rgba(201, 165, 104, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
