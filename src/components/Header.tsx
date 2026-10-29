@@ -7,7 +7,7 @@ import NextLink from "next/link";
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import { FiCalendar, FiMenu, FiX, FiArrowRight } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -252,9 +252,14 @@ export default function Header() {
                 </NextLink>
 
                 <a
-                  href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello AARANYA Resort, I would like to enquire about a stay.")}`}
+                  href={buildWhatsAppUrl("Hello AARANYA Resort, I would like to enquire about a stay.")}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    openDirectWhatsApp("Hello AARANYA Resort, I would like to enquire about a stay.");
+                  }}
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium text-white border border-[#25D366]/40 hover:bg-[#25D366]/20 transition-colors"
                 >
                   <FaWhatsapp className="w-4 h-4 text-[#25D366]" />

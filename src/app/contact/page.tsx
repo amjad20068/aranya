@@ -8,7 +8,7 @@ import {
   FiClock,
 } from "react-icons/fi";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 
 export const metadata: Metadata = {
   title: "Contact Us | Get in Touch | Aaranya Misty Valley",
@@ -71,7 +71,7 @@ export default function ContactPage() {
                       WhatsApp
                     </span>
                     <a
-                      href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to get in touch.")}`}
+                      href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to get in touch.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-medium text-[#092C24] hover:text-[#25D366] transition-colors"

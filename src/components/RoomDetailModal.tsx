@@ -20,7 +20,7 @@ import {
 } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 import { Room } from "@/data/rooms";
-import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 
 interface TypeOrSelectInputProps {
   id?: string;
@@ -167,8 +167,7 @@ Please let me know availability and stay details.
 
 Thank you.`;
 
-    const url = buildWhatsAppUrl(msg);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openDirectWhatsApp(msg);
   };
 
   const handleFormChange = (
@@ -254,8 +253,7 @@ Thank you.`;
     }
 
     const message = lines.join("\n");
-    const url = buildWhatsAppUrl(message);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openDirectWhatsApp(message);
   };
 
   return (

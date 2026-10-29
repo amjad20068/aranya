@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { LuTrees, LuMountain, LuLeaf, LuHeartHandshake } from "react-icons/lu";
 import { FiArrowRight } from "react-icons/fi";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 
 export const metadata: Metadata = {
   title: "About Us | A Retreat in Nature | Aaranya Misty Valley",
@@ -170,7 +170,7 @@ export default function AboutPage() {
 
               <div className="mt-6">
                 <a
-                  href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about visiting and staying.")}`}
+                  href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to enquire about visiting and staying.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-sm"

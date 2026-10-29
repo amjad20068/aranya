@@ -5,7 +5,7 @@ import { FaStar, FaWhatsapp } from "react-icons/fa";
 import { FiArrowRight, FiCheckCircle, FiExternalLink } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 import { reviewsData, reviewsSummary, GoogleReview } from "@/data/reviews";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 
 // Official Google "G" SVG Icon
 function GoogleIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -272,9 +272,13 @@ export default function GoogleReviewsSection() {
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I loved reading your guest reviews and would like to enquire about staying.")}`}
+              href={buildWhatsAppUrl("Hello Aaranya Resort, I loved reading your guest reviews and would like to enquire about staying.")}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                openDirectWhatsApp("Hello Aaranya Resort, I loved reading your guest reviews and would like to enquire about staying.");
+              }}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-md transition-all duration-200"
             >
               <FaWhatsapp className="w-4 h-4 text-[#061F1A]" />

@@ -12,7 +12,7 @@ import {
   FiChevronDown,
   FiHome,
 } from "react-icons/fi";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, openDirectWhatsApp } from "@/config/resort";
 
 interface TypeOrSelectInputProps {
   id: string;
@@ -177,11 +177,7 @@ export default function ContactEnquiryForm() {
     }
 
     const formattedMessage = lines.join("\n");
-    const whatsappUrl = `https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent(
-      formattedMessage
-    )}`;
-
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    openDirectWhatsApp(formattedMessage);
   };
 
   return (

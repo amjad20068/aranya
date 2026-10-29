@@ -1634,6 +1634,30 @@
     // WhatsApp Booking Enquiry Submission
     const RESORT_WA_NUMBER = "917306906488";
 
+    function openDirectWhatsApp(message) {
+      const cleanNumber = RESORT_WA_NUMBER.replace(/[^0-9]/g, "");
+      const encoded = encodeURIComponent(message.trim());
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const nativeAppUrl = `whatsapp://send?phone=${cleanNumber}&text=${encoded}`;
+      const webApiUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encoded}`;
+
+      if (isMobile) {
+        window.location.href = nativeAppUrl;
+        const timer = setTimeout(() => {
+          window.location.href = webApiUrl;
+        }, 1500);
+        const handleVisibility = () => {
+          if (document.hidden) {
+            clearTimeout(timer);
+            document.removeEventListener("visibilitychange", handleVisibility);
+          }
+        };
+        document.addEventListener("visibilitychange", handleVisibility);
+      } else {
+        window.open(webApiUrl, "_blank", "noopener,noreferrer");
+      }
+    }
+
     function handleBookingSubmit(event) {
       event.preventDefault();
       const checkin = document.getElementById('b-checkin').value;
@@ -1674,8 +1698,7 @@
         lines.push(`Preferred Room: ${room}`);
       }
 
-      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
-      window.open(waUrl, '_blank');
+      openDirectWhatsApp(lines.join("\n"));
     }
 
     function openRoomInquiry(roomName) {
@@ -1690,8 +1713,7 @@
         "Thank you."
       ].join("\n");
 
-      const waUrl = `https://wa.me/${RESORT_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-      window.open(waUrl, '_blank');
+      openDirectWhatsApp(msg);
     }
 
     function toggleMobileMenu() {

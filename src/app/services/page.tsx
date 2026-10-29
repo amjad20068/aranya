@@ -86,7 +86,7 @@ export default function ServicesPage() {
               {/* Direct Enquiry Button */}
               <div className="pt-2 flex flex-wrap items-center gap-3.5">
                 <a
-                  href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about your services and stay experiences.")}`}
+                  href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to enquire about your services and stay experiences.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
@@ -222,7 +222,7 @@ export default function ServicesPage() {
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about your services and book a stay.")}`}
+                  href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to enquire about your services and book a stay.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-sm"

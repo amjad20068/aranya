@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,6 +24,10 @@ export default function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={(e) => {
+          e.preventDefault();
+          openDirectWhatsApp(defaultMessage);
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20BA5C] text-white flex items-center justify-center shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/30"

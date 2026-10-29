@@ -93,9 +93,55 @@ export const resortConfig: ResortConfig = {
 
 /**
  * Helper to build the official WhatsApp Click-to-Chat URL
+ * Uses api.whatsapp.com/send which directly communicates with the WhatsApp client
  */
 export function buildWhatsAppUrl(message: string): string {
   const cleanNumber = resortConfig.whatsappNumber.replace(/[^0-9]/g, "");
   const encoded = encodeURIComponent(message.trim());
-  return `https://wa.me/${cleanNumber}?text=${encoded}`;
+  return `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encoded}`;
+}
+
+/**
+ * Universal direct WhatsApp launcher:
+ * - On Mobile (iOS / Android): uses native whatsapp:// scheme so mobile devices immediately
+ *   launch the WhatsApp native app directly without opening an intermediate browser page.
+ *   Includes graceful web fallback if app isn't installed.
+ * - On Desktop: opens https://api.whatsapp.com/send directly to launch WhatsApp Desktop / Web.
+ */
+export function openDirectWhatsApp(message: string): void {
+  if (typeof window === "undefined") return;
+
+  const cleanNumber = resortConfig.whatsappNumber.replace(/[^0-9]/g, "");
+  const encoded = encodeURIComponent(message.trim());
+
+  const isMobile =
+    typeof navigator !== "undefined" &&
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+  const nativeAppUrl = `whatsapp://send?phone=${cleanNumber}&text=${encoded}`;
+  const webApiUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encoded}`;
+
+  if (isMobile) {
+    // 1. Direct App Protocol: Tells Android & iOS to open WhatsApp app directly
+    // Using window.location.href avoids opening an unnecessary blank browser tab or Google Chrome landing page
+    window.location.href = nativeAppUrl;
+
+    // 2. Safety fallback to web API after 1.5s if WhatsApp app is not installed
+    const timer = setTimeout(() => {
+      window.location.href = webApiUrl;
+    }, 1500);
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        clearTimeout(timer);
+        document.removeEventListener("visibilitychange", handleVisibility);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+  } else {
+    // Desktop: opens WhatsApp Web or prompts to open WhatsApp Desktop application
+    window.open(webApiUrl, "_blank", "noopener,noreferrer");
+  }
 }

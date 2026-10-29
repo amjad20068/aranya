@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import { FiPhone, FiMail, FiMapPin, FiCalendar, FiArrowRight } from "react-icons/fi";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 import { roomsData } from "@/data/rooms";
 
 export default function Footer() {
@@ -60,9 +60,13 @@ export default function Footer() {
                 </a>
               )}
               <a
-                href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello AARANYA, I would like to enquire about staying at your resort.")}`}
+                href={buildWhatsAppUrl("Hello AARANYA, I would like to enquire about staying at your resort.")}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openDirectWhatsApp("Hello AARANYA, I would like to enquire about staying at your resort.");
+                }}
                 className="w-9 h-9 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300"
                 aria-label="WhatsApp"
               >
@@ -180,9 +184,13 @@ export default function Footer() {
 
             <div className="space-y-3 text-sm text-[#FAF8F5]/80 font-light">
               <a
-                href={`https://wa.me/${resortConfig.whatsappNumber}`}
+                href={buildWhatsAppUrl("Hello AARANYA, I would like to enquire about staying at your resort.")}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openDirectWhatsApp("Hello AARANYA, I would like to enquire about staying at your resort.");
+                }}
                 className="flex items-start gap-3 hover:text-[#25D366] transition-colors group"
               >
                 <FaWhatsapp className="w-4 h-4 text-[#25D366] mt-0.5 shrink-0" />

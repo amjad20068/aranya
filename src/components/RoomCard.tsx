@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 import { Room } from "@/data/rooms";
-import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 import RoomDetailModal from "./RoomDetailModal";
 
 interface RoomCardProps {
@@ -28,8 +28,7 @@ Please let me know availability and stay details.
 
 Thank you.`;
 
-    const url = buildWhatsAppUrl(msg);
-    window.open(url, "_blank", "noopener,noreferrer");
+    openDirectWhatsApp(msg);
   };
 
   const handleOpenDetails = () => {

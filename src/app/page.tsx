@@ -14,7 +14,7 @@ import InstagramSection from "@/components/InstagramSection";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 import { roomsData } from "@/data/rooms";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 
 export default function HomePage() {
   const featuredRooms = roomsData.slice(0, 3);
@@ -215,7 +215,7 @@ export default function HomePage() {
                 </Link>
 
                 <a
-                  href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to enquire about your services and stay experiences.")}`}
+                  href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to enquire about your services and stay experiences.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-xs font-semibold text-[#092C24] border border-[#092C24]/20 hover:bg-[#092C24]/5 transition-all"
@@ -323,7 +323,7 @@ export default function HomePage() {
                       WhatsApp
                     </span>
                     <a
-                      href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I would like to get in touch.")}`}
+                      href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to get in touch.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-medium text-[#092C24] hover:text-[#25D366] transition-colors"

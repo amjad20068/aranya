@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import GalleryGrid from "@/components/GalleryGrid";
-import { resortConfig } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 
 export const metadata: Metadata = {
   title: "Resort Gallery | Moments at Aaranya",
@@ -45,7 +45,7 @@ export default function GalleryPage() {
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
               <a
-                href={`https://wa.me/${resortConfig.whatsappNumber}?text=${encodeURIComponent("Hello Aaranya Resort, I loved your gallery and would like to enquire about staying.")}`}
+                href={buildWhatsAppUrl("Hello Aaranya Resort, I loved your gallery and would like to enquire about staying.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-md font-sans"

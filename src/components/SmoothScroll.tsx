@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
+import { openDirectWhatsApp } from "@/config/resort";
 
 interface SmoothScrollProps {
   children: React.ReactNode;
@@ -64,10 +65,43 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       }
     };
 
+    // Universal direct WhatsApp handler for all WhatsApp links across the site
+    const handleWhatsAppClick = (e: MouseEvent) => {
+      if (e.defaultPrevented) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+
+      const target = (e.target as HTMLElement).closest("a");
+      if (!target) return;
+
+      const href = target.getAttribute("href");
+      if (!href) return;
+
+      const isWhatsApp =
+        href.includes("api.whatsapp.com") ||
+        href.includes("wa.me") ||
+        href.startsWith("whatsapp:");
+
+      if (isWhatsApp) {
+        e.preventDefault();
+        let message = "";
+        try {
+          if (href.includes("?")) {
+            const urlObj = new URL(href, window.location.origin);
+            message = urlObj.searchParams.get("text") || "";
+          }
+        } catch {
+          // fallback if url format varies
+        }
+        openDirectWhatsApp(message);
+      }
+    };
+
     document.addEventListener("click", handleAnchorClick, { passive: false });
+    document.addEventListener("click", handleWhatsAppClick, { passive: false });
 
     return () => {
       document.removeEventListener("click", handleAnchorClick);
+      document.removeEventListener("click", handleWhatsAppClick);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;

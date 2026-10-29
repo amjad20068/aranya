@@ -14,7 +14,7 @@ import {
   FiMessageSquare,
   FiChevronDown,
 } from "react-icons/fi";
-import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
 import { roomsData } from "@/data/rooms";
 
 interface BookingFormProps {
@@ -279,13 +279,7 @@ export default function BookingForm({
     }
 
     const message = lines.join("\n");
-    const url = buildWhatsAppUrl(message);
-
-    try {
-      window.open(url, "_blank", "noopener,noreferrer");
-    } catch {
-      window.location.href = url;
-    }
+    openDirectWhatsApp(message);
 
     setIsSubmitting(false);
     setShowSuccessModal(true);
@@ -617,6 +611,12 @@ export default function BookingForm({
                 href={buildWhatsAppUrl(
                   `*Enquiry*\nName : ${formData.fullName}\nNumber: ${formData.mobile}`
                 )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openDirectWhatsApp(
+                    `*Enquiry*\nName : ${formData.fullName}\nNumber: ${formData.mobile}`
+                  );
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline text-[#E8BD78] font-medium"
