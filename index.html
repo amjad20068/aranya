@@ -1070,16 +1070,16 @@
               </div>
             </div>
 
-            <!-- Child Age Breakdown (Kids 6-12 & Kids 0-5) -->
+            <!-- Child Age Breakdown (Kids [6-12] & Kids [0-6]) -->
             <div id="childAgeBox" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(214,173,104,0.4); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <div>
-                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Number of kids 6-12</label>
+                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Number of kids [6-12]</label>
                   <input type="number" id="b-child-6-12" class="form-control" value="0" min="0" max="20" style="padding: 4px 8px; font-size: 12px;">
                 </div>
                 <div>
-                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Kids 0-5</label>
-                  <input type="number" id="b-child-0-5" class="form-control" value="0" min="0" max="20" style="padding: 4px 8px; font-size: 12px;">
+                  <label style="font-size: 11px; color: #fff; display: block; margin-bottom: 3px;">Kids [0-6]</label>
+                  <input type="number" id="b-child-0-6" class="form-control" value="0" min="0" max="20" style="padding: 4px 8px; font-size: 12px;">
                 </div>
               </div>
             </div>
@@ -1664,8 +1664,8 @@
       const checkout = document.getElementById('b-checkout').value;
       const adults = document.getElementById('b-adults').value || '1';
       const rooms = document.getElementById('b-rooms').value || '1';
-      const kids6to12 = document.getElementById('b-child-6-12').value || '0';
-      const kids0to5 = document.getElementById('b-child-0-5').value || '0';
+      const kids6to12 = document.getElementById('b-child-6-12') ? document.getElementById('b-child-6-12').value : '0';
+      const kids0to6 = document.getElementById('b-child-0-6') ? document.getElementById('b-child-0-6').value : (document.getElementById('b-child-0-5')?.value || '0');
       const name = document.getElementById('b-name').value.trim();
       const phone = document.getElementById('b-phone').value.trim();
       const room = document.getElementById('b-room').value;
@@ -1682,15 +1682,21 @@
         return val;
       }
 
+      const numAdults = parseInt(adults, 10) || 1;
+      const numKids6to12 = parseInt(kids6to12, 10) || 0;
+      const numKids0to6 = parseInt(kids0to6, 10) || 0;
+      const totalMembers = String(numAdults + numKids6to12 + numKids0to6);
+
       const lines = [
         "*Enquiry*",
         `Name : ${name}`,
         `Number: ${phone}`,
         `Check In Date: ${formatDate(checkin)}`,
         `Check Out Date: ${formatDate(checkout)}`,
+        `Number of Members: ${totalMembers}`,
         `Number of Adults[12y above]: ${adults}`,
-        `Number of kids 6-12: ${kids6to12}`,
-        `Kids 0-5: ${kids0to5}`,
+        `Number of kids [6-12]: ${kids6to12}`,
+        `Kids [0-6]: ${kids0to6}`,
         `No of Rooms: ${rooms}`
       ];
 

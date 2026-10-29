@@ -110,9 +110,10 @@ export default function ContactEnquiryForm() {
     mobile: "",
     checkIn: "",
     checkOut: "",
+    members: "2",
     adults: "2",
     kids6to12: "0",
-    kids0to5: "0",
+    kids0to6: "0",
     rooms: "1",
     message: "",
   });
@@ -133,6 +134,49 @@ export default function ContactEnquiryForm() {
       checkOut: prev.checkOut || nextDay,
     }));
   }, []);
+
+  const handleAdultsChange = (val: string) => {
+    setFormData((prev) => {
+      const a = parseInt(val, 10) || 0;
+      const k1 = parseInt(prev.kids6to12, 10) || 0;
+      const k2 = parseInt(prev.kids0to6, 10) || 0;
+      return {
+        ...prev,
+        adults: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
+  };
+
+  const handleKids6to12Change = (val: string) => {
+    setFormData((prev) => {
+      const a = parseInt(prev.adults, 10) || 0;
+      const k1 = parseInt(val, 10) || 0;
+      const k2 = parseInt(prev.kids0to6, 10) || 0;
+      return {
+        ...prev,
+        kids6to12: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
+  };
+
+  const handleKids0to6Change = (val: string) => {
+    setFormData((prev) => {
+      const a = parseInt(prev.adults, 10) || 0;
+      const k1 = parseInt(prev.kids6to12, 10) || 0;
+      const k2 = parseInt(val, 10) || 0;
+      return {
+        ...prev,
+        kids0to6: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
+  };
+
+  const handleMembersChange = (val: string) => {
+    setFormData((prev) => ({ ...prev, members: val }));
+  };
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -160,15 +204,24 @@ export default function ContactEnquiryForm() {
     e.preventDefault();
     if (!validate()) return;
 
+    const numAdults = parseInt(formData.adults, 10) || 1;
+    const numKids6to12 = parseInt(formData.kids6to12, 10) || 0;
+    const numKids0to6 = parseInt(formData.kids0to6, 10) || 0;
+    const totalMembers =
+      formData.members && formData.members.trim() !== ""
+        ? formData.members.trim()
+        : String(numAdults + numKids6to12 + numKids0to6);
+
     const lines: string[] = [
       "*Enquiry*",
       `Name : ${formData.name.trim()}`,
       `Number: ${formData.mobile.trim()}`,
       `Check In Date: ${formatDate(formData.checkIn)}`,
       `Check Out Date: ${formatDate(formData.checkOut)}`,
+      `Number of Members: ${totalMembers}`,
       `Number of Adults[12y above]: ${formData.adults}`,
-      `Number of kids 6-12: ${formData.kids6to12}`,
-      `Kids 0-5: ${formData.kids0to5}`,
+      `Number of kids [6-12]: ${formData.kids6to12}`,
+      `Kids [0-6]: ${formData.kids0to6}`,
       `No of Rooms: ${formData.rooms}`,
     ];
 
@@ -290,27 +343,32 @@ export default function ContactEnquiryForm() {
           </div>
         </div>
 
-        {/* Number of Adults[12y above] & No of Rooms */}
+        {/* Number of Members & No of Rooms */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label
-              htmlFor="contact-adults"
-              className="block text-xs font-semibold uppercase tracking-wider text-[#092C24] mb-1.5 flex items-center gap-1"
+              htmlFor="contact-members"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#092C24] mb-1.5 flex items-center justify-between"
             >
-              <FiUsers className="w-3.5 h-3.5 text-[#D6AD68]" />
-              <span>Number of Adults [12y above]</span>
+              <span className="flex items-center gap-1">
+                <FiUsers className="w-3.5 h-3.5 text-[#D6AD68]" />
+                <span>Number of Members</span>
+              </span>
+              <span className="text-[10px] text-[#77766E] font-normal lowercase">
+                (adults + kids)
+              </span>
             </label>
             <TypeOrSelectInput
-              id="contact-adults"
-              name="adults"
-              value={formData.adults}
-              onChange={(val) => setFormData((prev) => ({ ...prev, adults: val }))}
-              options={[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]}
-              unitSingle="Adult"
-              unitPlural="Adults"
+              id="contact-members"
+              name="members"
+              value={formData.members}
+              onChange={handleMembersChange}
+              options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30]}
+              unitSingle="Member"
+              unitPlural="Members"
               min={1}
-              max={50}
-              placeholder="1"
+              max={60}
+              placeholder="2"
               theme="light"
             />
           </div>
@@ -339,21 +397,44 @@ export default function ContactEnquiryForm() {
           </div>
         </div>
 
-        {/* Number of kids 6-12 & Kids 0-5 */}
+        {/* Number of Adults [12y above] & Number of kids [6-12] */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label
+              htmlFor="contact-adults"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#092C24] mb-1.5 flex items-center gap-1"
+            >
+              <FiUsers className="w-3.5 h-3.5 text-[#D6AD68]" />
+              <span>Number of Adults [12y above]</span>
+            </label>
+            <TypeOrSelectInput
+              id="contact-adults"
+              name="adults"
+              value={formData.adults}
+              onChange={handleAdultsChange}
+              options={[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]}
+              unitSingle="Adult"
+              unitPlural="Adults"
+              min={1}
+              max={50}
+              placeholder="1"
+              theme="light"
+            />
+          </div>
+
           <div>
             <label
               htmlFor="contact-kids-6-12"
               className="block text-xs font-semibold uppercase tracking-wider text-[#092C24] mb-1.5 flex items-center gap-1"
             >
               <FiUsers className="w-3.5 h-3.5 text-[#D6AD68]" />
-              <span>Number of kids 6-12</span>
+              <span>Number of kids [6-12]</span>
             </label>
             <TypeOrSelectInput
               id="contact-kids-6-12"
               name="kids6to12"
               value={formData.kids6to12}
-              onChange={(val) => setFormData((prev) => ({ ...prev, kids6to12: val }))}
+              onChange={handleKids6to12Change}
               options={[0, 1, 2, 3, 4, 5, 6, 8]}
               unitSingle="Kid"
               unitPlural="Kids"
@@ -363,20 +444,23 @@ export default function ContactEnquiryForm() {
               theme="light"
             />
           </div>
+        </div>
 
+        {/* Kids [0-6] */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label
-              htmlFor="contact-kids-0-5"
+              htmlFor="contact-kids-0-6"
               className="block text-xs font-semibold uppercase tracking-wider text-[#092C24] mb-1.5 flex items-center gap-1"
             >
               <FiUsers className="w-3.5 h-3.5 text-[#D6AD68]" />
-              <span>Kids 0-5</span>
+              <span>Kids [0-6]</span>
             </label>
             <TypeOrSelectInput
-              id="contact-kids-0-5"
-              name="kids0to5"
-              value={formData.kids0to5}
-              onChange={(val) => setFormData((prev) => ({ ...prev, kids0to5: val }))}
+              id="contact-kids-0-6"
+              name="kids0to6"
+              value={formData.kids0to6}
+              onChange={handleKids0to6Change}
               options={[0, 1, 2, 3, 4, 5, 6, 8]}
               unitSingle="Kid"
               unitPlural="Kids"

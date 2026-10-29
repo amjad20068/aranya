@@ -30,9 +30,10 @@ interface FormState {
   mobile: string;
   checkIn: string;
   checkOut: string;
+  members: string;
   adults: string;
   kids6to12: string;
-  kids0to5: string;
+  kids0to6: string;
   rooms: string;
   preferredRoom: string;
   specialRequest: string;
@@ -151,9 +152,10 @@ export default function BookingForm({
     mobile: "",
     checkIn: "",
     checkOut: "",
+    members: "2",
     adults: "2",
     kids6to12: "0",
-    kids0to5: "0",
+    kids0to6: "0",
     rooms: "1",
     preferredRoom: initialRoom || "",
     specialRequest: "",
@@ -219,8 +221,21 @@ export default function BookingForm({
     }
   };
 
+  const handleMembersChange = (val: string) => {
+    setFormData((prev) => ({ ...prev, members: val }));
+  };
+
   const handleAdultsChange = (val: string) => {
-    setFormData((prev) => ({ ...prev, adults: val }));
+    setFormData((prev) => {
+      const a = parseInt(val, 10) || 0;
+      const k1 = parseInt(prev.kids6to12, 10) || 0;
+      const k2 = parseInt(prev.kids0to6, 10) || 0;
+      return {
+        ...prev,
+        adults: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
     if (errors.adults) setErrors((prev) => ({ ...prev, adults: undefined }));
   };
 
@@ -229,11 +244,29 @@ export default function BookingForm({
   };
 
   const handleKids6to12Change = (val: string) => {
-    setFormData((prev) => ({ ...prev, kids6to12: val }));
+    setFormData((prev) => {
+      const a = parseInt(prev.adults, 10) || 0;
+      const k1 = parseInt(val, 10) || 0;
+      const k2 = parseInt(prev.kids0to6, 10) || 0;
+      return {
+        ...prev,
+        kids6to12: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
   };
 
-  const handleKids0to5Change = (val: string) => {
-    setFormData((prev) => ({ ...prev, kids0to5: val }));
+  const handleKids0to6Change = (val: string) => {
+    setFormData((prev) => {
+      const a = parseInt(prev.adults, 10) || 0;
+      const k1 = parseInt(prev.kids6to12, 10) || 0;
+      const k2 = parseInt(val, 10) || 0;
+      return {
+        ...prev,
+        kids0to6: val,
+        members: String(Math.max(1, a + k1 + k2)),
+      };
+    });
   };
 
   const formatDate = (dateStr: string) => {
@@ -259,15 +292,24 @@ export default function BookingForm({
       formData.preferredRoom ||
       "Any Available Room";
 
+    const numAdults = parseInt(formData.adults, 10) || 1;
+    const numKids6to12 = parseInt(formData.kids6to12, 10) || 0;
+    const numKids0to6 = parseInt(formData.kids0to6, 10) || 0;
+    const totalMembers =
+      formData.members && formData.members.trim() !== ""
+        ? formData.members.trim()
+        : String(numAdults + numKids6to12 + numKids0to6);
+
     const lines: string[] = [
       "*Enquiry*",
       `Name : ${formData.fullName.trim()}`,
       `Number: ${formData.mobile.trim()}`,
       `Check In Date: ${formatDate(formData.checkIn)}`,
       `Check Out Date: ${formatDate(formData.checkOut)}`,
+      `Number of Members: ${totalMembers}`,
       `Number of Adults[12y above]: ${formData.adults}`,
-      `Number of kids 6-12: ${formData.kids6to12}`,
-      `Kids 0-5: ${formData.kids0to5}`,
+      `Number of kids [6-12]: ${formData.kids6to12}`,
+      `Kids [0-6]: ${formData.kids0to6}`,
       `No of Rooms: ${formData.rooms}`,
     ];
 
@@ -373,26 +415,31 @@ export default function BookingForm({
             )}
           </div>
 
-          {/* Adults */}
+          {/* Number of Members */}
           <div className="flex flex-col min-w-0 w-full">
             <label
-              htmlFor="adults"
-              className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
+              htmlFor="members"
+              className="h-5 flex items-center justify-between text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
             >
-              <FiUsers className="w-3.5 h-3.5 text-[#D6AD68] shrink-0" />
-              <span className="truncate">Adults (12y+)</span>
+              <span className="flex items-center gap-1.5 truncate">
+                <FiUsers className="w-3.5 h-3.5 text-[#D6AD68] shrink-0" />
+                <span className="truncate">Members</span>
+              </span>
+              <span className="text-[9px] text-[#FAF8F5]/50 font-normal lowercase shrink-0">
+                (total)
+              </span>
             </label>
             <TypeOrSelectInput
-              id="adults"
-              name="adults"
-              value={formData.adults}
-              onChange={handleAdultsChange}
-              options={[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]}
-              unitSingle="Adult"
-              unitPlural="Adults"
+              id="members"
+              name="members"
+              value={formData.members}
+              onChange={handleMembersChange}
+              options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30]}
+              unitSingle="Member"
+              unitPlural="Members"
               min={1}
-              max={50}
-              placeholder="1"
+              max={60}
+              placeholder="2"
               variant={variant}
               theme="dark"
             />
@@ -424,16 +471,41 @@ export default function BookingForm({
           </div>
         </div>
 
-        {/* Row 2: Kids 6-12, Kids 0-5, Room Type (spans 2 cols on mobile and desktop) */}
+        {/* Row 2: Adults [12y+], Kids [6-12], Kids [0-6], Room Type (4 cols) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-3 sm:mb-4 w-full min-w-0">
-          {/* Kids 6-12 */}
+          {/* Adults */}
+          <div className="flex flex-col min-w-0 w-full">
+            <label
+              htmlFor="adults"
+              className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
+            >
+              <FiUsers className="w-3.5 h-3.5 text-[#D6AD68] shrink-0" />
+              <span className="truncate">Adults [12y+]</span>
+            </label>
+            <TypeOrSelectInput
+              id="adults"
+              name="adults"
+              value={formData.adults}
+              onChange={handleAdultsChange}
+              options={[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]}
+              unitSingle="Adult"
+              unitPlural="Adults"
+              min={1}
+              max={50}
+              placeholder="1"
+              variant={variant}
+              theme="dark"
+            />
+          </div>
+
+          {/* Kids [6-12] */}
           <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="kids6to12"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
             >
               <FiUsers className="w-3.5 h-3.5 text-[#D6AD68] shrink-0" />
-              <span className="truncate">Kids (6-12 Yrs)</span>
+              <span className="truncate">Kids [6-12]</span>
             </label>
             <TypeOrSelectInput
               id="kids6to12"
@@ -451,20 +523,20 @@ export default function BookingForm({
             />
           </div>
 
-          {/* Kids 0-5 */}
+          {/* Kids [0-6] */}
           <div className="flex flex-col min-w-0 w-full">
             <label
-              htmlFor="kids0to5"
+              htmlFor="kids0to6"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
             >
               <FiUsers className="w-3.5 h-3.5 text-[#D6AD68] shrink-0" />
-              <span className="truncate">Kids (0-5 Yrs)</span>
+              <span className="truncate">Kids [0-6]</span>
             </label>
             <TypeOrSelectInput
-              id="kids0to5"
-              name="kids0to5"
-              value={formData.kids0to5}
-              onChange={handleKids0to5Change}
+              id="kids0to6"
+              name="kids0to6"
+              value={formData.kids0to6}
+              onChange={handleKids0to6Change}
               options={[0, 1, 2, 3, 4, 5, 6, 8]}
               unitSingle="Kid"
               unitPlural="Kids"
@@ -476,8 +548,8 @@ export default function BookingForm({
             />
           </div>
 
-          {/* Preferred Room Type - spans 2 cols */}
-          <div className="flex flex-col col-span-2 min-w-0 w-full">
+          {/* Preferred Room Type */}
+          <div className="flex flex-col min-w-0 w-full">
             <label
               htmlFor="preferredRoom"
               className="h-5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-semibold text-[#FAF8F5]/85 mb-1.5"
