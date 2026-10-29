@@ -88,7 +88,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Core Content - Clean, elegant editorial text with CTA buttons */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-8 sm:py-10 lg:py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto pt-2 pb-4 sm:py-10 lg:py-16">
         <div className="max-w-xl lg:max-w-[560px]">
           {/* Eyebrow: AARANYA — MISTY VALLEY RESORT */}
           <div ref={eyebrowRef} className="flex items-center gap-2.5 mb-3">
@@ -116,10 +116,10 @@ export default function Hero() {
             {resortConfig.heroDescription}
           </p>
 
-          {/* Action Buttons: Explore Now & View More */}
+          {/* Action Buttons: Explore Now & View More - Lowered gracefully on mobile so resort villa is fully visible */}
           <div
             ref={ctaRef}
-            className="mt-10 sm:mt-8 flex items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[360px] sm:max-w-none"
+            className="mt-[clamp(7.5rem,22vh,12.5rem)] sm:mt-8 flex items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[360px] sm:max-w-none"
           >
             <Link
               href="#about"
