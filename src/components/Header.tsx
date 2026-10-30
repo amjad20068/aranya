@@ -69,14 +69,14 @@ export default function Header() {
           {/* Official Brand Logo matching Reference Image */}
           <NextLink
             href="/"
-            className="relative h-11 md:h-12 w-48 md:w-56 flex items-center group focus:outline-none focus:ring-2 focus:ring-[#D6AD68]/50 rounded-lg p-0.5"
+            className="relative h-10 sm:h-11 md:h-12 w-40 sm:w-48 md:w-56 flex items-center group focus:outline-none focus:ring-2 focus:ring-[#D6AD68]/50 rounded-lg p-0.5 shrink-0"
             aria-label="AARANYA Misty Valley Resort - Home"
           >
             <Image
               src="/images/logo/aaranya-navbar-logo.webp"
               alt="AARANYA Misty Valley Resort Official Logo"
               fill
-              sizes="(max-width: 768px) 192px, 224px"
+              sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
               className="object-contain object-left group-hover:brightness-110 transition-all duration-300"
               priority
             />
@@ -150,10 +150,10 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Hamburger Button */}
-          <div className="flex lg:hidden items-center gap-2.5">
+          <div className="flex lg:hidden items-center gap-2 sm:gap-2.5">
             <NextLink
               href="/#booking"
-              className="px-3 py-1.5 rounded-lg text-[11px] font-semibold text-[#061F1A] bg-[#E8BD78] flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-semibold text-[#061F1A] bg-[#E8BD78] flex items-center gap-1 sm:gap-1.5 shrink-0"
             >
               <FiCalendar className="w-3 h-3" />
               <span>Book</span>
@@ -162,11 +162,11 @@ export default function Header() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="p-2 rounded-lg text-[#FAF8F5] hover:text-[#E8BD78] hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68]"
+              className="p-1.5 sm:p-2 rounded-lg text-[#FAF8F5] hover:text-[#E8BD78] hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] shrink-0"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+              {mobileMenuOpen ? <FiX className="w-5 h-5 sm:w-6 sm:h-6" /> : <FiMenu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>

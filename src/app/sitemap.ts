@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/config/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aaranyamistyvalleyresort.com";
+  const baseUrl = SITE_URL;
   const now = new Date();
 
   return [
@@ -12,8 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
       images: [
         `${baseUrl}/images/hero/aaranya-resort-villa-4k.webp`,
+        `${baseUrl}/images/pages/aaranya-sea-of-clouds-2k.webp`,
         `${baseUrl}/images/pages/about-resort.webp`,
-        `${baseUrl}/images/gallery/aaranya-valley-mist-balcony.webp`,
         `${baseUrl}/images/logo/aaranya-brand-logo.png`,
       ],
     },
@@ -23,10 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
       images: [
-        `${baseUrl}/images/pages/rooms-hero.webp`,
-        `${baseUrl}/images/rooms/deluxe-room.jpg`,
-        `${baseUrl}/images/rooms/premium-room.jpg`,
-        `${baseUrl}/images/rooms/family-room.jpg`,
+        `${baseUrl}/images/rooms/aaranya-canopy-bedroom-suite-2k.webp`,
+        `${baseUrl}/images/rooms/aaranya-luxury-suite-interior-2k.webp`,
+        `${baseUrl}/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp`,
       ],
     },
     {
@@ -35,11 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
       images: [
-        `${baseUrl}/images/gallery/aaranya-resort-day.webp`,
-        `${baseUrl}/images/gallery/aaranya-valley-mist-balcony.webp`,
-        `${baseUrl}/images/gallery/aaranya-hilltop-sunset.webp`,
-        `${baseUrl}/images/gallery/aaranya-forest-hillside.webp`,
-        `${baseUrl}/images/gallery/aaranya-dining-terrace.webp`,
+        `${baseUrl}/images/gallery/aaranya-poolside-mountain-panorama-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-jacuzzi-nature-view-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-glass-dining-deck-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-private-mountain-balcony-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-cathedral-atrium-lounge-2k.webp`,
       ],
     },
     {
@@ -48,9 +48,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
       images: [
-        `${baseUrl}/images/gallery/aaranya-dining-terrace.webp`,
-        `${baseUrl}/images/gallery/aaranya-valley-mist-balcony.webp`,
-        `${baseUrl}/images/gallery/aaranya-nature-walkway.webp`,
+        `${baseUrl}/images/gallery/aaranya-glass-dining-deck-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-poolside-mountain-panorama-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-jacuzzi-nature-view-2k.webp`,
+        `${baseUrl}/images/gallery/aaranya-manicured-garden-pathway-2k.webp`,
       ],
     },
     {
@@ -60,7 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [
         `${baseUrl}/images/pages/about-resort.webp`,
-        `${baseUrl}/images/gallery/aaranya-architecture-facade.webp`,
+        `${baseUrl}/images/pages/aaranya-villas-walkway-2k.webp`,
+        `${baseUrl}/images/pages/aaranya-sea-of-clouds-2k.webp`,
       ],
     },
     {
@@ -70,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
       images: [
         `${baseUrl}/images/hero/aaranya-resort-villa-4k.webp`,
+        `${baseUrl}/images/logo/aaranya-brand-logo.png`,
       ],
     },
   ];

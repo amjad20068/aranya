@@ -49,6 +49,7 @@ export const roomsData: Room[] = [
       "Artisanal Wooden Furnishings",
       "Wardrobe & Luggage Area",
       "Electric Kettle & Tea/Coffee Station",
+      "Wi-Fi Available",
       "Daily Housekeeping",
     ],
     features: [
@@ -89,6 +90,7 @@ export const roomsData: Room[] = [
       "Spacious Wardrobe & Luggage Area",
       "Premium Bathroom Toiletries",
       "Writing Desk with Nature View",
+      "Wi-Fi Available",
       "Intercom & Room Service",
     ],
     features: [
@@ -128,6 +130,7 @@ export const roomsData: Room[] = [
       "Dual Wardrobes & Storage",
       "Spacious Family Marble Bathroom",
       "In-room Dining Table Setup",
+      "Wi-Fi Available",
       "Safety Features for Children",
     ],
     features: [

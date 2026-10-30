@@ -7,7 +7,7 @@ import { resortConfig } from "@/config/resort";
 import { roomsData } from "@/data/rooms";
 import { reviewsSummary } from "@/data/reviews";
 
-export const SITE_URL = "https://aaranyamistyvalleyresort.com";
+export const SITE_URL = "https://aaranyamistyvalleyresort.in";
 
 export const defaultSeoKeywords = [
   "Aaranya Misty Valley Resort",
@@ -24,6 +24,23 @@ export const defaultSeoKeywords = [
   "Quiet secluded nature stay Kerala",
   "Family holiday resort Wayanad",
   "Direct WhatsApp resort booking",
+  "Aaranya resort",
+  "tourism wayanad",
+  "near by resort in chooramala",
+  "near me resorts",
+  "primum resorts in wayanad",
+  "forest ambience resorts wayanad",
+  "holiday home in wayanad",
+  "chooramala resorts",
+  "attamala resorts",
+  "near by resort in attamala",
+  "AARANYA",
+  "Aaranya",
+  "aaranya resort wayanad",
+  "aaranya misty valley resort",
+  "aaranya resort booking",
+  "resorts booking wayanad",
+
 ];
 
 /**
@@ -47,12 +64,16 @@ export function getResortJsonLd() {
     },
     image: [
       `${SITE_URL}/images/hero/aaranya-resort-villa-4k.webp`,
-      `${SITE_URL}/images/pages/rooms-hero.webp`,
-      `${SITE_URL}/images/gallery/aaranya-valley-mist-balcony.webp`,
-      `${SITE_URL}/images/gallery/aaranya-architecture-facade.webp`,
-      `${SITE_URL}/images/rooms/deluxe-room.jpg`,
-      `${SITE_URL}/images/rooms/premium-room.jpg`,
-      `${SITE_URL}/images/rooms/family-room.jpg`,
+      `${SITE_URL}/images/pages/aaranya-sea-of-clouds-2k.webp`,
+      `${SITE_URL}/images/pages/about-resort.webp`,
+      `${SITE_URL}/images/pages/aaranya-villas-walkway-2k.webp`,
+      `${SITE_URL}/images/rooms/aaranya-canopy-bedroom-suite-2k.webp`,
+      `${SITE_URL}/images/rooms/aaranya-luxury-suite-interior-2k.webp`,
+      `${SITE_URL}/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp`,
+      `${SITE_URL}/images/gallery/aaranya-poolside-mountain-panorama-2k.webp`,
+      `${SITE_URL}/images/gallery/aaranya-jacuzzi-nature-view-2k.webp`,
+      `${SITE_URL}/images/gallery/aaranya-glass-dining-deck-2k.webp`,
+      `${SITE_URL}/images/gallery/aaranya-private-mountain-balcony-2k.webp`,
     ],
     description:
       "Aaranya is a serene luxury forest retreat nestled in pristine misty hills of the Western Ghats, Kerala. Offering panoramic valley views, bespoke architectural rooms with private sit-outs, and warm hospitality.",
@@ -107,7 +128,7 @@ export function getResortJsonLd() {
       },
       {
         "@type": "LocationFeatureSpecification",
-        name: "Complimentary High-Speed Wi-Fi",
+        name: "Wi-Fi Available",
         value: true,
       },
       {
@@ -204,7 +225,56 @@ export function getWebSiteJsonLd() {
 }
 
 /**
- * 3. BreadcrumbList Schema generator
+ * 3. Organization Schema for Knowledge Graph
+ */
+export function getOrganizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: resortConfig.name,
+    legalName: resortConfig.name,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo/aaranya-brand-logo.png`,
+    email: resortConfig.email,
+    telephone: resortConfig.phone,
+    sameAs: [
+      resortConfig.social.instagram,
+      resortConfig.social.facebook,
+      reviewsSummary.googleMapsUrl,
+    ].filter(Boolean),
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: resortConfig.phone,
+      contactType: "reservations",
+      availableLanguage: ["English", "Malayalam", "Hindi", "Tamil"],
+    },
+  };
+}
+
+/**
+ * 4. WebPage Schema generator
+ */
+export function getWebPageJsonLd(name: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}${path}#webpage`,
+    url: `${SITE_URL}${path}`,
+    name,
+    description,
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+    about: {
+      "@id": `${SITE_URL}/#resort`,
+    },
+    inLanguage: "en-IN",
+  };
+}
+
+/**
+ * 5. BreadcrumbList Schema generator
  */
 export function getBreadcrumbJsonLd(items: { name: string; url: string }[]) {
   return {

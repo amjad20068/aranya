@@ -15,14 +15,43 @@ import {
   LuCheck,
   LuDroplets,
   LuHouse,
+  LuWifi,
 } from "react-icons/lu";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 import { servicesData } from "@/data/services";
+import { SITE_URL, getBreadcrumbJsonLd, getWebPageJsonLd } from "@/config/seo";
 
 export const metadata: Metadata = {
-  title: "Our Services & Curated Experiences | Aaranya Misty Valley Resort",
+  title: "Resort Services & Nature Experiences | Aaranya Misty Valley Resort Wayanad",
   description:
-    "Enjoy a range of thoughtful retreats crafted to make your stay comfortable, relaxing, and truly memorable at Aaranya Misty Valley Resort.",
+    "Discover thoughtful services at Aaranya Misty Valley Resort: Panoramic Glass Dining, Hillside Infinity Pool, Forest Jacuzzi, Estate Nature Walks, and Wi-Fi across the property.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Resort Services & Experiences | Aaranya Misty Valley Resort Wayanad",
+    description:
+      "Enjoy thoughtful retreats and luxury amenities crafted to make your stay comfortable, relaxing, and memorable at Aaranya Misty Valley Resort.",
+    url: `${SITE_URL}/services`,
+    siteName: resortConfig.name,
+    images: [
+      {
+        url: "/images/gallery/aaranya-glass-dining-deck-2k.webp",
+        width: 1920,
+        height: 1080,
+        alt: "Panoramic Glass Dining Deck at Aaranya Misty Valley Resort",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services & Experiences | Aaranya Misty Valley Resort",
+    description:
+      "Panoramic Glass Dining, Hillside Swimming Pool, Forest Jacuzzi, and Wi-Fi in Wayanad.",
+    images: ["/images/gallery/aaranya-glass-dining-deck-2k.webp"],
+  },
 };
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -36,8 +65,28 @@ const serviceIcons: Record<string, React.ReactNode> = {
 };
 
 export default function ServicesPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Our Services", url: "/services" },
+  ]);
+  const webPageJsonLd = getWebPageJsonLd(
+    "Resort Services & Nature Experiences | Aaranya Misty Valley Resort",
+    "Discover thoughtful services at Aaranya Misty Valley Resort: Panoramic Glass Dining, Hillside Infinity Pool, Forest Jacuzzi, Estate Nature Walks, and Wi-Fi across the property.",
+    "/services"
+  );
+
   return (
     <div className="pt-24 md:pt-32 pb-24 bg-[#F7F3EC]">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       {/* 1. Services Main View matching Reference Image (Bottom Middle Panel) */}
       <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,9 +107,9 @@ export default function ServicesPage() {
                 Enjoy a range of thoughtful services centered to make your stay comfortable, relaxing, and truly memorable.
               </p>
 
-              {/* Feature Strip matching Reference Panel */}
+              {/* Feature Strip matching Reference Panel with Integrated Wi-Fi Facility */}
               <div className="pt-2">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 px-4 rounded-xl bg-white/80 border border-[#E6DED1]">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-3.5 px-4 rounded-xl bg-white/80 border border-[#E6DED1]">
                   <div className="flex flex-col items-center text-center">
                     <LuTrees className="w-5 h-5 text-[#D6AD68] mb-1.5" />
                     <span className="text-[11px] font-medium text-[#092C24]">Peaceful Location</span>
@@ -79,6 +128,11 @@ export default function ServicesPage() {
                   <div className="flex flex-col items-center text-center">
                     <LuCoffee className="w-5 h-5 text-[#D6AD68] mb-1.5" />
                     <span className="text-[11px] font-medium text-[#092C24]">Relaxing Stay</span>
+                  </div>
+
+                  <div className="flex flex-col items-center text-center col-span-2 sm:col-span-1">
+                    <LuWifi className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Wi-Fi Available</span>
                   </div>
                 </div>
               </div>

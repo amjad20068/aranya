@@ -4,16 +4,74 @@ import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import GalleryGrid from "@/components/GalleryGrid";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { galleryData } from "@/data/gallery";
+import {
+  SITE_URL,
+  getBreadcrumbJsonLd,
+  getGalleryJsonLd,
+  getWebPageJsonLd,
+} from "@/config/seo";
 
 export const metadata: Metadata = {
-  title: "Resort Gallery | Moments at Aaranya",
+  title: "Photo Gallery & Scenic Views | Aaranya Misty Valley Resort Wayanad",
   description:
-    "Explore authentic high-resolution photographs of Aaranya Misty Valley Resort, including our hillside architecture, luxury rooms, mist-covered valleys, and natural surroundings.",
+    "Browse authentic photographs of Aaranya Misty Valley Resort in Wayanad: rolling sea of clouds, hillside villas, luxury bedrooms, infinity pool, and tea garden trails.",
+  alternates: {
+    canonical: "/gallery",
+  },
+  openGraph: {
+    title: "Resort Photography & Scenic Views | Aaranya Misty Valley Resort",
+    description:
+      "Explore high-resolution photographs of our luxury hillside architecture, valley mist views, and tranquil resort grounds in Wayanad.",
+    url: `${SITE_URL}/gallery`,
+    siteName: resortConfig.name,
+    images: [
+      {
+        url: "/images/gallery/aaranya-sea-of-clouds-valley-2k.webp",
+        width: 1920,
+        height: 1080,
+        alt: "Rolling sea of clouds at Aaranya Misty Valley Resort",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gallery | Aaranya Misty Valley Resort Wayanad",
+    description:
+      "Authentic photos of misty valleys, four-poster suites, and hillside pool views.",
+    images: ["/images/gallery/aaranya-sea-of-clouds-valley-2k.webp"],
+  },
 };
 
 export default function GalleryPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Gallery", url: "/gallery" },
+  ]);
+  const webPageJsonLd = getWebPageJsonLd(
+    "Photo Gallery & Scenic Views | Aaranya Misty Valley Resort Wayanad",
+    "Browse authentic photographs of Aaranya Misty Valley Resort in Wayanad: rolling sea of clouds, hillside villas, luxury bedrooms, infinity pool, and tea garden trails.",
+    "/gallery"
+  );
+  const galleryJsonLd = getGalleryJsonLd(galleryData);
+
   return (
     <div className="pt-24 md:pt-32 pb-20 bg-[#061F1A] text-white min-h-screen">
+      {/* Structured Data for SEO & Image Indexing */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
+      />
       {/* Header matching Reference Image (Middle Right Panel) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8 md:mb-10">
         <span className="text-xs uppercase tracking-[0.25em] font-medium text-[#D6AD68] block mb-2">

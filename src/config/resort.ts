@@ -88,6 +88,11 @@ export const resortConfig: ResortConfig = {
       label: "Relaxing Stay",
       description: "Unwind with authentic hospitality, cool mountain breezes, and birdsong.",
     },
+    {
+      id: "wifi-available",
+      label: "Wi-Fi Available",
+      description: "High-speed wireless connectivity across rooms and resort spaces.",
+    },
   ],
 };
 

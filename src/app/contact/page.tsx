@@ -9,19 +9,66 @@ import {
 } from "react-icons/fi";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { SITE_URL, getBreadcrumbJsonLd, getWebPageJsonLd } from "@/config/seo";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Get in Touch | Aaranya Misty Valley",
+  title: "Contact & Direct WhatsApp Booking | Aaranya Misty Valley Resort Wayanad",
   description:
-    "We'd love to hear from you. For booking enquiries or any questions about Aaranya Misty Valley Resort, feel free to reach out directly via WhatsApp or call.",
+    "Contact Aaranya Misty Valley Resort in Attamala, Meppadi, Wayanad. Direct WhatsApp bookings, front desk phone, email enquiries, and route directions.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us | Aaranya Misty Valley Resort Wayanad",
+    description:
+      "Get in touch for room reservations, custom itineraries, and stay enquiries at Aaranya Misty Valley Resort.",
+    url: `${SITE_URL}/contact`,
+    siteName: resortConfig.name,
+    images: [
+      {
+        url: "/images/hero/aaranya-resort-villa-4k.webp",
+        width: 1920,
+        height: 1080,
+        alt: "Aaranya Misty Valley Resort nestled amidst lush greenery",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Aaranya Misty Valley Resort | Wayanad",
+    description:
+      "Direct WhatsApp bookings and customer support for Aaranya Misty Valley Resort.",
+    images: ["/images/hero/aaranya-resort-villa-4k.webp"],
+  },
 };
 
 export default function ContactPage() {
   const hasInstagram = Boolean(resortConfig.social.instagram && resortConfig.social.instagram.trim() !== "");
   const hasFacebook = Boolean(resortConfig.social.facebook && resortConfig.social.facebook.trim() !== "");
 
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Contact Us", url: "/contact" },
+  ]);
+  const webPageJsonLd = getWebPageJsonLd(
+    "Contact & Direct WhatsApp Booking | Aaranya Misty Valley Resort Wayanad",
+    "Contact Aaranya Misty Valley Resort in Attamala, Meppadi, Wayanad. Direct WhatsApp bookings, front desk phone, email enquiries, and route directions.",
+    "/contact"
+  );
+
   return (
     <div className="pt-24 md:pt-32 pb-24 bg-[#F7F3EC]">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       {/* Main Contact Section Matching Reference Image (Bottom Right Panel) */}
       <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -5,8 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight, FiPhone, FiMail, FiMapPin, FiCoffee } from "react-icons/fi";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
-import { LuTrees, LuMountain, LuBedDouble } from "react-icons/lu";
+import { LuTrees, LuMountain, LuBedDouble, LuWifi } from "react-icons/lu";
 import { motion } from "motion/react";
+import { getFaqJsonLd } from "@/config/seo";
 import Hero from "@/components/Hero";
 import RoomCard from "@/components/RoomCard";
 import HomeGalleryCarousel from "@/components/HomeGalleryCarousel";
@@ -23,6 +24,12 @@ export default function HomePage() {
 
   return (
     <>
+      {/* FAQ Schema for Search Engine Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqJsonLd()) }}
+      />
+
       {/* 1. Hero Section matching Reference Image Panel 1 */}
       <Hero />
 
@@ -179,9 +186,9 @@ export default function HomePage() {
                 Enjoy a range of thoughtful services centered to make your stay comfortable, relaxing, and truly memorable.
               </p>
 
-              {/* Feature Icons Strip matching Reference Panel */}
+              {/* Feature Icons Strip matching Reference Panel with Integrated Wi-Fi Facility */}
               <div className="pt-2">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 px-4 rounded-xl bg-white/80 border border-[#E6DED1]">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 py-3.5 px-4 rounded-xl bg-white/80 border border-[#E6DED1]">
                   <div className="flex flex-col items-center text-center">
                     <LuTrees className="w-5 h-5 text-[#D6AD68] mb-1.5" />
                     <span className="text-[11px] font-medium text-[#092C24]">Peaceful Location</span>
@@ -200,6 +207,11 @@ export default function HomePage() {
                   <div className="flex flex-col items-center text-center">
                     <FiCoffee className="w-5 h-5 text-[#D6AD68] mb-1.5" />
                     <span className="text-[11px] font-medium text-[#092C24]">Relaxing Stay</span>
+                  </div>
+
+                  <div className="flex flex-col items-center text-center col-span-2 sm:col-span-1">
+                    <LuWifi className="w-5 h-5 text-[#D6AD68] mb-1.5" />
+                    <span className="text-[11px] font-medium text-[#092C24]">Wi-Fi Available</span>
                   </div>
                 </div>
               </div>

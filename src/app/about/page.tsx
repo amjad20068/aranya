@@ -6,16 +6,63 @@ import { FaWhatsapp } from "react-icons/fa";
 import { LuTrees, LuMountain, LuLeaf, LuHeartHandshake } from "react-icons/lu";
 import { FiArrowRight } from "react-icons/fi";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
+import { SITE_URL, getBreadcrumbJsonLd, getWebPageJsonLd } from "@/config/seo";
 
 export const metadata: Metadata = {
-  title: "About Us | A Retreat in Nature | Aaranya Misty Valley",
+  title: "About Us | Luxury Forest Retreat Story | Aaranya Misty Valley Resort",
   description:
-    "Aaranya is a serene forest retreat surrounded by lush greenery, misty hills, and tranquil landscapes. Experience the perfect blend of nature, comfort, and warm hospitality.",
+    "Discover the story of Aaranya Misty Valley Resort in Attamala, Meppadi, Wayanad. Living in harmony with nature, eco-luxury architecture, and authentic host hospitality.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Aaranya Misty Valley Resort | Our Story & Philosophy",
+    description:
+      "A serene forest retreat surrounded by lush greenery, misty hills, and tranquil landscapes in Wayanad, Kerala.",
+    url: `${SITE_URL}/about`,
+    siteName: resortConfig.name,
+    images: [
+      {
+        url: "/images/pages/about-resort.webp",
+        width: 1920,
+        height: 1080,
+        alt: "Aaranya Misty Valley Resort nestled amidst lush greenery",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Aaranya Misty Valley Resort | Wayanad, Kerala",
+    description:
+      "A serene forest retreat surrounded by lush greenery, misty hills, and tranquil landscapes.",
+    images: ["/images/pages/about-resort.webp"],
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "About Aaranya", url: "/about" },
+  ]);
+  const webPageJsonLd = getWebPageJsonLd(
+    "About Aaranya Misty Valley Resort | Our Story & Philosophy",
+    "Discover the story of Aaranya Misty Valley Resort in Attamala, Meppadi, Wayanad. Living in harmony with nature, eco-luxury architecture, and authentic host hospitality.",
+    "/about"
+  );
+
   return (
     <div className="pt-24 md:pt-32 pb-20 bg-[#F7F3EC]">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       {/* 1. Page Hero Header Matching Reference Image (Bottom Left Panel) */}
       <section className="py-12 md:py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
