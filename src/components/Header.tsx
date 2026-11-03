@@ -12,6 +12,7 @@ import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/res
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Rooms", href: "/rooms" },
+  { name: "Activities", href: "/activities" },
   { name: "Gallery", href: "/gallery" },
   { name: "About", href: "/about" },
   { name: "Our Services", href: "/services" },
@@ -83,7 +84,7 @@ export default function Header() {
           </NextLink>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 xl:gap-8" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (

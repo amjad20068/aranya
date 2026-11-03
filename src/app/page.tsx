@@ -14,6 +14,7 @@ import HomeGalleryCarousel from "@/components/HomeGalleryCarousel";
 import InstagramSection from "@/components/InstagramSection";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
+import HomeActivitiesSection from "@/components/HomeActivitiesSection";
 import { roomsData } from "@/data/rooms";
 import { resortConfig, buildWhatsAppUrl } from "@/config/resort";
 
@@ -261,7 +262,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Gallery Preview matching Reference Image (Dark Green Background with Carousel) */}
+      {/* 5. Activities Preview Section */}
+      <HomeActivitiesSection />
+
+      {/* 6. Gallery Preview matching Reference Image (Dark Green Background with Carousel) */}
       <section
         id="gallery"
         className="py-16 md:py-24 bg-[#061F1A] text-white relative overflow-hidden border-t border-b border-white/5"

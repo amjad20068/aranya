@@ -37,10 +37,14 @@ export const defaultSeoKeywords = [
   "AARANYA",
   "Aaranya",
   "aaranya resort wayanad",
-  "aaranya misty valley resort",
-  "aaranya resort booking",
   "resorts booking wayanad",
-
+  "activities in wayanad resorts",
+  "resort with campfire wayanad",
+  "tea plantation walk wayanad",
+  "wayanad jeep safari resort",
+  "sea of clouds resort wayanad",
+  "resort with infinity pool in wayanad",
+  "outdoor activities resort kerala",
 ];
 
 /**

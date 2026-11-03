@@ -101,6 +101,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/activities"
+                  className="text-[#FAF8F5]/75 hover:text-[#E8BD78] transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D6AD68]/40 group-hover:bg-[#D6AD68] transition-colors" />
+                  <span>Resort Activities</span>
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/gallery"
                   className="text-[#FAF8F5]/75 hover:text-[#E8BD78] transition-colors flex items-center gap-2 group"
                 >

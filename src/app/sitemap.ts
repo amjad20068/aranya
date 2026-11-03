@@ -30,6 +30,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ],
     },
     {
+      url: `${baseUrl}/activities`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      images: [
+        `${baseUrl}/images/activities/aaranya-swimming-pool.webp`,
+        `${baseUrl}/images/activities/aaranya-kids-pool.webp`,
+        `${baseUrl}/images/activities/aaranya-campfire-night.webp`,
+        `${baseUrl}/images/activities/aaranya-indoor-games.webp`,
+        `${baseUrl}/images/activities/aaranya-wayanad-jeep-safari.webp`,
+        `${baseUrl}/images/activities/aaranya-tea-plantation-walk.webp`,
+        `${baseUrl}/images/activities/aaranya-glass-bridge.webp`,
+      ],
+    },
+    {
       url: `${baseUrl}/gallery`,
       lastModified: now,
       changeFrequency: "weekly",
