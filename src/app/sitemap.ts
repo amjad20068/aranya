@@ -36,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       images: [
         `${baseUrl}/images/activities/aaranya-swimming-pool.webp`,
-        `${baseUrl}/images/activities/aaranya-kids-pool.webp`,
         `${baseUrl}/images/activities/aaranya-campfire-night.webp`,
         `${baseUrl}/images/activities/aaranya-indoor-games.webp`,
         `${baseUrl}/images/activities/aaranya-wayanad-jeep-safari.webp`,

@@ -40,10 +40,9 @@ const categoryIcons: Record<string, React.ReactNode> = {
   "Resort Experiences": <LuTrees className="w-4 h-4" />,
 };
 
-// 7 Key Headline Shortcuts for instant navigation
+// 6 Key Headline Shortcuts for instant navigation
 const headlineHighlights = [
   { id: "swimming-pool", label: "Swimming Pool", icon: <LuWaves className="w-3.5 h-3.5" />, tag: "Infinity Pool" },
-  { id: "kids-pool", label: "Kids Swimming Pool", icon: <LuDroplets className="w-3.5 h-3.5" />, tag: "Child Safe" },
   { id: "campfire-with-music", label: "Campfire with Music", icon: <FaMusic className="w-3.5 h-3.5" />, tag: "Acoustic Night" },
   { id: "indoor-games", label: "Indoor Games", icon: <FaGamepad className="w-3.5 h-3.5" />, tag: "Atrium Lounge" },
   { id: "jeep-safari", label: "Jeep Safari", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "4x4 Adventure" },
@@ -62,11 +61,11 @@ const timelineSchedule = [
   },
   {
     time: "10:00 AM – 01:00 PM",
-    title: "Hillside Infinity Pool & Kids Swimming Pool",
-    description: "Invigorating adult mountain swim while children splash safely in their dedicated kids pool.",
+    title: "Hillside Infinity Swimming Pool",
+    description: "Invigorating swim overlooking panoramic forest canopies and misty mountain ridges.",
     icon: <LuWaves className="w-5 h-5 text-[#D6AD68]" />,
     location: "Hillside Pool Deck & Terrace",
-    tag: "Complimentary Pools",
+    tag: "Complimentary Pool",
   },
   {
     time: "02:30 PM – 04:30 PM",
@@ -109,14 +108,14 @@ const faqs = [
       "The Private Digital Glass Bridge is a Paid Activity. Attraction entry tickets and private taxi transport are arranged on request through our resort travel desk with priority slots. All other resort activities are complimentary and included in your stay.",
   },
   {
-    question: "Are the other activities like Swimming Pool, Kids Pool, Campfire, Jeep Safari, Indoor Games, and Plantation Walk complimentary?",
+    question: "Are the other activities like Swimming Pool, Campfire, Jeep Safari, Indoor Games, and Plantation Walk complimentary?",
     answer:
-      "Yes! All other resort activities — Hillside Infinity Swimming Pool, Kids Swimming Pool, Campfire with Music, Indoor Games Lounge, 4x4 Mountain Jeep Safari, and Guided Plantation Walk — are complimentary for in-house guests and included in your stay. Only the Glass Bridge is a paid activity.",
+      "Yes! All other resort activities — Hillside Infinity Swimming Pool, Campfire with Music, Indoor Games Lounge, 4x4 Mountain Jeep Safari, and Guided Plantation Walk — are complimentary for in-house guests and included in your stay. Only the Glass Bridge is a paid activity.",
   },
   {
-    question: "Are there separate pools for adults and children?",
+    question: "What are the timings and features of the Hillside Infinity Swimming Pool?",
     answer:
-      "Yes! We offer two distinct pool experiences: an adult hillside infinity pool overlooking panoramic mountain valleys, and a separate, shallow Kids Swimming Pool (0.5m depth) with child-friendly steps, gentle splash jets, and shaded loungers for easy parental supervision.",
+      "Our adult hillside infinity swimming pool is open daily from 07:00 AM to 06:30 PM, featuring multi-tier water filtration, comfortable poolside sun loungers, fresh towels, and panoramic mountain views.",
   },
   {
     question: "Is the Campfire with Music hosted every night?",
@@ -221,7 +220,7 @@ export default function ActivitiesClientView() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 text-sm sm:text-base md:text-lg text-[#FAF8F5]/85 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            From the hillside infinity swimming pool and kids swimming pool to starlit campfires with acoustic music,
+            From the hillside infinity swimming pool to starlit campfires with acoustic music,
             indoor games, thrilling 4x4 mountain jeep safari, guided plantation walks, and the private digital glass bridge skywalk.
           </motion.p>
 
@@ -263,10 +262,10 @@ export default function ActivitiesClientView() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="space-y-1">
               <span className="font-serif-luxury text-3xl sm:text-4xl font-normal text-[#E8BD78]">
-                2 Pools
+                Infinity Pool
               </span>
               <p className="text-xs uppercase tracking-wider text-[#FAF8F5]/80 font-medium">
-                Infinity & Kids Swimming Pool
+                Panoramic Valley Views
               </p>
             </div>
             <div className="space-y-1">

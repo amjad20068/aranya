@@ -57,35 +57,7 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 2. Kids Swimming Pool
-  {
-    id: "kids-pool",
-    slug: "kids-swimming-pool",
-    title: "Kids Swimming Pool",
-    category: "Wellness & Leisure",
-    shortDescription:
-      "Specially designed shallow splash pool where kids can swim, play, and splash safely surrounded by gentle gardens.",
-    detailedDescription:
-      "Designed with utmost safety and fun for young guests, our dedicated kids swimming pool features shallow depths (0.5m), slip-resistant steps, gentle splash fountains, and clear mountain water. Parents can relax on adjacent shaded loungers keeping a close eye while children enjoy carefree splashing in clean, temperature-friendly water.",
-    image: "/images/activities/aaranya-kids-pool.webp",
-    timings: "08:30 AM – 06:00 PM",
-    duration: "Flexible Leisure",
-    location: "Family Garden Pool Terrace",
-    suitableFor: "Children & Families",
-    includedInStay: true,
-    isPaid: false,
-    pricingNote: "Complimentary for In-House Families",
-    badge: "Child Safe • Family Splash",
-    highlights: [
-      "Safe shallow pool depth (0.5m) designed specifically for young children",
-      "Gentle splash water jets and child-friendly non-slip entry steps",
-      "Adjacent shaded cabanas & sun loungers for easy parental supervision",
-      "Float rings and kids water recreation accessories available",
-      "Surrounded by lush green manicured lawns and blooming tropical flowers",
-    ],
-  },
-
-  // 3. Campfire with Music
+  // 2. Campfire with Music
   {
     id: "campfire-with-music",
     slug: "campfire-with-music",
@@ -113,7 +85,7 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 4. Indoor Games
+  // 3. Indoor Games
   {
     id: "indoor-games",
     slug: "indoor-games",
@@ -141,7 +113,7 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 5. Jeep Safari
+  // 4. Jeep Safari
   {
     id: "jeep-safari",
     slug: "jeep-safari",
@@ -169,7 +141,7 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 6. Plantation Walk
+  // 5. Plantation Walk
   {
     id: "plantation-walk",
     slug: "plantation-walk",
@@ -197,7 +169,7 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 7. Private Digital Glass Bridge (PAID ACTIVITY)
+  // 6. Private Digital Glass Bridge (PAID ACTIVITY)
   {
     id: "private-digital-glass-bridge",
     slug: "private-digital-glass-bridge",

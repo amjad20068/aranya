@@ -33,7 +33,7 @@ export default function HomeActivitiesSection() {
               Unforgettable Activities in the Valley
             </h2>
             <p className="text-sm sm:text-base text-[#77766E] font-light leading-relaxed">
-              Every day at Aaranya brings fresh excitement — whether swimming in the hillside infinity pool, splashing in the kids swimming pool,
+              Every day at Aaranya brings fresh excitement — whether swimming in the hillside infinity pool,
               gathering around musical campfires, enjoying indoor games, exploring in 4x4 jeeps, taking guided plantation walks, or walking the private digital glass bridge.
             </p>
           </motion.div>
