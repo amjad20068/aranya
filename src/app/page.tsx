@@ -286,6 +286,7 @@ export default function HomePage() {
         id="contact"
         className="py-16 md:py-24 bg-[#FAF8F5] relative overflow-hidden"
       >
+        <div id="booking" className="absolute -top-24 opacity-0 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             

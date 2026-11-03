@@ -139,9 +139,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Booking anchor to ensure navbar links scroll gracefully */}
-      <div id="booking" className="absolute -bottom-2" />
-
       {/* Feature Badges Bar */}
       <div
         ref={badgesRef}

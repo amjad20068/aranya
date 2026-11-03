@@ -8,6 +8,7 @@ import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import { FiCalendar, FiMenu, FiX, FiArrowRight } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 import { resortConfig, buildWhatsAppUrl, openDirectWhatsApp } from "@/config/resort";
+import BookingModal from "@/components/BookingModal";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -22,6 +23,8 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -36,6 +39,35 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Listen to open-booking-modal global event and #booking hash
+  useEffect(() => {
+    const handleOpenBooking = (e: Event) => {
+      const customEvent = e as CustomEvent<{ room?: string }>;
+      if (customEvent.detail?.room) {
+        setSelectedRoom(customEvent.detail.room);
+      }
+      setBookingModalOpen(true);
+    };
+
+    window.addEventListener("open-booking-modal", handleOpenBooking);
+
+    if (typeof window !== "undefined" && window.location.hash === "#booking") {
+      setBookingModalOpen(true);
+    }
+
+    const handleHashChange = () => {
+      if (window.location.hash === "#booking") {
+        setBookingModalOpen(true);
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("open-booking-modal", handleOpenBooking);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   // Prevent scrolling when mobile drawer is open
@@ -60,13 +92,14 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
           isScrolled
-            ? "bg-[#061F1A]/95 backdrop-blur-md shadow-xl py-3 border-b border-[#D6AD68]/20"
-            : "bg-[#061F1A]/85 backdrop-blur-md py-3.5 md:py-4 border-b border-white/10"
+            ? "bg-[#061F1A]/95 backdrop-blur-md py-3 shadow-lg border-b border-[#D6AD68]/20"
+            : "bg-gradient-to-b from-[#061F1A]/90 via-[#061F1A]/40 to-transparent py-4 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          
           {/* Official Brand Logo matching Reference Image */}
           <NextLink
             href="/"
@@ -91,18 +124,16 @@ export default function Header() {
                 <NextLink
                   key={link.name}
                   href={link.href}
-                  className={`text-sm tracking-wide font-normal transition-all duration-200 relative py-1 ${
-                    isActive
-                      ? "text-[#E8BD78] font-medium"
-                      : "text-[#FAF8F5]/85 hover:text-white"
+                  className={`text-xs xl:text-sm tracking-wide font-normal transition-colors duration-300 relative py-1 focus:outline-none focus:text-[#E8BD78] ${
+                    isActive ? "text-[#E8BD78] font-medium" : "text-[#FAF8F5]/90 hover:text-[#E8BD78]"
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <motion.div
+                    <motion.span
                       layoutId="activeNavIndicator"
                       className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D6AD68] rounded-full"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
                 </NextLink>
@@ -111,16 +142,15 @@ export default function Header() {
           </nav>
 
           {/* Desktop Socials & Book Your Stay CTA */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
-            {/* Social Icons */}
-            <div className="flex items-center gap-3 text-[#FAF8F5]/80">
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-3 text-white/80">
               {hasInstagram && (
                 <a
                   href={resortConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-full hover:bg-white/10 hover:text-[#E8BD78] transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-[#D6AD68]"
-                  aria-label="Visit Aaranya Instagram Page"
+                  className="hover:text-[#E8BD78] transition-colors p-1"
+                  aria-label="Visit Aaranya Instagram Profile"
                 >
                   <FaInstagram className="w-4 h-4" />
                 </a>
@@ -130,7 +160,7 @@ export default function Header() {
                   href={resortConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-full hover:bg-white/10 hover:text-[#E8BD78] transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-[#D6AD68]"
+                  className="hover:text-[#E8BD78] transition-colors p-1"
                   aria-label="Visit Aaranya Facebook Page"
                 >
                   <FaFacebook className="w-4 h-4" />
@@ -140,30 +170,34 @@ export default function Header() {
 
             <div className="w-[1px] h-4 bg-white/20" />
 
-            {/* Book Your Stay CTA Button matching Reference Image (Title Case, Gold, Rounded) */}
-            <NextLink
-              href="/#booking"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#D6AD68]"
+            {/* Book Your Stay CTA Button */}
+            <button
+              type="button"
+              onClick={() => setBookingModalOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#D6AD68] cursor-pointer"
+              aria-label="Book Your Stay"
             >
               <FiCalendar className="w-3.5 h-3.5 text-[#061F1A]" />
               <span>Book Your Stay</span>
-            </NextLink>
+            </button>
           </div>
 
-          {/* Mobile Menu Hamburger Button */}
+          {/* Mobile Menu Actions */}
           <div className="flex lg:hidden items-center gap-2 sm:gap-2.5">
-            <NextLink
-              href="/#booking"
-              className="px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-semibold text-[#061F1A] bg-[#E8BD78] flex items-center gap-1 sm:gap-1.5 shrink-0"
+            <button
+              type="button"
+              onClick={() => setBookingModalOpen(true)}
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-semibold text-[#061F1A] bg-[#E8BD78] hover:bg-[#F0CA8A] flex items-center gap-1 sm:gap-1.5 shrink-0 transition-all active:scale-95 shadow-sm cursor-pointer"
+              aria-label="Book Your Stay"
             >
               <FiCalendar className="w-3 h-3" />
               <span>Book</span>
-            </NextLink>
+            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="p-1.5 sm:p-2 rounded-lg text-[#FAF8F5] hover:text-[#E8BD78] hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] shrink-0"
+              className="p-1.5 sm:p-2 rounded-lg text-[#FAF8F5] hover:text-[#E8BD78] hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6AD68] shrink-0 cursor-pointer"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -207,7 +241,7 @@ export default function Header() {
                   </div>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10"
+                    className="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 cursor-pointer"
                     aria-label="Close navigation"
                   >
                     <FiX className="w-6 h-6" />
@@ -243,14 +277,17 @@ export default function Header() {
 
               {/* Bottom Actions in Drawer */}
               <div className="pt-6 border-t border-white/10 flex flex-col gap-3.5">
-                <NextLink
-                  href="/#booking"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] shadow-md"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setBookingModalOpen(true);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-md transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <FiCalendar className="w-4 h-4" />
                   <span>Book Your Stay</span>
-                </NextLink>
+                </button>
 
                 <a
                   href={buildWhatsAppUrl("Hello AARANYA Resort, I would like to enquire about a stay.")}
@@ -297,6 +334,13 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Global Booking Modal */}
+      <BookingModal
+        isOpen={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        initialRoom={selectedRoom}
+      />
     </>
   );
 }

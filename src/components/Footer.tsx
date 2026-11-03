@@ -241,13 +241,18 @@ export default function Footer() {
 
             {/* Quick WhatsApp Action Box */}
             <div className="pt-2">
-              <Link
-                href="/#booking"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-sm"
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-booking-modal"));
+                  }
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] transition-all shadow-sm cursor-pointer"
               >
                 <FiCalendar className="w-3.5 h-3.5" />
                 <span>Reserve via WhatsApp</span>
-              </Link>
+              </button>
             </div>
           </div>
 

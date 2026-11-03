@@ -52,8 +52,26 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
       const href = target.getAttribute("href");
-      if (href && href.startsWith("#") && href.length > 1) {
-        const targetElement = document.querySelector(href);
+      if (!href) return;
+
+      // Special global handling for booking triggers
+      if (href === "#booking" || href === "/#booking" || href.endsWith("#booking")) {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent("open-booking-modal"));
+        return;
+      }
+
+      // Handle on-page hash anchors (both "#section" and "/#section" when on home page)
+      const isHomePage = window.location.pathname === "/";
+      let selector = "";
+      if (href.startsWith("#") && href.length > 1) {
+        selector = href;
+      } else if (isHomePage && href.startsWith("/#") && href.length > 2) {
+        selector = href.substring(1); // removes leading slash so "/#rooms" becomes "#rooms"
+      }
+
+      if (selector) {
+        const targetElement = document.querySelector(selector);
         if (targetElement) {
           e.preventDefault();
           lenis.scrollTo(targetElement as HTMLElement, {
