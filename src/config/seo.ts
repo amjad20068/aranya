@@ -322,7 +322,7 @@ export function getFaqJsonLd() {
         name: "What room types are available at Aaranya Misty Valley Resort?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Aaranya offers Deluxe Rooms with panoramic nature windows, Premium Rooms with ambient timber backlighting and private sit-outs, Family Rooms with cathedral timber ceilings, Luxury Valley Suites, and secluded Forest View Cottages.",
+          text: "Aaranya offers Executive Rooms with panoramic nature windows, Executive with Balcony Rooms with private sit-outs, and Executive with Balcony with Bath Tub suites with luxury soaking baths and mountain views.",
         },
       },
       {

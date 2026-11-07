@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { FiArrowRight, FiClock, FiMapPin, FiTag } from "react-icons/fi";
+import { FiArrowRight, FiTag } from "react-icons/fi";
 import { activitiesData } from "@/data/activities";
 
 export default function HomeActivitiesSection() {
@@ -34,7 +34,7 @@ export default function HomeActivitiesSection() {
             </h2>
             <p className="text-sm sm:text-base text-[#77766E] font-light leading-relaxed">
               Every day at Aaranya brings fresh excitement — whether swimming in the hillside infinity pool,
-              gathering around musical campfires, enjoying indoor games, exploring in 4x4 jeeps, taking guided plantation walks, or walking the private digital glass bridge.
+              gathering around musical campfires, enjoying indoor games, exploring in 4x4 jeeps, taking guided plantation walks, or walking the digital glass bridge.
             </p>
           </motion.div>
 
@@ -58,7 +58,7 @@ export default function HomeActivitiesSection() {
         {/* 7 Activities Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {signatureActivities.map((act, idx) => {
-            const isGlassBridge = act.isPaid || act.id === "private-digital-glass-bridge" || act.id === "private-glass-bridge";
+            const isGlassBridge = act.isPaid || act.id === "digital-glass-bridge" || act.id === "private-digital-glass-bridge" || act.id === "private-glass-bridge";
 
             return (
               <motion.article
@@ -107,13 +107,6 @@ export default function HomeActivitiesSection() {
                   >
                     {act.isPaid ? "Paid" : "Included in Stay"}
                   </span>
-
-                  <div className="absolute bottom-2.5 left-3 right-3 text-xs text-white/95 truncate flex items-center justify-between">
-                    <div className="flex items-center gap-1 truncate">
-                      <FiMapPin className="w-3 h-3 text-[#E8BD78] shrink-0" />
-                      <span className="truncate text-[11px]">{act.location}</span>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Body */}
@@ -122,10 +115,6 @@ export default function HomeActivitiesSection() {
                     <div className="flex items-center justify-between text-[11px] text-[#77766E]">
                       <span className="font-semibold text-[#A68346] uppercase tracking-wider">
                         {act.category}
-                      </span>
-                      <span className="flex items-center gap-1 font-medium">
-                        <FiClock className="w-3 h-3 text-[#D6AD68]" />
-                        {act.duration}
                       </span>
                     </div>
 

@@ -14,6 +14,7 @@ export const galleryCategories = [
   "Amenities",
   "Interiors",
   "Nature",
+  "Experiences",
 ] as const;
 
 export type GalleryCategory = (typeof galleryCategories)[number];
@@ -281,6 +282,54 @@ export const galleryData: GalleryItem[] = [
     category: "Rooms",
     src: "/images/gallery/aaranya-canopy-suite-timber-floor.webp",
     alt: "Spacious luxury bedroom suite with dark hardwood floors, natural jute rug, and four-poster wooden canopy bed",
+    featured: true,
+  },
+  {
+    id: "g-digital-glass-bridge-skywalk",
+    title: "Digital Glass Bridge Skywalk Experience",
+    category: "Experiences",
+    src: "/images/gallery/aaranya-digital-glass-bridge-skywalk.webp",
+    alt: "Digital glass bridge skywalk cantilevered platform overlooking rolling mountain valleys and evergreen forests",
+    featured: true,
+  },
+  {
+    id: "g-tea-plantation-giant-swing",
+    title: "Tea Plantation Giant Swing & Zipline",
+    category: "Experiences",
+    src: "/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp",
+    alt: "High-flying giant swing and thrilling zipline adventure suspended over rolling green tea plantations",
+    featured: true,
+  },
+  {
+    id: "g-tea-plantation-zip-cycling",
+    title: "Estate Sky Zip Cycling Adventure",
+    category: "Experiences",
+    src: "/images/gallery/aaranya-tea-plantation-zip-cycling.webp",
+    alt: "Adventurous sky cycling on cable wires high above lush green tea estates in Wayanad",
+    featured: true,
+  },
+  {
+    id: "g-scenic-valley-steel-bridge",
+    title: "Chooralmala Bailey Bridge",
+    category: "Nature",
+    src: "/images/gallery/aaranya-wayanad-valley-steel-bridge.webp",
+    alt: "Chooralmala Bailey Bridge crossing mountain river amidst lush hills in Wayanad",
+    featured: true,
+  },
+  {
+    id: "g-chooralmala-scenic-valley-road",
+    title: "Chooralmala Scenic Mountain Highway",
+    category: "Nature",
+    src: "/images/gallery/aaranya-chooralmala-scenic-valley-road.webp",
+    alt: "Scenic asphalt mountain road leading to Chooralmala framed by dramatic green peaks and morning mist in Wayanad",
+    featured: true,
+  },
+  {
+    id: "g-attamala-tea-garden-winding-road",
+    title: "Attamala Emerald Tea Plantation Curves",
+    category: "Nature",
+    src: "/images/gallery/aaranya-attamala-tea-garden-winding-road.webp",
+    alt: "Winding hillside road cutting through lush green tea gardens with scenic mountain backdrop in Attamala",
     featured: true,
   },
 ];

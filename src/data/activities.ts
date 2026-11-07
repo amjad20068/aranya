@@ -6,9 +6,9 @@ export interface ActivityItem {
   shortDescription: string;
   detailedDescription: string;
   image: string;
-  timings: string;
-  duration: string;
-  location: string;
+  timings?: string;
+  duration?: string;
+  location?: string;
   suitableFor: string;
   includedInStay: boolean;
   isPaid?: boolean;
@@ -40,9 +40,6 @@ export const activitiesData: ActivityItem[] = [
     detailedDescription:
       "Perched gracefully along the mountain slope with an unobstructed view of the Western Ghats, our adult infinity pool offers the sensation of floating high above the valley. Enjoy an invigorating morning swim as dawn mist clears from the peaks, or unwind on comfortable poolside loungers with fresh tropical juices.",
     image: "/images/activities/aaranya-swimming-pool.webp",
-    timings: "07:00 AM – 06:30 PM",
-    duration: "Flexible Leisure",
-    location: "Resort Hillside Pool Deck",
     suitableFor: "All In-House Guests & Adults",
     includedInStay: true,
     isPaid: false,
@@ -68,9 +65,6 @@ export const activitiesData: ActivityItem[] = [
     detailedDescription:
       "As dusk blankets Attamala and cool mountain mist rolls across the trees, gather around our open-air natural stone fire pit. Enjoy soulful acoustic music playlists and weekend live guitar sessions under starlit skies. Relish steaming cups of authentic Wayanad ginger tea, roasted marshmallows, and friendly conversations in the cozy mountain chill.",
     image: "/images/activities/aaranya-campfire-night.webp",
-    timings: "07:30 PM – 10:00 PM",
-    duration: "Nightly Evening Gathering",
-    location: "Resort Open-Air Campfire Deck",
     suitableFor: "Families, Couples & Friends",
     includedInStay: true,
     isPaid: false,
@@ -96,9 +90,6 @@ export const activitiesData: ActivityItem[] = [
     detailedDescription:
       "Step into our high-ceiling timber atrium and indoor games arena overlooking misty forests. Challenge friends and family to high-energy table tennis matches, test your skills on tournament-grade carrom boards, enjoy foosball, or relax over strategic chess games. Complete with a cozy reading library and board games, it is the ultimate recreation hub for all age groups, rain or shine.",
     image: "/images/activities/aaranya-indoor-games.webp",
-    timings: "08:00 AM – 10:30 PM",
-    duration: "All-Day Recreation",
-    location: "Cathedral Timber Atrium Lounge",
     suitableFor: "All Ages, Kids & Groups",
     includedInStay: true,
     isPaid: false,
@@ -124,9 +115,6 @@ export const activitiesData: ActivityItem[] = [
     detailedDescription:
       "Experience the wild untamed side of Wayanad with an open-top four-wheel-drive safari. Led by seasoned local off-road drivers, traverse steep rocky mountain trails, splash across pristine forest brooks, and arrive at remote cliff-edge viewpoints overlooking deep cloud-filled canyons of Attamala and Meppadi.",
     image: "/images/activities/aaranya-wayanad-jeep-safari.webp",
-    timings: "Morning (06:00 AM) & Afternoon (02:30 PM)",
-    duration: "2 to 3 Hours",
-    location: "Attamala, Chooramala & Chembra Ridges",
     suitableFor: "Adventure Seekers, Families & Groups",
     includedInStay: true,
     isPaid: false,
@@ -152,9 +140,6 @@ export const activitiesData: ActivityItem[] = [
     detailedDescription:
       "Step straight from Aaranya into adjacent emerald tea garden slopes. Accompanied by our knowledgeable estate naturalists, learn how two leaves and a bud are plucked, understand orthodox vs CTC tea crafting, discover wild cardamom, pepper, and cinnamon, and capture breathtaking photos against rolling green hills kissed by morning dew.",
     image: "/images/activities/aaranya-tea-plantation-walk.webp",
-    timings: "07:00 AM – 09:00 AM & 04:30 PM – 06:00 PM",
-    duration: "1.5 Hours",
-    location: "Attamala Tea Estates Adjoining Resort",
     suitableFor: "All Age Groups & Nature Lovers",
     includedInStay: true,
     isPaid: false,
@@ -169,32 +154,81 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 6. Private Digital Glass Bridge (PAID ACTIVITY)
+  // 6. Digital Glass Bridge (PAID ACTIVITY)
   {
-    id: "private-digital-glass-bridge",
-    slug: "private-digital-glass-bridge",
-    title: "Private Digital Glass Bridge",
+    id: "digital-glass-bridge",
+    slug: "digital-glass-bridge",
+    title: "Digital Glass Bridge",
     category: "Nature & Adventure",
     shortDescription:
-      "Walk above the clouds on the breathtaking private digital glass bridge skywalk cantilevered high over misty mountain valleys.",
+      "Walk above the clouds on the breathtaking digital glass bridge skywalk cantilevered high over misty mountain valleys.",
     detailedDescription:
       "Feel the rush of adrenaline as you step onto the transparent cantilevered digital glass bridge soaring over lush emerald canopies and 100-foot forest depths. Looking down through clear reinforced digital glass onto floating clouds and cascading waterfalls is one of Wayanad's most iconic experiences. We organize private transport, priority entry passes, and guide support for a seamless excursion.",
     image: "/images/activities/aaranya-glass-bridge.webp",
-    timings: "09:00 AM – 05:30 PM",
-    duration: "2 to 3 Hours Excursion",
-    location: "Attamala / 900 Kandi Glass Bridge",
     suitableFor: "Adventure Seekers, Couples & Families",
     includedInStay: false,
     isPaid: true,
     paidNotice: "Paid Activity • Special entry passes & transport charged extra",
     pricingNote: "Paid Activity (Entry Pass & Cab Arranged)",
-    badge: "Private Digital Skywalk",
+    badge: "Digital Glass Skywalk",
     highlights: [
       "Cantilevered transparent digital glass skywalk high above deep rainforest gorges",
       "Spectacular 360-degree panoramic viewpoints of misty mountain ridges",
       "Hassle-free private resort cab transfer and priority ticket arrangements",
       "Unbelievable photo & video opportunities walking suspended in the air",
       "Engineered with triple-laminated high-tensile structural safety glass",
+    ],
+  },
+
+  // 7. Tea Plantation Zipline & Giant Swing (PAID ACTIVITY)
+  {
+    id: "zipline-giant-swing",
+    slug: "zipline-giant-swing",
+    title: "Tea Plantation Zipline & Giant Swing",
+    category: "Nature & Adventure",
+    shortDescription:
+      "Soar above rolling emerald tea plantations on an exhilarating long-distance zipline and sky-high giant swing.",
+    detailedDescription:
+      "Feel the ultimate rush of flying through crisp mountain air suspended high over Wayanad's rolling emerald tea gardens. The high-altitude zipline and giant swing offer heart-pumping thrills with panoramic views of Attamala's mist-covered hills. Priority ride passes, equipment safety briefing, and cab transfers are seamlessly arranged through Aaranya.",
+    image: "/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp",
+    suitableFor: "Adventure Seekers & Families",
+    includedInStay: false,
+    isPaid: true,
+    paidNotice: "Paid Activity • Tickets & ride passes arranged on request",
+    pricingNote: "Paid Activity (Passes Arranged)",
+    badge: "Thrilling Zipline",
+    highlights: [
+      "High-speed zipline soaring high above lush green tea estates",
+      "Sky-high open-air giant swing with breathtaking valley drop views",
+      "Certified safety harnesses, double-cable redundancy & trained instructors",
+      "Spectacular photo and video vantage points over tea gardens",
+      "Hassle-free transport arrangements via Aaranya front desk",
+    ],
+  },
+
+  // 8. Estate Sky Zip Cycling (PAID ACTIVITY)
+  {
+    id: "sky-zip-cycling",
+    slug: "sky-zip-cycling",
+    title: "Estate Sky Zip Cycling",
+    category: "Nature & Adventure",
+    shortDescription:
+      "Pedal across aerial cables suspended high above rolling emerald tea hills with sweeping 360-degree mountain vistas.",
+    detailedDescription:
+      "Take your adventure to new heights with sky zip cycling. Suspended securely on high-tensile steel cables, pedal across open valleys overlooking vibrant tea carpets and misty ridges. A one-of-a-kind aerial experience perfect for adventure seekers, couples, and photography lovers.",
+    image: "/images/gallery/aaranya-tea-plantation-zip-cycling.webp",
+    suitableFor: "Adventure Enthusiasts & Couples",
+    includedInStay: false,
+    isPaid: true,
+    paidNotice: "Paid Activity • Ride tickets arranged on request",
+    pricingNote: "Paid Activity (Passes Arranged)",
+    badge: "Aerial Sky Cycling",
+    highlights: [
+      "Unique bicycle ride suspended on high-tension cables over tea slopes",
+      "Unmatched aerial perspective of tea estate contours",
+      "International standard safety wire harness and helmet protection",
+      "Perfect adrenaline-filled experience for adventurous travelers",
+      "Guided assistance and priority pass booking via Aaranya concierge",
     ],
   },
 ];

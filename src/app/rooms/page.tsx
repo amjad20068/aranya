@@ -7,7 +7,7 @@ import { resortConfig } from "@/config/resort";
 export const metadata: Metadata = {
   title: "Luxury Rooms & Suites in Wayanad | Aaranya Misty Valley Resort",
   description:
-    "Explore luxury accommodations at Aaranya Misty Valley Resort in Wayanad: Deluxe Rooms, Premium Suites with private balconies, and spacious Family Rooms with valley views.",
+    "Explore luxury accommodations at Aaranya Misty Valley Resort in Wayanad: Executive Rooms, Executive with Balcony Rooms, and Executive with Balcony with Bath Tub suites.",
   alternates: {
     canonical: "/rooms",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: "/images/rooms/aaranya-canopy-bedroom-suite-2k.webp",
         width: 1920,
         height: 1080,
-        alt: "Deluxe Bedroom Suite at Aaranya Misty Valley Resort",
+        alt: "Executive Bedroom Suite at Aaranya Misty Valley Resort",
       },
     ],
     locale: "en_IN",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accommodations | Aaranya Misty Valley Resort Wayanad",
     description:
-      "Deluxe Rooms, Premium Suites with private balconies, and cathedral-ceiling Family Rooms.",
+      "Executive Rooms, Executive with Balcony Rooms, and Executive with Balcony with Bath Tub suites.",
     images: ["/images/rooms/aaranya-canopy-bedroom-suite-2k.webp"],
   },
 };
@@ -44,7 +44,7 @@ export default function RoomsPage() {
   ]);
   const webPageJsonLd = getWebPageJsonLd(
     "Luxury Rooms & Suites in Wayanad | Aaranya Misty Valley Resort",
-    "Explore luxury accommodations at Aaranya Misty Valley Resort in Wayanad: Deluxe Rooms, Premium Suites with private balconies, and spacious Family Rooms with valley views.",
+    "Explore luxury accommodations at Aaranya Misty Valley Resort in Wayanad: Executive Rooms, Executive with Balcony Rooms, and Executive with Balcony with Bath Tub suites.",
     "/rooms"
   );
 

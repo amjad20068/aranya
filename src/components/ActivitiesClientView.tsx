@@ -4,8 +4,6 @@ import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  FiClock,
-  FiMapPin,
   FiCheck,
   FiX,
   FiInfo,
@@ -40,72 +38,62 @@ const categoryIcons: Record<string, React.ReactNode> = {
   "Resort Experiences": <LuTrees className="w-4 h-4" />,
 };
 
-// 6 Key Headline Shortcuts for instant navigation
+// Key Headline Shortcuts for instant navigation
 const headlineHighlights = [
   { id: "swimming-pool", label: "Swimming Pool", icon: <LuWaves className="w-3.5 h-3.5" />, tag: "Infinity Pool" },
   { id: "campfire-with-music", label: "Campfire with Music", icon: <FaMusic className="w-3.5 h-3.5" />, tag: "Acoustic Night" },
   { id: "indoor-games", label: "Indoor Games", icon: <FaGamepad className="w-3.5 h-3.5" />, tag: "Atrium Lounge" },
   { id: "jeep-safari", label: "Jeep Safari", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "4x4 Adventure" },
   { id: "plantation-walk", label: "Plantation Walk", icon: <LuTrees className="w-3.5 h-3.5" />, tag: "Guided Estate" },
-  { id: "private-digital-glass-bridge", label: "Private Digital Glass Bridge", icon: <LuCompass className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
+  { id: "digital-glass-bridge", label: "Digital Glass Bridge", icon: <LuCompass className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
+  { id: "zipline-giant-swing", label: "Zipline & Swing", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
+  { id: "sky-zip-cycling", label: "Sky Zip Cycling", icon: <LuCompass className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
 ];
 
 const timelineSchedule = [
   {
-    time: "07:00 AM – 08:30 AM",
     title: "Guided Tea & Spice Plantation Walk",
     description: "Stroll along dew-drenched tea slopes, discover fragrant spices, and learn tea harvesting.",
     icon: <LuTrees className="w-5 h-5 text-[#D6AD68]" />,
-    location: "Adjoining Tea Estates",
     tag: "Complimentary Guided",
   },
   {
-    time: "10:00 AM – 01:00 PM",
     title: "Hillside Infinity Swimming Pool",
     description: "Invigorating swim overlooking panoramic forest canopies and misty mountain ridges.",
     icon: <LuWaves className="w-5 h-5 text-[#D6AD68]" />,
-    location: "Hillside Pool Deck & Terrace",
     tag: "Complimentary Pool",
   },
   {
-    time: "02:30 PM – 04:30 PM",
     title: "4x4 Mountain Jeep Safari",
     description: "Thrilling off-road mountain trail through rugged tracks, misty hills, and scenic forest viewpoints.",
     icon: <LuMountain className="w-5 h-5 text-[#D6AD68]" />,
-    location: "Attamala Trails & Ridges",
     tag: "Complimentary Experience",
   },
   {
-    time: "04:30 PM – 06:00 PM",
-    title: "Private Digital Glass Bridge Skywalk",
+    title: "Digital Glass Bridge Skywalk",
     description: "Breathtaking cantilevered digital glass bridge skywalk experience suspended high over emerald gorges.",
     icon: <LuCompass className="w-5 h-5 text-[#D6AD68]" />,
-    location: "Attamala / Glass Bridge Deck",
     tag: "Paid Activity",
   },
   {
-    time: "07:30 PM – 10:00 PM",
     title: "Campfire with Music",
     description: "Unwind around the crackling natural stone fire pit with ambient acoustic tunes and cool mountain air.",
     icon: <FaFire className="w-5 h-5 text-[#E8BD78]" />,
-    location: "Open-Air Campfire Deck",
     tag: "Complimentary Nightly",
   },
   {
-    time: "09:30 PM – 10:30 PM",
     title: "Indoor Games Lounge Leisure",
     description: "Wind down the day with friendly Carrom matches, Table Tennis, Chess, and family board games.",
     icon: <FaGamepad className="w-5 h-5 text-[#D6AD68]" />,
-    location: "Cathedral Timber Atrium",
     tag: "All-Weather Recreation",
   },
 ];
 
 const faqs = [
   {
-    question: "Is the Private Digital Glass Bridge included or a Paid Activity?",
+    question: "Is the Digital Glass Bridge included or a Paid Activity?",
     answer:
-      "The Private Digital Glass Bridge is a Paid Activity. Attraction entry tickets and private taxi transport are arranged on request through our resort travel desk with priority slots. All other resort activities are complimentary and included in your stay.",
+      "The Digital Glass Bridge is a Paid Activity. Attraction entry tickets and private taxi transport are arranged on request through our resort travel desk with priority slots. All other resort activities are complimentary and included in your stay.",
   },
   {
     question: "Are the other activities like Swimming Pool, Campfire, Jeep Safari, Indoor Games, and Plantation Walk complimentary?",
@@ -113,14 +101,14 @@ const faqs = [
       "Yes! All other resort activities — Hillside Infinity Swimming Pool, Campfire with Music, Indoor Games Lounge, 4x4 Mountain Jeep Safari, and Guided Plantation Walk — are complimentary for in-house guests and included in your stay. Only the Glass Bridge is a paid activity.",
   },
   {
-    question: "What are the timings and features of the Hillside Infinity Swimming Pool?",
+    question: "What are the features of the Hillside Infinity Swimming Pool?",
     answer:
-      "Our adult hillside infinity swimming pool is open daily from 07:00 AM to 06:30 PM, featuring multi-tier water filtration, comfortable poolside sun loungers, fresh towels, and panoramic mountain views.",
+      "Our adult hillside infinity swimming pool is open daily for all in-house guests, featuring multi-tier water filtration, comfortable poolside sun loungers, fresh towels, and panoramic mountain views.",
   },
   {
     question: "Is the Campfire with Music hosted every night?",
     answer:
-      "Yes, weather permitting! Our natural stone fire pit is lit nightly from 07:30 PM to 10:00 PM, accompanied by ambient acoustic music and soothing playlists. Compliments of the resort, hot Wayanad spiced tea is served around the fire.",
+      "Yes, weather permitting! Our natural stone fire pit is lit nightly, accompanied by ambient acoustic music and soothing playlists. Compliments of the resort, hot Wayanad spiced tea is served around the fire.",
   },
   {
     question: "Which games are available in the Indoor Games Lounge?",
@@ -221,7 +209,7 @@ export default function ActivitiesClientView() {
             className="mt-6 text-sm sm:text-base md:text-lg text-[#FAF8F5]/85 max-w-3xl mx-auto leading-relaxed font-light"
           >
             From the hillside infinity swimming pool to starlit campfires with acoustic music,
-            indoor games, thrilling 4x4 mountain jeep safari, guided plantation walks, and the private digital glass bridge skywalk.
+            indoor games, thrilling 4x4 mountain jeep safari, guided plantation walks, and the digital glass bridge skywalk.
           </motion.p>
 
           {/* 7 Headline Navigation Buttons */}
@@ -289,7 +277,7 @@ export default function ActivitiesClientView() {
                 Skywalk
               </span>
               <p className="text-xs uppercase tracking-wider text-[#FAF8F5]/80 font-medium">
-                Private Digital Glass Bridge (Paid)
+                Digital Glass Bridge (Paid)
               </p>
             </div>
           </div>
@@ -456,30 +444,16 @@ export default function ActivitiesClientView() {
                       {activity.isPaid ? "Paid" : "Included in Stay"}
                     </span>
 
-                    {/* Location Badge bottom left */}
-                    <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-xs text-white/95">
-                      <div className="flex items-center gap-1.5 truncate">
-                        <FiMapPin className="w-3.5 h-3.5 text-[#E8BD78] shrink-0" />
-                        <span className="truncate drop-shadow-md">{activity.location}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-[11px] text-[#FAF8F5]/90 shrink-0">
-                        <FiClock className="w-3 h-3 text-[#D6AD68]" />
-                        <span>{activity.duration}</span>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Body Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-3">
                       
-                      {/* Category & Timing Details */}
+                      {/* Category */}
                       <div className="flex items-center justify-between text-xs text-[#77766E] border-b border-[#E6DED1]/60 pb-2.5">
                         <span className="font-semibold text-[#A68346] uppercase tracking-wider text-[11px]">
                           {activity.category}
-                        </span>
-                        <span className="text-[11px] text-[#77766E] font-medium">
-                          {activity.timings}
                         </span>
                       </div>
 
@@ -566,7 +540,7 @@ export default function ActivitiesClientView() {
         </div>
       </section>
 
-      {/* 4. Special Spotlight: Private Digital Glass Bridge (Paid Activity Callout) */}
+      {/* 4. Special Spotlight: Digital Glass Bridge (Paid Activity Callout) */}
       <section className="py-14 bg-gradient-to-r from-[#061F1A] via-[#092C24] to-[#061F1A] text-white relative overflow-hidden border-y border-[#D6AD68]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -578,7 +552,7 @@ export default function ActivitiesClientView() {
                 <span>PAID ACTIVITY</span>
               </div>
               <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl text-[#FAF8F5]">
-                Private Digital Glass Bridge Skywalk
+                Digital Glass Bridge Skywalk
               </h2>
               <p className="text-sm sm:text-base text-[#FAF8F5]/85 font-light leading-relaxed max-w-2xl">
                 Experience Wayanad’s most thrilling attraction — walking high above misty tea canyons on a cantilevered
@@ -603,12 +577,12 @@ export default function ActivitiesClientView() {
                 <p>Paid Activity • Entry tickets & cab transfers arranged on request.</p>
               </div>
               <a
-                href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to book tickets and transport for the Private Digital Glass Bridge Visit.")}
+                href={buildWhatsAppUrl("Hello Aaranya Resort, I would like to book tickets and transport for the Digital Glass Bridge Visit.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => {
                   e.preventDefault();
-                  openDirectWhatsApp("Hello Aaranya Resort, I would like to book tickets and transport for the Private Digital Glass Bridge Visit.");
+                  openDirectWhatsApp("Hello Aaranya Resort, I would like to book tickets and transport for the Digital Glass Bridge Visit.");
                 }}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-[#061F1A] bg-gradient-to-r from-[#E8BD78] to-[#D6AD68] hover:from-[#F0CA8A] hover:to-[#E8BD78] shadow-lg transition-all"
               >
@@ -654,7 +628,7 @@ export default function ActivitiesClientView() {
                     {slot.icon}
                   </div>
                   <span className="text-xs font-semibold text-[#A68346] px-2.5 py-1 rounded-md bg-[#F7F3EC] border border-[#E6DED1]">
-                    {slot.time}
+                    {slot.tag}
                   </span>
                 </div>
 
@@ -667,16 +641,6 @@ export default function ActivitiesClientView() {
                 <p className="text-xs sm:text-sm text-[#77766E] font-light leading-relaxed">
                   {slot.description}
                 </p>
-
-                <div className="pt-2 flex items-center justify-between text-[11px] text-[#A68346] font-medium border-t border-[#E6DED1]/60">
-                  <div className="flex items-center gap-1.5">
-                    <FiMapPin className="w-3 h-3" />
-                    <span>{slot.location}</span>
-                  </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#FAF8F5] border border-[#E6DED1]">
-                    {slot.tag}
-                  </span>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -837,31 +801,13 @@ export default function ActivitiesClientView() {
                 )}
 
                 {/* Meta details strip */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3.5 rounded-xl bg-[#F7F3EC] text-xs">
-                  <div>
-                    <span className="text-[#77766E] block text-[10px] uppercase font-semibold">
-                      Timings
-                    </span>
-                    <span className="font-medium text-[#092C24]">
-                      {activeModalActivity.timings}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-[#77766E] block text-[10px] uppercase font-semibold">
-                      Location
-                    </span>
-                    <span className="font-medium text-[#092C24]">
-                      {activeModalActivity.location}
-                    </span>
-                  </div>
-                  <div className="col-span-2 sm:col-span-1">
-                    <span className="text-[#77766E] block text-[10px] uppercase font-semibold">
-                      Pricing / Inclusions
-                    </span>
-                    <span className="font-semibold text-[#A68346]">
-                      {activeModalActivity.pricingNote}
-                    </span>
-                  </div>
+                <div className="p-3.5 rounded-xl bg-[#F7F3EC] text-xs">
+                  <span className="text-[#77766E] block text-[10px] uppercase font-semibold">
+                    Pricing / Inclusions
+                  </span>
+                  <span className="font-semibold text-[#A68346]">
+                    {activeModalActivity.pricingNote}
+                  </span>
                 </div>
 
                 {/* Detailed Description */}

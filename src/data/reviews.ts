@@ -46,7 +46,7 @@ export const reviewsData: GoogleReview[] = [
     rating: 5,
     relativeTime: "2 weeks ago",
     category: "couples",
-    stayType: "Stayed in Premium Room",
+    stayType: "Stayed in Executive with Balcony Room",
     highlightPhrase: "True hidden sanctuary in the hills",
     comment:
       "Aaranya is truly a hidden sanctuary in the Western Ghats. Waking up to the mist flowing into the valley right outside our private balcony was magical. The timber finishes, quiet forest atmosphere, and personalized hospitality made our anniversary unforgettable.",
@@ -61,9 +61,9 @@ export const reviewsData: GoogleReview[] = [
     relativeTime: "a month ago",
     category: "family",
     stayType: "Family Vacation",
-    highlightPhrase: "Kids loved the open nature & high timber ceilings",
+    highlightPhrase: "Loved the private balcony & deep soak bathtub",
     comment:
-      "We booked the Family Room with the high cathedral wooden ceiling. Kids loved the open nature feel, clean mountain air, and morning bird watching. Clean, serene, zero city noise, and delicious hot fresh food. Highly recommend for families needing total peace.",
+      "We booked the Executive with Balcony with Bath Tub suite. Loved the open nature feel, clean mountain air, and relaxing bathtub overlooking nature. Clean, serene, zero city noise, and delicious hot fresh food. Highly recommend for anyone needing total peace.",
     helpfulCount: 9,
   },
   {
@@ -104,7 +104,7 @@ export const reviewsData: GoogleReview[] = [
     rating: 5,
     relativeTime: "2 months ago",
     category: "hospitality",
-    stayType: "Stayed in Deluxe Room",
+    stayType: "Stayed in Executive Room",
     highlightPhrase: "Warm hospitality and delicious fresh meals",
     comment:
       "The photos don't even capture how serene and lush it is in real life. Cool mountain breeze, plush comfortable beds, and genuine Kerala hospitality. The chef prepared authentic local meals that were outstanding.",

@@ -9,9 +9,9 @@ import BookingForm from "@/components/BookingForm";
 
 const roomFilterTabs = [
   "All Rooms",
-  "Deluxe Room",
-  "Premium Room",
-  "Family Room",
+  "Executive Room",
+  "Executive with Balcony Room",
+  "Executive with Balcony with Bath Tub",
 ] as const;
 
 export default function RoomsClientView() {
@@ -21,8 +21,14 @@ export default function RoomsClientView() {
   useEffect(() => {
     const select = searchParams.get("select");
     if (select) {
+      const legacyMap: Record<string, string> = {
+        "deluxe-room": "executive-room",
+        "premium-room": "executive-with-balcony-room",
+        "family-room": "executive-with-balcony-with-bath-tub",
+      };
+      const target = legacyMap[select] || select;
       const matched = roomsData.find(
-        (r) => r.slug === select || r.id === select
+        (r) => r.slug === target || r.id === target || r.name.toLowerCase() === target.toLowerCase()
       );
       if (matched) {
         setActiveTab(matched.name);

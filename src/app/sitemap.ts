@@ -41,6 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${baseUrl}/images/activities/aaranya-wayanad-jeep-safari.webp`,
         `${baseUrl}/images/activities/aaranya-tea-plantation-walk.webp`,
         `${baseUrl}/images/activities/aaranya-glass-bridge.webp`,
+        `${baseUrl}/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp`,
+        `${baseUrl}/images/gallery/aaranya-tea-plantation-zip-cycling.webp`,
       ],
     },
     {
@@ -49,6 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
       images: [
+        `${baseUrl}/images/gallery/aaranya-digital-glass-bridge-skywalk.webp`,
+        `${baseUrl}/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp`,
+        `${baseUrl}/images/gallery/aaranya-tea-plantation-zip-cycling.webp`,
+        `${baseUrl}/images/gallery/aaranya-chooralmala-scenic-valley-road.webp`,
+        `${baseUrl}/images/gallery/aaranya-attamala-tea-garden-winding-road.webp`,
+        `${baseUrl}/images/gallery/aaranya-wayanad-valley-steel-bridge.webp`,
         `${baseUrl}/images/gallery/aaranya-poolside-mountain-panorama-2k.webp`,
         `${baseUrl}/images/gallery/aaranya-jacuzzi-nature-view-2k.webp`,
         `${baseUrl}/images/gallery/aaranya-glass-dining-deck-2k.webp`,
