@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${baseUrl}/images/activities/aaranya-tea-plantation-walk.webp`,
         `${baseUrl}/images/activities/aaranya-glass-bridge.webp`,
         `${baseUrl}/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp`,
-        `${baseUrl}/images/gallery/aaranya-tea-plantation-zip-cycling.webp`,
+        `${baseUrl}/images/gallery/aaranya-sky-zip-cycling.webp`,
       ],
     },
     {
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         `${baseUrl}/images/gallery/aaranya-digital-glass-bridge-skywalk.webp`,
         `${baseUrl}/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp`,
-        `${baseUrl}/images/gallery/aaranya-tea-plantation-zip-cycling.webp`,
+        `${baseUrl}/images/gallery/aaranya-sky-zip-cycling.webp`,
         `${baseUrl}/images/gallery/aaranya-chooralmala-scenic-valley-road.webp`,
         `${baseUrl}/images/gallery/aaranya-attamala-tea-garden-winding-road.webp`,
         `${baseUrl}/images/gallery/aaranya-wayanad-valley-steel-bridge.webp`,

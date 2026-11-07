@@ -216,7 +216,7 @@ export const activitiesData: ActivityItem[] = [
       "Pedal across aerial cables suspended high above rolling emerald tea hills with sweeping 360-degree mountain vistas.",
     detailedDescription:
       "Take your adventure to new heights with sky zip cycling. Suspended securely on high-tensile steel cables, pedal across open valleys overlooking vibrant tea carpets and misty ridges. A one-of-a-kind aerial experience perfect for adventure seekers, couples, and photography lovers.",
-    image: "/images/gallery/aaranya-tea-plantation-zip-cycling.webp",
+    image: "/images/gallery/aaranya-sky-zip-cycling.webp",
     suitableFor: "Adventure Enthusiasts & Couples",
     includedInStay: false,
     isPaid: true,

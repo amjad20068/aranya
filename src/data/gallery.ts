@@ -304,7 +304,7 @@ export const galleryData: GalleryItem[] = [
     id: "g-tea-plantation-zip-cycling",
     title: "Estate Sky Zip Cycling Adventure",
     category: "Experiences",
-    src: "/images/gallery/aaranya-tea-plantation-zip-cycling.webp",
+    src: "/images/gallery/aaranya-sky-zip-cycling.webp",
     alt: "Adventurous sky cycling on cable wires high above lush green tea estates in Wayanad",
     featured: true,
   },
