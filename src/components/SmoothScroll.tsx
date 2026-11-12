@@ -45,7 +45,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     };
 
     gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Smooth scroll for all on-page hash anchors (#about, #rooms, #services, #contact, etc.)
     const handleAnchorClick = (e: MouseEvent) => {

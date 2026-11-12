@@ -72,21 +72,18 @@ export default function GalleryGrid({
       )}
 
       {/* Grid of Images: Editorial layout matching Reference Image */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
-      >
-        <AnimatePresence>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <AnimatePresence mode="popLayout">
           {displayImages.map((item) => (
             <motion.div
               layout
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.2 }}
               key={item.id}
               onClick={() => handleOpenLightbox(item)}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#092C24] shadow-sm hover:shadow-md transition-all duration-500 cursor-pointer border border-white/10 hover:border-[#D6AD68]/50"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#092C24] shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-white/10 hover:border-[#D6AD68]/50 transform-gpu will-change-transform"
             >
               <Image
                 src={item.src}
@@ -118,7 +115,7 @@ export default function GalleryGrid({
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
 
       {/* Lightbox Component */}
       <Lightbox

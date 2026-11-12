@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -128,6 +128,22 @@ export default function ActivitiesClientView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalActivity, setActiveModalActivity] = useState<ActivityItem | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  // Pause Lenis and prevent background scroll when activity details modal is open
+  useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+    if (activeModalActivity) {
+      document.body.style.overflow = "hidden";
+      lenis?.stop();
+    } else {
+      document.body.style.overflow = "";
+      lenis?.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+      lenis?.start();
+    };
+  }, [activeModalActivity]);
 
   const filteredActivities = useMemo(() => {
     return activitiesData.filter((item) => {
@@ -744,7 +760,8 @@ export default function ActivitiesClientView() {
               exit={{ scale: 0.95, opacity: 0, y: 15 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#E6DED1] shadow-2xl relative"
+              className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#E6DED1] shadow-2xl relative overscroll-contain transform-gpu"
+              data-lenis-prevent
             >
               {/* Close Button */}
               <button

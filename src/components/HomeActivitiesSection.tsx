@@ -66,8 +66,8 @@ export default function HomeActivitiesSection() {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
-                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all duration-500 ${
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border transition-all duration-300 transform-gpu ${
                   isGlassBridge
                     ? "border-[#D6AD68] shadow-md ring-1 ring-[#D6AD68]/30 sm:col-span-2 lg:col-span-1"
                     : "border-[#E6DED1] shadow-sm hover:shadow-xl hover:border-[#D6AD68]/60"

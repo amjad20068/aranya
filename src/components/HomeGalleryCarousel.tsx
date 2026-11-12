@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import Lightbox from "./Lightbox";
 import { galleryData, GalleryItem } from "@/data/gallery";
 
-const homeGalleryItems: GalleryItem[] = galleryData;
+const homeGalleryItems: GalleryItem[] = galleryData.slice(0, 10);
 
 export default function HomeGalleryCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);

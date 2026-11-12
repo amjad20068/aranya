@@ -163,9 +163,11 @@
 /* Butter-Smooth Card Hover & Interactive Transitions */
 .smooth-lift {
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  will-change: transform;
+  transform: translateZ(0);
 }
 .smooth-lift:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) translateZ(0);
   box-shadow: 0 20px 35px -10px rgba(6, 31, 26, 0.12);
   border-color: rgba(214, 173, 104, 0.5);
 }
@@ -173,9 +175,11 @@
 /* Image Zoom on Card Hover */
 .smooth-img-zoom {
   transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  transform: translateZ(0);
 }
 .group:hover .smooth-img-zoom {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
 }
 
 /* iOS Safari date input normalization & overflow fix */
