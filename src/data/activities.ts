@@ -6,6 +6,7 @@ export interface ActivityItem {
   shortDescription: string;
   detailedDescription: string;
   image: string;
+  galleryImages?: string[];
   timings?: string;
   duration?: string;
   location?: string;
@@ -86,20 +87,25 @@ export const activitiesData: ActivityItem[] = [
     title: "Indoor Games",
     category: "Resort Experiences",
     shortDescription:
-      "Soaring timber glasshouse lounge featuring Carrom, Table Tennis, Foosball, Chess, and classic family board games.",
+      "Soaring timber lounge featuring tournament Carrom, Chess, Ludo, and classic family tabletop games.",
     detailedDescription:
-      "Step into our high-ceiling timber atrium and indoor games arena overlooking misty forests. Challenge friends and family to high-energy table tennis matches, test your skills on tournament-grade carrom boards, enjoy foosball, or relax over strategic chess games. Complete with a cozy reading library and board games, it is the ultimate recreation hub for all age groups, rain or shine.",
+      "Step into our high-ceiling timber atrium and indoor games arena overlooking misty forests. Enjoy friendly carrom matches on our tournament board, test your strategy over classic chess, or gather for fun family ludo sessions. With comfortable seating and a calm forest-facing setting, it is the ultimate recreation hub for all age groups, rain or shine.",
     image: "/images/activities/aaranya-indoor-games.webp",
+    galleryImages: [
+      "/images/activities/aaranya-indoor-games.webp",
+      "/images/activities/aaranya-indoor-games-chess.webp",
+      "/images/activities/aaranya-indoor-games-ludo.webp",
+    ],
     suitableFor: "All Ages, Kids & Groups",
     includedInStay: true,
     isPaid: false,
     pricingNote: "Complimentary for In-House Guests",
     badge: "Indoor Fun • All Weather",
     highlights: [
-      "Tournament-grade Carrom boards, Table Tennis & Foosball tables",
-      "Classic wooden Chess sets & family board games (Monopoly, Uno, Scrabble, Jenga)",
-      "Soaring double-height timber architecture with panoramic forest glass windows",
-      "Curated reading corner with fiction, travel, and Kerala wildlife books",
+      "Spacious carrom board arena with comfortable lounge armchairs",
+      "Tournament-grade Chess set & dedicated strategy gaming tables",
+      "Fun family Ludo & classic tabletop board game collections",
+      "High vaulted timber ceiling with soothing natural light",
       "Ideal entertainment spot during misty rain showers and cozy afternoons",
     ],
   },

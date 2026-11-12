@@ -63,7 +63,7 @@ export const reviewsData: GoogleReview[] = [
     stayType: "Family Vacation",
     highlightPhrase: "Loved the private balcony & deep soak bathtub",
     comment:
-      "We booked the Executive with Balcony with Bath Tub suite. Loved the open nature feel, clean mountain air, and relaxing bathtub overlooking nature. Clean, serene, zero city noise, and delicious hot fresh food. Highly recommend for anyone needing total peace.",
+      "We booked the Premium Bathtub Room. Loved the open nature feel, clean mountain air, and relaxing bathtub overlooking nature. Clean, serene, zero city noise, and delicious hot fresh food. Highly recommend for anyone needing total peace.",
     helpfulCount: 9,
   },
   {

@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${baseUrl}/images/activities/aaranya-swimming-pool.webp`,
         `${baseUrl}/images/activities/aaranya-campfire-night.webp`,
         `${baseUrl}/images/activities/aaranya-indoor-games.webp`,
+        `${baseUrl}/images/activities/aaranya-indoor-games-chess.webp`,
+        `${baseUrl}/images/activities/aaranya-indoor-games-ludo.webp`,
         `${baseUrl}/images/activities/aaranya-wayanad-jeep-safari.webp`,
         `${baseUrl}/images/activities/aaranya-tea-plantation-walk.webp`,
         `${baseUrl}/images/activities/aaranya-glass-bridge.webp`,
@@ -52,6 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
       images: [
         `${baseUrl}/images/gallery/aaranya-digital-glass-bridge-skywalk.webp`,
+        `${baseUrl}/images/gallery/aaranya-indoor-games-carrom.webp`,
+        `${baseUrl}/images/gallery/aaranya-indoor-games-chess.webp`,
+        `${baseUrl}/images/gallery/aaranya-indoor-games-ludo.webp`,
         `${baseUrl}/images/gallery/aaranya-tea-plantation-giant-swing-zipline.webp`,
         `${baseUrl}/images/gallery/aaranya-sky-zip-cycling.webp`,
         `${baseUrl}/images/gallery/aaranya-chooralmala-scenic-valley-road.webp`,

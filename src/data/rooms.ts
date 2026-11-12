@@ -20,14 +20,14 @@ export interface Room {
 
 export const roomsData: Room[] = [
   {
-    id: "executive-room",
-    slug: "executive-room",
-    name: "Executive Room",
+    id: "deluxe-room",
+    slug: "deluxe-room",
+    name: "Deluxe Room",
     subtitle: "Tranquil Forest & Valley Overlook",
     shortDescription:
-      "Spacious and elegant room with nature views and modern executive amenities.",
+      "Spacious and elegant room with nature views and modern comforts.",
     detailedDescription:
-      "Awaken to misty mountain breezes and lush rainforest vistas. The Executive Room features expansive panoramic glass windows, a plush king bed, private attached bathroom, and bespoke timber finishes designed to keep you seamlessly connected to the natural world.",
+      "Awaken to misty mountain breezes and lush rainforest vistas. The Deluxe Room features expansive panoramic glass windows, a plush king bed, private attached bathroom, and bespoke timber finishes designed to keep you seamlessly connected to the natural world.",
     image: "/images/rooms/aaranya-canopy-bedroom-suite-2k.webp",
     galleryImages: [
       "/images/rooms/aaranya-canopy-bedroom-suite-2k.webp",
@@ -59,14 +59,14 @@ export const roomsData: Room[] = [
     ],
   },
   {
-    id: "executive-with-balcony-room",
-    slug: "executive-with-balcony-room",
-    name: "Executive with Balcony Room",
+    id: "premium-room",
+    slug: "premium-room",
+    name: "Premium Room",
     subtitle: "Private Balcony Overlooking Misty Canopy",
     shortDescription:
-      "A perfect blend of executive comfort with a private viewing balcony and serene surroundings.",
+      "A perfect blend of luxury comfort with a private viewing balcony and serene valley surroundings.",
     detailedDescription:
-      "Crafted for discerning travelers seeking quiet refinement and fresh mountain air, the Executive with Balcony Room features warm wooden headboard accents, ambient soft lighting, and direct sliding glass doors opening to a private sit-out balcony overlooking the mist-shrouded valley canopy.",
+      "Crafted for discerning travelers seeking quiet refinement and fresh mountain air, the Premium Room features warm wooden headboard accents, ambient soft lighting, and direct sliding glass doors opening to a private sit-out balcony overlooking the mist-shrouded valley canopy.",
     image: "/images/rooms/aaranya-luxury-suite-interior-2k.webp",
     galleryImages: [
       "/images/rooms/aaranya-luxury-suite-interior-2k.webp",
@@ -100,14 +100,14 @@ export const roomsData: Room[] = [
     ],
   },
   {
-    id: "executive-with-balcony-with-bath-tub",
-    slug: "executive-with-balcony-with-bath-tub",
-    name: "Executive with Balcony with Bath Tub",
-    subtitle: "Luxury Hillside Retreat with Balcony & Deep Soak Bathtub",
+    id: "premium-bathtub-room",
+    slug: "premium-bathtub-room",
+    name: "Premium Bathtub Room",
+    subtitle: "Hillside Luxury Sanctuary with Private Balcony & Deep Soak Bathtub",
     shortDescription:
-      "Ultimate luxury featuring a private viewing balcony and an indulgent bathtub overlooking nature.",
+      "Ultimate luxury featuring a private viewing balcony and an indulgent designer bathtub overlooking nature.",
     detailedDescription:
-      "The pinnacle of relaxation at Aaranya, the Executive with Balcony with Bath Tub pairs sophisticated high-ceiling timber interiors with a private open-air viewing balcony and a deep-soaking bathtub overlooking pristine greenery. Relax in warm soothing water after a day of hillside exploration, then unwind on your private balcony surrounded by cool mountain mist.",
+      "The pinnacle of relaxation at Aaranya, the Premium Bathtub Room pairs sophisticated high-ceiling timber interiors with a private open-air viewing balcony and a deep-soaking bathtub overlooking pristine greenery. Relax in warm soothing water after a day of hillside exploration, then unwind on your private balcony surrounded by cool mountain mist.",
     image: "/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp",
     galleryImages: [
       "/images/rooms/aaranya-canopy-suite-timber-floor-2k.webp",

@@ -127,7 +127,13 @@ export default function ActivitiesClientView() {
   const [inclusionFilter, setInclusionFilter] = useState<"all" | "complimentary" | "paid">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalActivity, setActiveModalActivity] = useState<ActivityItem | null>(null);
+  const [activeModalImageIndex, setActiveModalImageIndex] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  // Reset modal image when active activity changes
+  useEffect(() => {
+    setActiveModalImageIndex(0);
+  }, [activeModalActivity]);
 
   // Pause Lenis and prevent background scroll when activity details modal is open
   useEffect(() => {
@@ -772,33 +778,74 @@ export default function ActivitiesClientView() {
                 <FiX className="w-5 h-5" />
               </button>
 
-              {/* Modal Image */}
-              <div className="relative aspect-[16/9] w-full bg-[#061F1A]">
-                <Image
-                  src={activeModalActivity.image}
-                  alt={activeModalActivity.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 650px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                
-                <div className="absolute bottom-4 left-5 right-5 text-white">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#E8BD78] text-[#061F1A] inline-block">
-                      {activeModalActivity.category}
-                    </span>
-                    {activeModalActivity.isPaid && (
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#8C5D19] text-[#FAF8F5] inline-block border border-[#E8BD78]/40">
-                        Paid Activity
-                      </span>
+              {/* Modal Image & Gallery Switcher */}
+              {(() => {
+                const modalImages =
+                  activeModalActivity.galleryImages && activeModalActivity.galleryImages.length > 0
+                    ? activeModalActivity.galleryImages
+                    : [activeModalActivity.image];
+                const currentImg = modalImages[activeModalImageIndex] || activeModalActivity.image;
+
+                return (
+                  <div>
+                    <div className="relative aspect-[16/9] w-full bg-[#061F1A]">
+                      <Image
+                        src={currentImg}
+                        alt={activeModalActivity.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 650px"
+                        className="object-cover transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+                      <div className="absolute bottom-4 left-5 right-5 text-white">
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#E8BD78] text-[#061F1A] inline-block">
+                            {activeModalActivity.category}
+                          </span>
+                          {activeModalActivity.isPaid && (
+                            <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#8C5D19] text-[#FAF8F5] inline-block border border-[#E8BD78]/40">
+                              Paid Activity
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-serif-luxury text-2xl sm:text-3xl font-medium text-white">
+                          {activeModalActivity.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Thumbnail Switcher for Multiple Photos */}
+                    {modalImages.length > 1 && (
+                      <div className="flex items-center gap-2 px-6 py-2.5 bg-[#F7F3EC] border-b border-[#E6DED1] overflow-x-auto">
+                        <span className="text-[11px] uppercase tracking-wider font-semibold text-[#77766E] mr-1 shrink-0">
+                          Photos ({modalImages.length}):
+                        </span>
+                        {modalImages.map((img, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setActiveModalImageIndex(idx)}
+                            className={`relative w-14 h-10 rounded-md overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
+                              activeModalImageIndex === idx
+                                ? "border-[#D6AD68] shadow-sm scale-105"
+                                : "border-transparent opacity-60 hover:opacity-100"
+                            }`}
+                          >
+                            <Image
+                              src={img}
+                              alt={`${activeModalActivity.title} photo ${idx + 1}`}
+                              fill
+                              sizes="56px"
+                              className="object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
                     )}
                   </div>
-                  <h3 className="font-serif-luxury text-2xl sm:text-3xl font-medium text-white">
-                    {activeModalActivity.title}
-                  </h3>
-                </div>
-              </div>
+                );
+              })()}
 
               {/* Modal Body */}
               <div className="p-6 sm:p-8 space-y-6">

@@ -9,9 +9,9 @@ import BookingForm from "@/components/BookingForm";
 
 const roomFilterTabs = [
   "All Rooms",
-  "Executive Room",
-  "Executive with Balcony Room",
-  "Executive with Balcony with Bath Tub",
+  "Deluxe Room",
+  "Premium Room",
+  "Premium Bathtub Room",
 ] as const;
 
 export default function RoomsClientView() {
@@ -22,9 +22,16 @@ export default function RoomsClientView() {
     const select = searchParams.get("select");
     if (select) {
       const legacyMap: Record<string, string> = {
-        "deluxe-room": "executive-room",
-        "premium-room": "executive-with-balcony-room",
-        "family-room": "executive-with-balcony-with-bath-tub",
+        "deluxe-room": "deluxe-room",
+        "deluxe": "deluxe-room",
+        "executive-room": "deluxe-room",
+        "premium-room": "premium-room",
+        "premium": "premium-room",
+        "executive-with-balcony-room": "premium-room",
+        "premium-bathtub-room": "premium-bathtub-room",
+        "premium-bathtub": "premium-bathtub-room",
+        "family-room": "premium-bathtub-room",
+        "executive-with-balcony-with-bath-tub": "premium-bathtub-room",
       };
       const target = legacyMap[select] || select;
       const matched = roomsData.find(

@@ -332,4 +332,28 @@ export const galleryData: GalleryItem[] = [
     alt: "Winding hillside road cutting through lush green tea gardens with scenic mountain backdrop in Attamala",
     featured: true,
   },
+  {
+    id: "g-indoor-games-carrom",
+    title: "Indoor Games Lounge & Carrom Arena",
+    category: "Amenities",
+    src: "/images/gallery/aaranya-indoor-games-carrom.webp",
+    alt: "Spacious indoor games lounge featuring tournament carrom board and comfortable seating under vaulted timber ceiling",
+    featured: true,
+  },
+  {
+    id: "g-indoor-games-chess",
+    title: "Tournament Chess Lounge",
+    category: "Amenities",
+    src: "/images/gallery/aaranya-indoor-games-chess.webp",
+    alt: "Classic tournament chess set on glass-top game table in indoor recreation lounge",
+    featured: true,
+  },
+  {
+    id: "g-indoor-games-ludo",
+    title: "Classic Board Games & Ludo Corner",
+    category: "Amenities",
+    src: "/images/gallery/aaranya-indoor-games-ludo.webp",
+    alt: "Ludo board game setup on gaming table for family recreation",
+    featured: true,
+  },
 ];
