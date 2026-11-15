@@ -65,7 +65,11 @@ export const activitiesData: ActivityItem[] = [
       "Warm starlit campfire gatherings featuring ambient acoustic music, mountain breeze, hot beverages, and crackling pine embers.",
     detailedDescription:
       "As dusk blankets Attamala and cool mountain mist rolls across the trees, gather around our open-air natural stone fire pit. Enjoy soulful acoustic music playlists and weekend live guitar sessions under starlit skies. Relish steaming cups of authentic Wayanad ginger tea, roasted marshmallows, and friendly conversations in the cozy mountain chill.",
-    image: "/images/activities/aaranya-campfire-night.webp",
+    image: "/images/activities/aaranya-campfire-night-gathering.webp",
+    galleryImages: [
+      "/images/activities/aaranya-campfire-night-gathering.webp",
+      "/images/activities/aaranya-campfire-night.webp",
+    ],
     suitableFor: "Families, Couples & Friends",
     includedInStay: true,
     isPaid: false,
@@ -145,7 +149,11 @@ export const activitiesData: ActivityItem[] = [
       "Scenic stroll through rolling emerald tea slopes with estate naturalists explaining traditional tea harvesting and regional spices.",
     detailedDescription:
       "Step straight from Aaranya into adjacent emerald tea garden slopes. Accompanied by our knowledgeable estate naturalists, learn how two leaves and a bud are plucked, understand orthodox vs CTC tea crafting, discover wild cardamom, pepper, and cinnamon, and capture breathtaking photos against rolling green hills kissed by morning dew.",
-    image: "/images/activities/aaranya-tea-plantation-walk.webp",
+    image: "/images/activities/aaranya-tea-plantation-walk-family.webp",
+    galleryImages: [
+      "/images/activities/aaranya-tea-plantation-walk-family.webp",
+      "/images/activities/aaranya-tea-plantation-walk-trail.webp",
+    ],
     suitableFor: "All Age Groups & Nature Lovers",
     includedInStay: true,
     isPaid: false,
