@@ -42,6 +42,8 @@ export const defaultSeoKeywords = [
   "resort with campfire wayanad",
   "tea plantation walk wayanad",
   "wayanad jeep safari resort",
+  "resort with pickup and drop wayanad",
+  "wayanad resort jeep pickup",
   "sea of clouds resort wayanad",
   "resort with infinity pool in wayanad",
   "outdoor activities resort kerala",

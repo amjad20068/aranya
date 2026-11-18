@@ -34,7 +34,7 @@ export default function HomeActivitiesSection() {
             </h2>
             <p className="text-sm sm:text-base text-[#77766E] font-light leading-relaxed">
               Every day at Aaranya brings fresh excitement — whether swimming in the hillside infinity pool,
-              gathering around musical campfires, enjoying indoor games, exploring in 4x4 jeeps, taking guided plantation walks, or walking the digital glass bridge.
+              gathering around musical campfires, enjoying indoor games, convenient pickup and drop, taking guided plantation walks, or walking the digital glass bridge.
             </p>
           </motion.div>
 

@@ -43,7 +43,7 @@ const headlineHighlights = [
   { id: "swimming-pool", label: "Swimming Pool", icon: <LuWaves className="w-3.5 h-3.5" />, tag: "Infinity Pool" },
   { id: "campfire-with-music", label: "Campfire with Music", icon: <FaMusic className="w-3.5 h-3.5" />, tag: "Acoustic Night" },
   { id: "indoor-games", label: "Indoor Games", icon: <FaGamepad className="w-3.5 h-3.5" />, tag: "Atrium Lounge" },
-  { id: "jeep-safari", label: "Jeep Safari", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "4x4 Adventure" },
+  { id: "pickup-and-drop", label: "Pickup & Drop", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "4x4 Jeep" },
   { id: "plantation-walk", label: "Plantation Walk", icon: <LuTrees className="w-3.5 h-3.5" />, tag: "Guided Estate" },
   { id: "digital-glass-bridge", label: "Digital Glass Bridge", icon: <LuCompass className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
   { id: "zipline-giant-swing", label: "Zipline & Swing", icon: <LuMountain className="w-3.5 h-3.5" />, tag: "Paid", isPaid: true },
@@ -64,10 +64,10 @@ const timelineSchedule = [
     tag: "Complimentary Pool",
   },
   {
-    title: "4x4 Mountain Jeep Safari",
-    description: "Thrilling off-road mountain trail through rugged tracks, misty hills, and scenic forest viewpoints.",
+    title: "Pickup & Drop",
+    description: "Dedicated 4x4 off-road jeep pickup and drop service through scenic hillside trails to the resort.",
     icon: <LuMountain className="w-5 h-5 text-[#D6AD68]" />,
-    tag: "Complimentary Experience",
+    tag: "Complimentary Service",
   },
   {
     title: "Digital Glass Bridge Skywalk",
@@ -96,9 +96,9 @@ const faqs = [
       "The Digital Glass Bridge is a Paid Activity. Attraction entry tickets and private taxi transport are arranged on request through our resort travel desk with priority slots. All other resort activities are complimentary and included in your stay.",
   },
   {
-    question: "Are the other activities like Swimming Pool, Campfire, Jeep Safari, Indoor Games, and Plantation Walk complimentary?",
+    question: "Are the other activities like Swimming Pool, Campfire, Pickup & Drop, Indoor Games, and Plantation Walk complimentary?",
     answer:
-      "Yes! All other resort activities — Hillside Infinity Swimming Pool, Campfire with Music, Indoor Games Lounge, 4x4 Mountain Jeep Safari, and Guided Plantation Walk — are complimentary for in-house guests and included in your stay. Only the Glass Bridge is a paid activity.",
+      "Yes! All other resort activities — Hillside Infinity Swimming Pool, Campfire with Music, Indoor Games Lounge, Pickup & Drop, and Guided Plantation Walk — are complimentary for in-house guests and included in your stay. Only the Glass Bridge is a paid activity.",
   },
   {
     question: "What are the features of the Hillside Infinity Swimming Pool?",
@@ -116,9 +116,9 @@ const faqs = [
       "Our soaring timber cathedral atrium houses tournament-grade Carrom boards, Table Tennis (Ping Pong), Foosball table, Chess boards, Scrabble, Monopoly, Uno, and a curated book library. All indoor games are complimentary for in-house guests.",
   },
   {
-    question: "How do we arrange the 4x4 Mountain Jeep Safari and Plantation Walk?",
+    question: "How do we arrange the Pickup & Drop and Plantation Walk?",
     answer:
-      "Both activities are arranged directly by our front desk team. Plantation walks depart directly from the resort garden terraces, and 4x4 mountain jeep safaris can be reserved with our front desk upon check-in or via WhatsApp.",
+      "Both are arranged directly by our front desk team. For Pickup & Drop, please notify our reception or connect via WhatsApp prior to arrival for coordinated transit from the base point. Plantation walks depart directly from the resort garden terraces.",
   },
 ];
 
@@ -231,7 +231,7 @@ export default function ActivitiesClientView() {
             className="mt-6 text-sm sm:text-base md:text-lg text-[#FAF8F5]/85 max-w-3xl mx-auto leading-relaxed font-light"
           >
             From the hillside infinity swimming pool to starlit campfires with acoustic music,
-            indoor games, thrilling 4x4 mountain jeep safari, guided plantation walks, and the digital glass bridge skywalk.
+            indoor games, convenient 4x4 pickup and drop, guided plantation walks, and the digital glass bridge skywalk.
           </motion.p>
 
           {/* 7 Headline Navigation Buttons */}
@@ -730,7 +730,7 @@ export default function ActivitiesClientView() {
                 Need a Custom Experience or Group Tour?
               </h3>
               <p className="text-xs sm:text-sm text-[#FAF8F5]/80 font-light max-w-lg">
-                Speak directly with our on-ground host on WhatsApp to arrange private jeep trekking,
+                Speak directly with our on-ground host on WhatsApp to arrange pickup and drop coordination,
                 glass bridge passes, or family pool celebrations.
               </p>
             </div>

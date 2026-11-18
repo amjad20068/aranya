@@ -114,28 +114,31 @@ export const activitiesData: ActivityItem[] = [
     ],
   },
 
-  // 4. Jeep Safari
+  // 4. Pickup & Drop
   {
-    id: "jeep-safari",
-    slug: "jeep-safari",
-    title: "4x4 Mountain Jeep Safari",
-    category: "Nature & Adventure",
+    id: "pickup-and-drop",
+    slug: "pickup-and-drop",
+    title: "Pickup & Drop",
+    category: "Resort Experiences",
     shortDescription:
-      "An exhilarating open-top 4x4 off-road safari traversing rugged mountain tracks, misty ridges, and cascading forest streams.",
+      "Comfortable off-road 4x4 jeep pickup and drop service ensuring seamless and scenic access to Aaranya resort.",
     detailedDescription:
-      "Experience the wild untamed side of Wayanad with an open-top four-wheel-drive safari. Led by seasoned local off-road drivers, traverse steep rocky mountain trails, splash across pristine forest brooks, and arrive at remote cliff-edge viewpoints overlooking deep cloud-filled canyons of Attamala and Meppadi.",
+      "Enjoy a hassle-free arrival and departure experience with our dedicated 4x4 Jeep pickup and drop service. Navigating Wayanad's misty mountain roads and scenic estate trails, our experienced local drivers ensure a safe, comfortable, and scenic ride straight to the resort steps.",
     image: "/images/activities/aaranya-wayanad-jeep-safari.webp",
-    suitableFor: "Adventure Seekers, Families & Groups",
+    galleryImages: [
+      "/images/activities/aaranya-wayanad-jeep-safari.webp",
+    ],
+    suitableFor: "All Guests, Families & Groups",
     includedInStay: true,
     isPaid: false,
-    pricingNote: "Complimentary Experience",
-    badge: "Thrilling Mountain Trail",
+    pricingNote: "Complimentary for In-House Guests",
+    badge: "4x4 Jeep Service",
     highlights: [
-      "Adventurous 4x4 Jeep ride over scenic off-road forest terrain",
-      "Stunning stops at Attamala Viewpoint and hidden ridge panoramas",
-      "Visit hidden mountain brooks and forest waterfalls",
-      "Expert, safe local drivers with deep knowledge of Wayanad terrain",
-      "Ideal for photography enthusiasts and group memories",
+      "Dedicated 4x4 Jeep pickup and drop service for resort guests",
+      "Safe and smooth transit through misty hillside roads and estate paths",
+      "Experienced local drivers well-versed in Wayanad terrain",
+      "Assistance with luggage and hassle-free arrival & departure",
+      "Scenic mountain and tea valley views during your journey",
     ],
   },
 
